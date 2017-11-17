@@ -2,11 +2,11 @@
 	 <div>
     <b-card title="Search a dota player">
         
-    <b-form-input v-model="username"
+    <b-form-input v-model="idplayer"
                   type="text"
-                  placeholder="Enter the id"></b-form-input>
+                  placeholder="Enter the id of the player"></b-form-input>
                   <br>
-                  <b-button>Search</b-button>
+                  <b-button :href="'/#/player/' + idplayer">Search</b-button>
     </b-card>
   </div>
 
@@ -19,7 +19,7 @@
         props: ['vista'],
     	data() {
     		return {
-         username: '',
+         idplayer: '',
          mensaje:false
     		}
     	},
