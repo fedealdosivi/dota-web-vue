@@ -33,9 +33,7 @@
       },
 
     	methods: {
-    		cambiarVista(vista) {
-                this.$emit('cambiarVista', vista);
-            }
+
     	}
 
     }
