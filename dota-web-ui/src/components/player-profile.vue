@@ -1,14 +1,16 @@
-  <template>
-  <div v-if="player!=null">
-      <b-card tag="article" style="max-width: 20rem;" class="mb-2">
-        <h3>{{this.player.profile.personaname}}</h3>
-        <p class="card-text">Steam ID: {{this.player.profile.steamid}}</p>
-        <p class="card-text">MMR points: {{this.player.mmr_estimate.estimate}}</p>
-      </b-card>
-  </div>
-  <h2 v-else>Looks so empty</h2>
-
-  </template>
+    <template>
+      <div v-if="player!=null">
+        <b-card  bg-variant="dark" text-variant="white">
+          <h3 class="Card Title">{{this.player.profile.personaname}}</h3>
+          <p class="card-text">Steam ID: {{this.player.profile.steamid}}</p>
+          <p class="card-text">MMR points: {{this.player.mmr_estimate.estimate}}</p>
+          <b-img right src="this.player.profile.avatarfull" alt="right image" />
+          <p>{{this.player.profile.avatarfull}}</p>
+          <b-button :href="'#/player/peers/'+ id" variant="primary">Discover Peers</b-button>
+        </b-card>
+      </div>
+      <h2 v-else>Looks so empty</h2>
+    </template>
 
   <script>
     import playerService from '../services/playerService';
@@ -17,29 +19,7 @@
      props: ['vista'],
      data() {
       return {   			
-       player :{
-        tracked_until: '',
-        solo_competitive_rank: '',
-        competitive_rank: '',
-        mmr_estimate: {
-          estimate: 0,
-          stdDev: 0,
-          n: 0
-        },
-        profile: {
-          account_id: 0,
-          personaname: '',
-          name: '',
-          cheese: 0,
-          steamid: '',
-          avatar: '',
-          avatarmedium: '',
-          avatarfull: '',
-          profileurl: '',
-          last_login: '',
-          loccountrycode: ''
-        }
-      },
+       player :{},
       mensaje:false
     }
   },
@@ -76,6 +56,8 @@
                       this.player='';
                   })
                 }
-    }
+    },
+
+
   }
   </script>

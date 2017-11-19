@@ -8,7 +8,7 @@
   <b-collapse is-nav id="nav_collapse">
 
     <b-navbar-nav>
-      <b-nav-item href="/#/teams">Link</b-nav-item>
+      <b-nav-item href="/#/teams">Teams</b-nav-item>
     </b-navbar-nav>
 
   </b-collapse>
@@ -18,7 +18,6 @@
 <script>
     export default {
     	name: 'topMenu',
-        props: ['vista'],
     	data() {
     		return {
          mensaje:false
@@ -35,9 +34,6 @@
 
     	methods: {
 
-    		cambiarVista(vista) {
-                this.$emit('cambiarVista', vista);
-            }
     	}
 
     }
