@@ -786,6 +786,65 @@ function toComment(sourceMap) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _axios = __webpack_require__(9);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+	data: function data() {
+		return {};
+	},
+	getPlayerById: function getPlayerById(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId);
+		return promise;
+	},
+	getWinLosesByPlayerId: function getWinLosesByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wl');
+		return promise;
+	},
+	getRecentMatchesByPlayerId: function getRecentMatchesByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/recentMatches');
+		return promise;
+	},
+	getMatchesByPlayerId: function getMatchesByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/matches');
+		return promise;
+	},
+	getWinLosesByPlayerIdPerHeroe: function getWinLosesByPlayerIdPerHeroe(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/heroes');
+		return promise;
+	},
+	getPeersByPlayerId: function getPeersByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/peers');
+		return promise;
+	},
+	getTotalStatsByPlayerId: function getTotalStatsByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/totals');
+		return promise;
+	},
+	getCountsByPlayerId: function getCountsByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/counts');
+		return promise;
+	},
+	getWordsByPlayerId: function getWordsByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wordcloud');
+		return promise;
+	}
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
@@ -882,7 +941,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3514,7 +3573,7 @@ if (inBrowser && window.Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -3733,65 +3792,6 @@ function applyToTag (styleElement, obj) {
   }
 }
 
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _axios = __webpack_require__(9);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-	data: function data() {
-		return {};
-	},
-	getPlayerById: function getPlayerById(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId);
-		return promise;
-	},
-	getWinLosesByPlayerId: function getWinLosesByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wl');
-		return promise;
-	},
-	getRecentMatchesByPlayerId: function getRecentMatchesByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/recentMatches');
-		return promise;
-	},
-	getMatchesByPlayerId: function getMatchesByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/matches');
-		return promise;
-	},
-	getWinLosesByPlayerIdPerHeroe: function getWinLosesByPlayerIdPerHeroe(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/heroes');
-		return promise;
-	},
-	getPeersByPlayerId: function getPeersByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/peers');
-		return promise;
-	},
-	getTotalStatsByPlayerId: function getTotalStatsByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/totals');
-		return promise;
-	},
-	getCountsByPlayerId: function getCountsByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/counts');
-		return promise;
-	},
-	getWordsByPlayerId: function getWordsByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wordcloud');
-		return promise;
-	}
-};
 
 /***/ }),
 /* 9 */
@@ -4125,7 +4125,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(64);
+var	fixUrls = __webpack_require__(67);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -4451,7 +4451,7 @@ var _vue = __webpack_require__(17);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(6);
+var _vueRouter = __webpack_require__(7);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -4463,15 +4463,15 @@ var _router = __webpack_require__(31);
 
 var _router2 = _interopRequireDefault(_router);
 
-__webpack_require__(62);
-
 __webpack_require__(65);
+
+__webpack_require__(68);
 
 var _axios = __webpack_require__(9);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _bootstrapVue = __webpack_require__(67);
+var _bootstrapVue = __webpack_require__(70);
 
 var _bootstrapVue2 = _interopRequireDefault(_bootstrapVue);
 
@@ -15431,7 +15431,7 @@ var content = __webpack_require__(22);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("04960165", content, false);
+var update = __webpack_require__(8)("04960165", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -15603,7 +15603,7 @@ var content = __webpack_require__(27);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(7)("075a22c1", content, false);
+var update = __webpack_require__(8)("075a22c1", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -15761,7 +15761,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _vueRouter = __webpack_require__(6);
+var _vueRouter = __webpack_require__(7);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -15781,10 +15781,14 @@ var _playerPeers = __webpack_require__(59);
 
 var _playerPeers2 = _interopRequireDefault(_playerPeers);
 
+var _playerRecent = __webpack_require__(62);
+
+var _playerRecent2 = _interopRequireDefault(_playerRecent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = new _vueRouter2.default({
-    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/peers/:id", component: _playerPeers2.default }]
+    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/peers/:id", component: _playerPeers2.default }, { path: "/player/rmatches/:id", component: _playerRecent2.default }]
 });
 
 /***/ }),
@@ -16187,7 +16191,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _playerService = __webpack_require__(8);
+var _playerService = __webpack_require__(5);
 
 var _playerService2 = _interopRequireDefault(_playerService);
 
@@ -16251,6 +16255,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 40 */
@@ -16262,7 +16267,7 @@ exports.default = {
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(10);
 var Axios = __webpack_require__(42);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(6);
 
 /**
  * Create an instance of Axios
@@ -16345,7 +16350,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(6);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(51);
 var dispatchRequest = __webpack_require__(52);
@@ -16886,7 +16891,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(53);
 var isCancel = __webpack_require__(13);
-var defaults = __webpack_require__(5);
+var defaults = __webpack_require__(6);
 var isAbsoluteURL = __webpack_require__(54);
 var combineURLs = __webpack_require__(55);
 
@@ -17186,6 +17191,17 @@ var render = function() {
                   }
                 },
                 [_vm._v("Discover Peers")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  attrs: {
+                    href: "#/player/rmatches/" + _vm.id,
+                    variant: "primary"
+                  }
+                },
+                [_vm._v("Discover Peers")]
               )
             ],
             1
@@ -17270,7 +17286,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _playerService = __webpack_require__(8);
+var _playerService = __webpack_require__(5);
 
 var _playerService2 = _interopRequireDefault(_playerService);
 
@@ -17340,7 +17356,9 @@ var render = function() {
     ? _c(
         "div",
         [
-          _c("b-table", { attrs: { striped: "", hover: "", items: _vm.peers } })
+          _c("b-table", {
+            attrs: { dark: "", striped: "", hover: "", items: _vm.peers }
+          })
         ],
         1
       )
@@ -17359,12 +17377,165 @@ if (false) {
 
 /***/ }),
 /* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_recent_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_recent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_recent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_81936132_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_player_recent_vue__ = __webpack_require__(64);
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_recent_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_81936132_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_player_recent_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/player-recent.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-81936132", Component.options)
+  } else {
+    hotAPI.reload("data-v-81936132", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _playerService = __webpack_require__(5);
+
+var _playerService2 = _interopRequireDefault(_playerService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  name: 'playerPeers',
+  props: ['vista'],
+  data: function data() {
+    return {
+      matches: [],
+      mensaje: false
+    };
+  },
+
+
+  computed: {
+    params: function params() {
+      return this.$route.params;
+    },
+    id: function id() {
+      return this.$route.params.id;
+    }
+  },
+
+  watch: {
+    '$route.params.id': function $routeParamsId() {
+      this.id = this.$route.params.id;
+      this.matches = this.getPeers();
+    }
+  },
+
+  created: function created() {
+    this.matches = this.getPeers();
+  },
+
+
+  methods: {
+    getPeers: function getPeers() {
+      var _this = this;
+
+      _playerService2.default.getRecentMatchesByPlayerId(this.id).then(function (response) {
+        _this.matches = response.data;
+      }).catch(function (error) {
+        _this.matches = null;
+      });
+    }
+  }
+
+}; //
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.matches != null
+    ? _c(
+        "div",
+        [
+          _c("b-table", {
+            attrs: { dark: "", striped: "", hover: "", items: _vm.matches }
+          })
+        ],
+        1
+      )
+    : _c("h2", [_vm._v("Looks like you are alone in this world")])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-81936132", esExports)
+  }
+}
+
+/***/ }),
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(63);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -17389,7 +17560,7 @@ if(false) {
 }
 
 /***/ }),
-/* 63 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(undefined);
@@ -17403,7 +17574,7 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0-beta.2 (https://getbootstrap.c
 
 
 /***/ }),
-/* 64 */
+/* 67 */
 /***/ (function(module, exports) {
 
 
@@ -17498,13 +17669,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 65 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(66);
+var content = __webpack_require__(69);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -17529,7 +17700,7 @@ if(false) {
 }
 
 /***/ }),
-/* 66 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(undefined);
@@ -17543,13 +17714,13 @@ exports.push([module.i, ".b-form-group.form-group.is-invalid .invalid-feedback{d
 
 
 /***/ }),
-/* 67 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_startcase__);
 
 
@@ -28804,7 +28975,7 @@ vueUse(VuePlugin);
 
 
 /***/ }),
-/* 68 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31246,7 +31417,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**

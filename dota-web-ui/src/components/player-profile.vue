@@ -7,6 +7,7 @@
           <b-img right src="this.player.profile.avatarfull" alt="right image" />
           <p>{{this.player.profile.avatarfull}}</p>
           <b-button :href="'#/player/peers/'+ id" variant="primary">Discover Peers</b-button>
+          <b-button :href="'#/player/rmatches/'+ id" variant="primary">Discover Peers</b-button>
         </b-card>
       </div>
       <h2 v-else>Looks so empty</h2>

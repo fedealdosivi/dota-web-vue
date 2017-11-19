@@ -1,6 +1,6 @@
 <template>
-	<div v-if="peers!=null">
-		<b-table dark striped hover :items="peers"></b-table>
+	<div v-if="matches!=null">
+		<b-table dark striped hover :items="matches"></b-table>
 	</div>
 	<h2 v-else>Looks like you are alone in this world</h2>
 </template>
@@ -11,7 +11,7 @@
      props: ['vista'],
      data() {
       return {   			
-       	peers:[],
+       	matches:[],
  		mensaje:false
     }
   },
@@ -29,23 +29,23 @@
   watch: {
    '$route.params.id': function() {
      this.id = this.$route.params.id;
-     this.peers=this.getPeers();
+     this.matches=this.getPeers();
    }
   },	
 
   created() {
-   this.peers=this.getPeers();
+   this.matches=this.getPeers();
   },
 
   methods: {
 
     getPeers(){
-      playerService.getPeersByPlayerId(this.id)
+      playerService.getRecentMatchesByPlayerId(this.id)
       .then((response) => {
-                      this.peers = response.data;
+                      this.matches = response.data;
                   })
                   .catch((error) => {
-                      this.peers=null;
+                      this.matches=null;
                   })
                 }
     },
