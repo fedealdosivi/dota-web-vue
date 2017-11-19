@@ -15,12 +15,12 @@
   <script>
     import playerService from '../services/playerService';
     export default {
-     name: 'playerProfile',
-     props: ['vista'],
+        name: 'playerProfile',
+        props: ['vista'],
      data() {
       return {   			
-       player :{},
-      mensaje:false
+        player :{},
+        mensaje:false
     }
   },
 

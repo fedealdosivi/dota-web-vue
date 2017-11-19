@@ -15,12 +15,12 @@
 
 <script>
 	export default {
-    	 name: 'homeMenu',
-        props: ['vista'],
+          name: 'homeMenu',
+          props: ['vista'],
     	data() {
     		return {
-         idplayer: '',
-         mensaje:false
+          idplayer: '',
+          mensaje:false
     		}
     	},
 

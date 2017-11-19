@@ -17281,7 +17281,7 @@ exports.default = {
   props: ['vista'],
   data: function data() {
     return {
-      player: {},
+      peers: [],
       mensaje: false
     };
   },
@@ -17299,28 +17299,31 @@ exports.default = {
   watch: {
     '$route.params.id': function $routeParamsId() {
       this.id = this.$route.params.id;
-      this.getPlayer();
+      this.peers = this.getPeers();
     }
   },
 
   created: function created() {
-    this.getPlayer();
+    this.peers = this.getPeers();
   },
 
 
   methods: {
-    getPlayer: function getPlayer() {
+    getPeers: function getPeers() {
       var _this = this;
 
-      _playerService2.default.getPlayerById(this.id).then(function (response) {
-        _this.player = response.data;
+      _playerService2.default.getPeersByPlayerId(this.id).then(function (response) {
+        _this.peers = response.data;
       }).catch(function (error) {
-        _this.player = '';
+        _this.peers = null;
       });
     }
   }
 
 }; //
+//
+//
+//
 //
 //
 
@@ -17333,7 +17336,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("hola")])
+  return _vm.peers != null
+    ? _c(
+        "div",
+        [
+          _c("b-table", { attrs: { striped: "", hover: "", items: _vm.peers } })
+        ],
+        1
+      )
+    : _c("h2", [_vm._v("Looks like you are alone in this world")])
 }
 var staticRenderFns = []
 render._withStripped = true

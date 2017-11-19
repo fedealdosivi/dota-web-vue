@@ -1,5 +1,8 @@
 <template>
-	<h1>hola</h1>
+	<div v-if="peers!=null">
+		<b-table striped hover :items="peers"></b-table>
+	</div>
+	<h2 v-else>Looks like you are alone in this world</h2>
 </template>
 <script>
     import playerService from '../services/playerService';
@@ -8,8 +11,8 @@
      props: ['vista'],
      data() {
       return {   			
-       player :{},
-      mensaje:false
+       	peers:[],
+ 		mensaje:false
     }
   },
 
@@ -26,23 +29,23 @@
   watch: {
    '$route.params.id': function() {
      this.id = this.$route.params.id;
-     this.getPlayer();
+     this.peers=this.getPeers();
    }
   },	
 
   created() {
-   this.getPlayer();
+   this.peers=this.getPeers();
   },
 
   methods: {
 
-    getPlayer(){
-      playerService.getPlayerById(this.id)
+    getPeers(){
+      playerService.getPeersByPlayerId(this.id)
       .then((response) => {
-                      this.player = response.data;
+                      this.peers = response.data;
                   })
                   .catch((error) => {
-                      this.player='';
+                      this.peers=null;
                   })
                 }
     },
