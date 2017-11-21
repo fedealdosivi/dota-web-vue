@@ -15796,7 +15796,7 @@ var _playerRecent2 = _interopRequireDefault(_playerRecent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = new _vueRouter2.default({
-    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/peers/:id", component: _playerPeers2.default }, { path: "/player/rmatches/:id", component: _playerRecent2.default }]
+    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }]
 });
 
 /***/ }),
@@ -17194,7 +17194,7 @@ var render = function() {
                 "b-button",
                 {
                   attrs: {
-                    href: "#/player/peers/" + _vm.id,
+                    href: "#/player/" + _vm.id + "/peers",
                     variant: "primary"
                   }
                 },
@@ -17205,11 +17205,11 @@ var render = function() {
                 "b-button",
                 {
                   attrs: {
-                    href: "#/player/rmatches/" + _vm.id,
+                    href: "#/player/" + _vm.id + "/rmatches/",
                     variant: "primary"
                   }
                 },
-                [_vm._v("Discover Peers")]
+                [_vm._v("See Recent Matches")]
               )
             ],
             1

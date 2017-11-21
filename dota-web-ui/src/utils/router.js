@@ -11,7 +11,7 @@ export default new VueRouter({
       { path: '/', component: homeMenu },
       {path: "/teams/", component: allTeams},
       {path: "/player/:id", component: playerProfile},
-      {path: "/player/peers/:id", component: playerPeers},
-      {path: "/player/rmatches/:id", component: playerRecent}
+      {path: "/player/:id/peers", component: playerPeers},
+      {path: "/player/:id/rmatches", component: playerRecent}
 	]
 });
