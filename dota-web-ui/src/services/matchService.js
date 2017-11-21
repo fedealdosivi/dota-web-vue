@@ -14,6 +14,11 @@ export default {
 	getMatchById(idMatch){
 		const promise=axios.get('https://api.opendota.com/api/matches/'+idMatch);
 		return promise;
+	},
+
+	getProMatches(){
+		const promise=axios.get('https://api.opendota.com/api/proMatches');
+		return promise;
 	}
 
 

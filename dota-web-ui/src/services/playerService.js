@@ -6,6 +6,11 @@ export default {
 		}
 	},
 
+	getPlayerByPersonaname(name){
+		const promise=axios.get('https://api.opendota.com/api/search?q=peron'+name);
+		return promise;
+	},
+
 	getPlayerById(playerId){
 		const promise=axios.get('https://api.opendota.com/api/players/'+ playerId);
 		return promise;
@@ -50,5 +55,10 @@ export default {
 		const promise=axios.get('https://api.opendota.com/api/players/'+ playerId +'/wordcloud');
 		return promise;
 	},
+
+	getProPlayers(){
+		const promise=axios.get('https://api.opendota.com/api/proPlayers');
+		return promise;
+	}
 
 }

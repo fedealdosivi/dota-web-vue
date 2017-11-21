@@ -24,5 +24,22 @@ export default {
 	getDurationHeroeById(idHero){
 		const promise=axios.get('https://api.opendota.com/api/heroes/'+idHero +'/durations');
 		return promise;
-	}
+	},
+
+	getRankingPlayerByHero(idHero){
+		const promise=axios.get('https://api.opendota.com/api/rankings?hero_id='+idHero);
+		return promise;
+	},
+
+	getHeroStatsById(idHero){
+		const promise=axios.get('https://api.opendota.com/api/benchmarks?hero_id='+idHero);
+		return promise;
+	},
+
+	getHeroStats(){
+		const promise=axios.get('https://api.opendota.com/api/heroStats');
+		return promise;
+	},
+
+	
 }

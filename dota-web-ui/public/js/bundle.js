@@ -802,6 +802,10 @@ exports.default = {
 	data: function data() {
 		return {};
 	},
+	getPlayerByPersonaname: function getPlayerByPersonaname(name) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/search?q=peron' + name);
+		return promise;
+	},
 	getPlayerById: function getPlayerById(playerId) {
 		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId);
 		return promise;
@@ -836,6 +840,10 @@ exports.default = {
 	},
 	getWordsByPlayerId: function getWordsByPlayerId(playerId) {
 		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wordcloud');
+		return promise;
+	},
+	getProPlayers: function getProPlayers() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/proPlayers');
 		return promise;
 	}
 };
