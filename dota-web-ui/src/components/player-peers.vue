@@ -14,7 +14,7 @@
        	peers:[],
  		mensaje:false
     }
-  },
+  }, 
 
   computed:{
     params() {

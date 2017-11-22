@@ -4,7 +4,7 @@
           <h3 class="Card Title">{{this.player.profile.personaname}}</h3>
           <p class="card-text">Steam ID: {{this.player.profile.steamid}}</p>
           <p class="card-text">MMR points: {{this.player.mmr_estimate.estimate}}</p>
-          <b-img right src="this.player.profile.avatarfull" alt="right image" />
+          <b-img right :src="this.player.profile.avatarfull" alt="right image" />
           <p>{{this.player.profile.avatarfull}}</p>
           <b-button :href="'#/player/'+ id +'/peers'" variant="primary">Discover Peers</b-button>
           <b-button :href="'#/player/'+ id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
@@ -57,7 +57,7 @@
                       this.player='';
                   })
                 }
-    },
+    }
 
 
   }
