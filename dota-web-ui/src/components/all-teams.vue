@@ -2,7 +2,7 @@
 	<div v-if="teams.length != 0">
     <div v-for="(team, index) in teams">
     <b-card title="team.name"
-            img-src="team.logo_url"
+            :img-src="team.logo_url"
             img-alt="Image"
             img-top
             tag="article"
