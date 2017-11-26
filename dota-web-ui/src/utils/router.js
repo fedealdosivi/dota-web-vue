@@ -5,6 +5,7 @@ import playerSearch from '../components/player-search.vue'
 import playerProfile from '../components/player-profile.vue'
 import playerPeers from '../components/player-peers.vue'
 import playerRecent from '../components/player-recent.vue'
+import playerHeroes from '../components/player-heroes.vue'
 
 
 export default new VueRouter({
@@ -14,6 +15,7 @@ export default new VueRouter({
       {path: "/player/", component: playerSearch},   
       {path: "/player/:id", component: playerProfile},
       {path: "/player/:id/peers", component: playerPeers},
-      {path: "/player/:id/rmatches", component: playerRecent}
+      {path: "/player/:id/rmatches", component: playerRecent},
+      {path: "/player/:id/heroes", component: playerHeroes}
 	]
 });
