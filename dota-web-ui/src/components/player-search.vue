@@ -7,12 +7,14 @@
 		                <br>
 		                <b-button @click='getPlayer()'>Search</b-button>
       	</b-card>
-      	<h3 v-if="this.loading==true">LOADING</h3>
+      	<h3 v-if="loading">LOADING</h3>
 		<div v-if="this.players.lenght<1">
 			<h3>Player not found</h3>
 		</div>
 		<b-card v-else v-for="p in this.players" :key="p.account_id" class="text-center">
-			{{p.personaname}}
+			Name: {{p.personaname}}
+			Account id: {{p.account_id}}
+			Last Match: {{p.last_match_time}}
 		</b-card>
 	</b-card>
 </template>

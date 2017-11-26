@@ -16271,6 +16271,8 @@ exports.default = {
 //
 //
 //
+//
+//
 
 /***/ }),
 /* 40 */
@@ -17204,7 +17206,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      this.loading == true ? _c("h3", [_vm._v("LOADING")]) : _vm._e(),
+      _vm.loading ? _c("h3", [_vm._v("LOADING")]) : _vm._e(),
       _vm._v(" "),
       this.players.lenght < 1
         ? _c("div", [_c("h3", [_vm._v("Player not found")])])
@@ -17212,7 +17214,17 @@ var render = function() {
             return _c(
               "b-card",
               { key: p.account_id, staticClass: "text-center" },
-              [_vm._v("\n\t\t\t" + _vm._s(p.personaname) + "\n\t\t")]
+              [
+                _vm._v(
+                  "\n\t\t\tName: " +
+                    _vm._s(p.personaname) +
+                    "\n\t\t\tAccount id: " +
+                    _vm._s(p.account_id) +
+                    "\n\t\t\tLast Match: " +
+                    _vm._s(p.last_match_time) +
+                    "\n\t\t"
+                )
+              ]
             )
           })
     ],
