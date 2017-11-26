@@ -16273,6 +16273,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 40 */
@@ -17173,7 +17174,13 @@ var render = function() {
     [
       _c(
         "b-card",
-        { attrs: { title: "Search By Name" } },
+        {
+          attrs: {
+            title: "Search By Name",
+            "bg-variant": "dark",
+            "text-variant": "white"
+          }
+        },
         [
           _c("b-form-input", {
             attrs: {
@@ -17213,18 +17220,23 @@ var render = function() {
         : _vm._l(this.players, function(p) {
             return _c(
               "b-card",
-              { key: p.account_id, staticClass: "text-center" },
+              {
+                key: p.account_id,
+                staticClass: "text-center",
+                attrs: { "bg-variant": "dark", "text-variant": "white" }
+              },
               [
-                _vm._v(
-                  "\n\t\t\tName: " +
-                    _vm._s(p.personaname) +
-                    "\n\t\t\tAccount id: " +
-                    _vm._s(p.account_id) +
-                    "\n\t\t\tLast Match: " +
-                    _vm._s(p.last_match_time) +
-                    "\n\t\t"
-                )
-              ]
+                _c("b-img", {
+                  attrs: { right: "", src: p.avatarfull, alt: "Thumbnail" }
+                }),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Account id: " + _vm._s(p.account_id))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Last Match: " + _vm._s(p.last_match_time))])
+              ],
+              1
             )
           })
     ],

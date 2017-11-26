@@ -1,6 +1,6 @@
 <template>
 	<b-card class="text-center">
-		<b-card title="Search By Name">
+		<b-card title="Search By Name" bg-variant="dark" text-variant="white">
 		  <b-form-input v-model="playerName"
 		                type="text"
 		                placeholder="Enter the name of the player"></b-form-input>
@@ -11,10 +11,11 @@
 		<div v-if="this.players.lenght<1">
 			<h3>Player not found</h3>
 		</div>
-		<b-card v-else v-for="p in this.players" :key="p.account_id" class="text-center">
-			Name: {{p.personaname}}
-			Account id: {{p.account_id}}
-			Last Match: {{p.last_match_time}}
+		<b-card bg-variant="dark" text-variant="white" v-else v-for="p in this.players" :key="p.account_id" class="text-center">
+			<b-img right :src="p.avatarfull" alt="Thumbnail" />
+			<h4>Name: {{p.personaname}}</h4>
+			<h4>Account id: {{p.account_id}}</h4>
+			<h4>Last Match: {{p.last_match_time}}</h4>
 		</b-card>
 	</b-card>
 </template>
