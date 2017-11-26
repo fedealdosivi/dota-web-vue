@@ -16276,6 +16276,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 40 */
@@ -17258,6 +17259,12 @@ var render = function() {
                     }
                   },
                   [_vm._v("See Recent Matches")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { href: "/#/player/" + p.account_id } },
+                  [_vm._v("See profile")]
                 )
               ],
               1
@@ -17407,6 +17414,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 61 */
@@ -17417,43 +17425,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.player != null
-    ? _c(
-        "div",
-        [
-          _c(
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.player == null
+        ? _c("h3", [_vm._v("Looks so empty")])
+        : _c(
             "b-card",
             { attrs: { "bg-variant": "dark", "text-variant": "white" } },
             [
+              _c("b-img", {
+                attrs: {
+                  right: "",
+                  src: this.player.profile.avatarfull,
+                  alt: "Thumbnail"
+                }
+              }),
+              _vm._v(" "),
               _c("h3", { staticClass: "Card Title" }, [
-                _vm._v(_vm._s(this.player.profile.personaname))
+                _vm._v(
+                  _vm._s(this.player.profile.personaname) +
+                    " " +
+                    _vm._s(this.player.profile.loccountrycode)
+                )
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
-                _vm._v("Steam ID: " + _vm._s(this.player.profile.steamid))
+              _c("h4", [
+                _vm._v(
+                  "Solo Rank: " + _vm._s(this.player.solo_competitive_rank)
+                )
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
+              _c("h4", [
                 _vm._v(
                   "MMR points: " + _vm._s(this.player.mmr_estimate.estimate)
                 )
               ]),
               _vm._v(" "),
-              _c("b-img", {
-                attrs: {
-                  right: "",
-                  src: this.player.profile.avatarfull,
-                  alt: "right image"
-                }
-              }),
+              _c("h4", [
+                _vm._v(
+                  "Competitive Rank: " + _vm._s(this.player.competitive_rank)
+                )
+              ]),
               _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(this.player.profile.avatarfull))]),
+              _c("h4", [_vm._v("Rank tier: " + _vm._s(this.player.rank_tier))]),
               _vm._v(" "),
               _c(
                 "b-button",
                 {
                   attrs: {
-                    href: "#/player/" + _vm.id + "/peers",
+                    href:
+                      "#/player/" + this.player.profile.account_id + "/peers",
                     variant: "primary"
                   }
                 },
@@ -17464,7 +17487,10 @@ var render = function() {
                 "b-button",
                 {
                   attrs: {
-                    href: "#/player/" + _vm.id + "/rmatches/",
+                    href:
+                      "#/player/" +
+                      this.player.profile.account_id +
+                      "/rmatches/",
                     variant: "primary"
                   }
                 },
@@ -17473,10 +17499,9 @@ var render = function() {
             ],
             1
           )
-        ],
-        1
-      )
-    : _c("h2", [_vm._v("Looks so empty")])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -17617,6 +17642,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 64 */
@@ -17673,6 +17699,12 @@ var render = function() {
                     }
                   },
                   [_vm._v("See Recent Matches")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { href: "/#/player/" + p.account_id } },
+                  [_vm._v("See profile")]
                 )
               ],
               1

@@ -1,19 +1,20 @@
-    <template>
-      <div v-if="player!=null">
-        <b-card  bg-variant="dark" text-variant="white">
-          <h3 class="Card Title">{{this.player.profile.personaname}}</h3>
-          <p class="card-text">Steam ID: {{this.player.profile.steamid}}</p>
-          <p class="card-text">MMR points: {{this.player.mmr_estimate.estimate}}</p>
-          <b-img right :src="this.player.profile.avatarfull" alt="right image" />
-          <p>{{this.player.profile.avatarfull}}</p>
-          <b-button :href="'#/player/'+ id +'/peers'" variant="primary">Discover Peers</b-button>
-          <b-button :href="'#/player/'+ id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
-        </b-card>
-      </div>
-      <h2 v-else>Looks so empty</h2>
-    </template>
+<template>
+  <b-card class="text-center">
+    <h3 v-if="player==null">Looks so empty</h3>
+    <b-card v-else bg-variant="dark" text-variant="white">
+      <b-img right :src="this.player.profile.avatarfull" alt="Thumbnail" />
+      <h3 class="Card Title">{{this.player.profile.personaname}} {{this.player.profile.loccountrycode}}</h3>
+      <h4>Solo Rank: {{this.player.solo_competitive_rank}}</h4>
+      <h4>MMR points: {{this.player.mmr_estimate.estimate}}</h4>
+      <h4>Competitive Rank: {{this.player.competitive_rank}}</h4>
+      <h4>Rank tier: {{this.player.rank_tier}}</h4>
+      <b-button :href="'#/player/'+ this.player.profile.account_id +'/peers'" variant="primary">Discover Peers</b-button>
+      <b-button :href="'#/player/'+ this.player.profile.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
+    </b-card>
+  </b-card>
+</template>
 
-  <script>
+<script>
     import playerService from '../services/playerService';
     export default {
         name: 'playerProfile',
@@ -61,4 +62,4 @@
 
 
   }
-  </script>
+</script>

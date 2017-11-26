@@ -18,6 +18,7 @@
 			<h4>Last Match: {{p.last_match_time}}</h4>
 			<b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
           	<b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
+  	      	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
 		</b-card>
 	</b-card>
 </template>
