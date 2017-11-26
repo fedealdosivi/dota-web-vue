@@ -10,6 +10,7 @@
       <h4>Rank tier: {{this.player.rank_tier}}</h4>
       <b-button :href="'#/player/'+ this.player.profile.account_id +'/peers'" variant="primary">Discover Peers</b-button>
       <b-button :href="'#/player/'+ this.player.profile.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
+      <b-button :href="'#/player/'+ this.player.profile.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
     </b-card>
   </b-card>
 </template>

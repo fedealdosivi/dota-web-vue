@@ -674,6 +674,73 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _axios = __webpack_require__(9);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+	data: function data() {
+		return {};
+	},
+	getPlayerByPersonaname: function getPlayerByPersonaname(name) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/search?q=' + name);
+		return promise;
+	},
+	getPlayerById: function getPlayerById(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId);
+		return promise;
+	},
+	getWinLosesByPlayerId: function getWinLosesByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wl');
+		return promise;
+	},
+	getRecentMatchesByPlayerId: function getRecentMatchesByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/recentMatches');
+		return promise;
+	},
+	getMatchesByPlayerId: function getMatchesByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/matches');
+		return promise;
+	},
+	getWinLosesByPlayerIdPerHeroe: function getWinLosesByPlayerIdPerHeroe(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/heroes');
+		return promise;
+	},
+	getPeersByPlayerId: function getPeersByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/peers');
+		return promise;
+	},
+	getTotalStatsByPlayerId: function getTotalStatsByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/totals');
+		return promise;
+	},
+	getCountsByPlayerId: function getCountsByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/counts');
+		return promise;
+	},
+	getWordsByPlayerId: function getWordsByPlayerId(playerId) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wordcloud');
+		return promise;
+	},
+	getProPlayers: function getProPlayers() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/proPlayers');
+		return promise;
+	}
+};
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 var g;
@@ -700,7 +767,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /*
@@ -780,73 +847,6 @@ function toComment(sourceMap) {
 	return '/*# ' + data + ' */';
 }
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _axios = __webpack_require__(9);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-	data: function data() {
-		return {};
-	},
-	getPlayerByPersonaname: function getPlayerByPersonaname(name) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/search?q=' + name);
-		return promise;
-	},
-	getPlayerById: function getPlayerById(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId);
-		return promise;
-	},
-	getWinLosesByPlayerId: function getWinLosesByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wl');
-		return promise;
-	},
-	getRecentMatchesByPlayerId: function getRecentMatchesByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/recentMatches');
-		return promise;
-	},
-	getMatchesByPlayerId: function getMatchesByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/matches');
-		return promise;
-	},
-	getWinLosesByPlayerIdPerHeroe: function getWinLosesByPlayerIdPerHeroe(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/heroes');
-		return promise;
-	},
-	getPeersByPlayerId: function getPeersByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/peers');
-		return promise;
-	},
-	getTotalStatsByPlayerId: function getTotalStatsByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/totals');
-		return promise;
-	},
-	getCountsByPlayerId: function getCountsByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/counts');
-		return promise;
-	},
-	getWordsByPlayerId: function getWordsByPlayerId(playerId) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/players/' + playerId + '/wordcloud');
-		return promise;
-	},
-	getProPlayers: function getProPlayers() {
-		var promise = _axios2.default.get('https://api.opendota.com/api/proPlayers');
-		return promise;
-	}
-};
 
 /***/ }),
 /* 6 */
@@ -4133,7 +4133,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(70);
+var	fixUrls = __webpack_require__(73);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -4471,15 +4471,15 @@ var _router = __webpack_require__(31);
 
 var _router2 = _interopRequireDefault(_router);
 
-__webpack_require__(68);
-
 __webpack_require__(71);
+
+__webpack_require__(74);
 
 var _axios = __webpack_require__(9);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _bootstrapVue = __webpack_require__(73);
+var _bootstrapVue = __webpack_require__(76);
 
 var _bootstrapVue2 = _interopRequireDefault(_bootstrapVue);
 
@@ -15117,7 +15117,7 @@ Vue$3.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue$3);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(3), __webpack_require__(18).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2), __webpack_require__(4), __webpack_require__(18).setImmediate))
 
 /***/ }),
 /* 18 */
@@ -15369,7 +15369,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(2)))
 
 /***/ }),
 /* 20 */
@@ -15458,7 +15458,7 @@ if(false) {
 /* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(undefined);
+exports = module.exports = __webpack_require__(5)(undefined);
 // imports
 
 
@@ -15630,7 +15630,7 @@ if(false) {
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(undefined);
+exports = module.exports = __webpack_require__(5)(undefined);
 // imports
 
 
@@ -15802,10 +15802,14 @@ var _playerRecent = __webpack_require__(65);
 
 var _playerRecent2 = _interopRequireDefault(_playerRecent);
 
+var _playerHeroes = __webpack_require__(68);
+
+var _playerHeroes2 = _interopRequireDefault(_playerHeroes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = new _vueRouter2.default({
-    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/", component: _playerSearch2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }]
+    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/", component: _playerSearch2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }, { path: "/player/:id/heroes", component: _playerHeroes2.default }]
 });
 
 /***/ }),
@@ -16219,7 +16223,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _playerService = __webpack_require__(5);
+var _playerService = __webpack_require__(3);
 
 var _playerService2 = _interopRequireDefault(_playerService);
 
@@ -16253,6 +16257,7 @@ exports.default = {
 	}
 
 }; //
+//
 //
 //
 //
@@ -17265,6 +17270,17 @@ var render = function() {
                   "b-button",
                   { attrs: { href: "/#/player/" + p.account_id } },
                   [_vm._v("See profile")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "#/player/" + p.account_id + "/heroes/",
+                      variant: "primary"
+                    }
+                  },
+                  [_vm._v("Discover Heroes")]
                 )
               ],
               1
@@ -17349,7 +17365,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _playerService = __webpack_require__(5);
+var _playerService = __webpack_require__(3);
 
 var _playerService2 = _interopRequireDefault(_playerService);
 
@@ -17400,6 +17416,7 @@ exports.default = {
   }
 
 }; //
+//
 //
 //
 //
@@ -17495,6 +17512,18 @@ var render = function() {
                   }
                 },
                 [_vm._v("See Recent Matches")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  attrs: {
+                    href:
+                      "#/player/" + this.player.profile.account_id + "/heroes/",
+                    variant: "primary"
+                  }
+                },
+                [_vm._v("Discover Heroes")]
               )
             ],
             1
@@ -17578,7 +17607,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _playerService = __webpack_require__(5);
+var _playerService = __webpack_require__(3);
 
 var _playerService2 = _interopRequireDefault(_playerService);
 
@@ -17629,6 +17658,8 @@ exports.default = {
   }
 
 }; //
+//
+//
 //
 //
 //
@@ -17705,6 +17736,17 @@ var render = function() {
                   "b-button",
                   { attrs: { href: "/#/player/" + p.account_id } },
                   [_vm._v("See profile")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "#/player/" + p.account_id + "/heroes/",
+                      variant: "primary"
+                    }
+                  },
+                  [_vm._v("Discover Heroes")]
                 )
               ],
               1
@@ -17789,7 +17831,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _playerService = __webpack_require__(5);
+var _playerService = __webpack_require__(3);
 
 var _playerService2 = _interopRequireDefault(_playerService);
 
@@ -17922,12 +17964,187 @@ if (false) {
 
 /***/ }),
 /* 68 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_heroes_vue__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_heroes_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_heroes_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4c1e20b4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_player_heroes_vue__ = __webpack_require__(70);
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_player_heroes_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_4c1e20b4_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_player_heroes_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/player-heroes.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4c1e20b4", Component.options)
+  } else {
+    hotAPI.reload("data-v-4c1e20b4", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _playerService = __webpack_require__(3);
+
+var _playerService2 = _interopRequireDefault(_playerService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  name: 'playerPeers',
+  props: ['vista'],
+  data: function data() {
+    return {
+      heroes: [],
+      mensaje: false
+    };
+  },
+
+
+  computed: {
+    params: function params() {
+      return this.$route.params;
+    },
+    id: function id() {
+      return this.$route.params.id;
+    }
+  },
+
+  watch: {
+    '$route.params.id': function $routeParamsId() {
+      this.id = this.$route.params.id;
+      this.getHeroes(this.id);
+    }
+  },
+
+  created: function created() {
+    this.getHeroes(this.id);
+  },
+
+
+  methods: {
+    getHeroes: function getHeroes() {
+      var _this = this;
+
+      _playerService2.default.getWinLosesByPlayerIdPerHeroe(this.id).then(function (response) {
+        _this.heroes = response.data;
+      }).catch(function (error) {
+        _this.heroes = null;
+      });
+    }
+  }
+
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 70 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.heroes.lenght < 1
+        ? _c("h3", [_vm._v("Looks like you need to start playing")])
+        : _vm._l(this.heroes, function(h) {
+            return _c(
+              "b-card",
+              {
+                key: h.hero_id,
+                attrs: { "bg-variant": "dark", "text-variant": "white" }
+              },
+              [
+                _c("h4", [_vm._v("ID: " + _vm._s(h.hero_id))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("GAMES: " + _vm._s(h.games))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("WINS :" + _vm._s(h.win))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("LAST PLAYED: " + _vm._s(h.last_played))])
+              ]
+            )
+          })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4c1e20b4", esExports)
+  }
+}
+
+/***/ }),
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(69);
+var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -17952,10 +18169,10 @@ if(false) {
 }
 
 /***/ }),
-/* 69 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(undefined);
+exports = module.exports = __webpack_require__(5)(undefined);
 // imports
 
 
@@ -17966,7 +18183,7 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0-beta.2 (https://getbootstrap.c
 
 
 /***/ }),
-/* 70 */
+/* 73 */
 /***/ (function(module, exports) {
 
 
@@ -18061,13 +18278,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 71 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(72);
+var content = __webpack_require__(75);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -18092,10 +18309,10 @@ if(false) {
 }
 
 /***/ }),
-/* 72 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(undefined);
+exports = module.exports = __webpack_require__(5)(undefined);
 // imports
 
 
@@ -18106,13 +18323,13 @@ exports.push([module.i, ".b-form-group.form-group.is-invalid .invalid-feedback{d
 
 
 /***/ }),
-/* 73 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(78);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_startcase__);
 
 
@@ -29367,7 +29584,7 @@ vueUse(VuePlugin);
 
 
 /***/ }),
-/* 74 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31806,10 +32023,10 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["a"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
-/* 75 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -32393,7 +32610,7 @@ function words(string, pattern, guard) {
 
 module.exports = startCase;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ })
 /******/ ]);

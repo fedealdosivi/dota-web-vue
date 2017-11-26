@@ -19,6 +19,7 @@
 			<b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
           	<b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
   	      	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
+  	      	<b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
 		</b-card>
 	</b-card>
 </template>
