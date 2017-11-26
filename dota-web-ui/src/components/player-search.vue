@@ -1,7 +1,13 @@
 <template>
-  	<div v-if="players!=null">
-		<b-table dark striped hover :items="players"></b-table>
-	</div>
+	<b-card class="text-center">
+		
+		<div v-if="this.players.lenght<1">
+			<h3>no hay nada</h3>
+		</div>
+		<b-card v-else v-for="p in this.players" :key="p.account_id" class="text-center">
+			{{p.personaname}}
+		</b-card>
+	</b-card>
 </template>
 
 <script>
@@ -20,7 +26,7 @@
 		},
 
 		created() {
-			this.players=this.getPlayer();
+			this.getPlayer();
 		},
 
 		methods: {
@@ -31,7 +37,7 @@
 		                      this.players = response.data;
 		                  })
 		                  .catch((error) => {
-		                      this.players=null;
+		                      this.players='';
 		                      this.mensaje=true;
 		                  })
 		                }

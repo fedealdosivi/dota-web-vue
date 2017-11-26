@@ -16224,7 +16224,7 @@ exports.default = {
 	},
 	mounted: function mounted() {},
 	created: function created() {
-		this.players = this.getPlayer();
+		this.getPlayer();
 	},
 
 
@@ -16235,13 +16235,18 @@ exports.default = {
 			_playerService2.default.getPlayerByPersonaname(this.name).then(function (response) {
 				_this.players = response.data;
 			}).catch(function (error) {
-				_this.players = null;
+				_this.players = '';
 				_this.mensaje = true;
 			});
 		}
 	}
 
 }; //
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17141,17 +17146,22 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.players != null
-    ? _c(
-        "div",
-        [
-          _c("b-table", {
-            attrs: { dark: "", striped: "", hover: "", items: _vm.players }
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      this.players.lenght < 1
+        ? _c("div", [_c("h3", [_vm._v("no hay nada")])])
+        : _vm._l(this.players, function(p) {
+            return _c(
+              "b-card",
+              { key: p.account_id, staticClass: "text-center" },
+              [_vm._v("\n\t\t" + _vm._s(p.personaname) + "\n\t")]
+            )
           })
-        ],
-        1
-      )
-    : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
