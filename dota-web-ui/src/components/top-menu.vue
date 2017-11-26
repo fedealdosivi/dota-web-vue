@@ -1,5 +1,5 @@
 <template>
-<b-navbar toggleable="md" type="dark" variant="info">
+<b-navbar toggleable="md" type="dark" variant="primary">
 
   <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
@@ -40,4 +40,6 @@
     }
 </script>
 
-<style src="vue-material/dist/vue-material.css"></style>
+<style>
+
+</style>
