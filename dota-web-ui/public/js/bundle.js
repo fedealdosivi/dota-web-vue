@@ -18338,7 +18338,7 @@ var render = function() {
                     header: h.id
                   }
                 },
-                [_c("h4", [_vm._v("NAME :" + _vm._s(h.localized_name))])]
+                [_c("h4", [_vm._v("Name :" + _vm._s(h.localized_name))])]
               )
             })
           )
