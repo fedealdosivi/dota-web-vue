@@ -1,9 +1,13 @@
 <template>
 	<b-card class="text-center">
 	    <h3 v-if="heroes.lenght<1">Nothing here</h3>
-	    <b-card v-else v-for="h in this.heroes" :key="h.id" bg-variant="dark" text-variant="white">
-	    	<h4>ID: {{h.id}}</h4>
-	    	<h4>NAME :{{h.localized_name}}</h4>
+	    <b-card v-else bg-variant="dark" text-variant="white">
+			<b-card v-for="h in this.heroes" :key="h.id" bg-variant="secondary"
+			text-variant="white"
+			:header="h.id"
+			class="text-center">
+	    	 	<h4>Name :{{h.localized_name}}</h4>
+			</b-card>
 	    </b-card>
   </b-card>
 </template>

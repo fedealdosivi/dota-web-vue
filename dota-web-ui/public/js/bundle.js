@@ -18253,6 +18253,9 @@ exports.default = {
 //
 //
 //
+//
+//
+//
 
 /***/ }),
 /* 73 */
@@ -18320,26 +18323,27 @@ var render = function() {
     [
       _vm.heroes.lenght < 1
         ? _c("h3", [_vm._v("Nothing here")])
-        : _vm._l(this.heroes, function(h) {
-            return _c(
-              "b-card",
-              {
-                key: h.id,
-                attrs: { "bg-variant": "dark", "text-variant": "white" }
-              },
-              [
-                _c("h4", [_vm._v("ID: " + _vm._s(h.id))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("NAME: " + _vm._s(h.name))]),
-                _vm._v(" "),
-                _c("h4", [
-                  _vm._v("lOCALIZED NAME :" + _vm._s(h.localized_name))
-                ])
-              ]
-            )
-          })
+        : _c(
+            "b-card",
+            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
+            _vm._l(this.heroes, function(h) {
+              return _c(
+                "b-card",
+                {
+                  key: h.id,
+                  staticClass: "text-center",
+                  attrs: {
+                    "bg-variant": "secondary",
+                    "text-variant": "white",
+                    header: h.id
+                  }
+                },
+                [_c("h4", [_vm._v("NAME :" + _vm._s(h.localized_name))])]
+              )
+            })
+          )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
