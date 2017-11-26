@@ -16274,6 +16274,8 @@ exports.default = {
 //
 //
 //
+//
+//
 
 /***/ }),
 /* 40 */
@@ -17234,7 +17236,29 @@ var render = function() {
                 _vm._v(" "),
                 _c("h4", [_vm._v("Account id: " + _vm._s(p.account_id))]),
                 _vm._v(" "),
-                _c("h4", [_vm._v("Last Match: " + _vm._s(p.last_match_time))])
+                _c("h4", [_vm._v("Last Match: " + _vm._s(p.last_match_time))]),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "#/player/" + p.account_id + "/peers",
+                      variant: "primary"
+                    }
+                  },
+                  [_vm._v("Discover Peers")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "#/player/" + p.account_id + "/rmatches/",
+                      variant: "primary"
+                    }
+                  },
+                  [_vm._v("See Recent Matches")]
+                )
               ],
               1
             )
