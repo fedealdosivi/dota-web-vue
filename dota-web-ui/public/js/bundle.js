@@ -17582,12 +17582,12 @@ exports.default = {
   watch: {
     '$route.params.id': function $routeParamsId() {
       this.id = this.$route.params.id;
-      this.peers = this.getPeers();
+      this.getPeers(this.id);
     }
   },
 
   created: function created() {
-    this.peers = this.getPeers();
+    this.getPeers(this.id);
   },
 
 
@@ -17609,6 +17609,14 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 64 */
@@ -17619,17 +17627,60 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.peers != null
-    ? _c(
-        "div",
-        [
-          _c("b-table", {
-            attrs: { dark: "", striped: "", hover: "", items: _vm.peers }
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.peers.lenght < 1
+        ? _c("h3", [_vm._v("Looks like you are alone in this world")])
+        : _vm._l(this.peers, function(p) {
+            return _c(
+              "b-card",
+              {
+                key: p.account_id,
+                attrs: { "bg-variant": "dark", "text-variant": "white" }
+              },
+              [
+                _c("b-img", {
+                  attrs: { right: "", src: p.avatarfull, alt: "Thumbnail" }
+                }),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Games: " + _vm._s(p.games))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Wins: " + _vm._s(p.win))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Las played: " + _vm._s(p.last_played))]),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "#/player/" + p.account_id + "/peers",
+                      variant: "primary"
+                    }
+                  },
+                  [_vm._v("Discover Peers")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      href: "#/player/" + p.account_id + "/rmatches/",
+                      variant: "primary"
+                    }
+                  },
+                  [_vm._v("See Recent Matches")]
+                )
+              ],
+              1
+            )
           })
-        ],
-        1
-      )
-    : _c("h2", [_vm._v("Looks like you are alone in this world")])
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -17735,12 +17786,12 @@ exports.default = {
   watch: {
     '$route.params.id': function $routeParamsId() {
       this.id = this.$route.params.id;
-      this.matches = this.getPeers();
+      this.getPeers();
     }
   },
 
   created: function created() {
-    this.matches = this.getPeers();
+    this.getPeers();
   },
 
 
@@ -17751,7 +17802,7 @@ exports.default = {
       _playerService2.default.getRecentMatchesByPlayerId(this.id).then(function (response) {
         _this.matches = response.data;
       }).catch(function (error) {
-        _this.matches = '';
+        _this.matches = null;
       });
     }
   }
@@ -17788,8 +17839,8 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
-      this.matches.lenght < 1
-        ? _c("h3", [_vm._v("Looks like you are alone in this world")])
+      _vm.matches.lenght < 1
+        ? _c("h3", [_vm._v("Looks like you were not playing recently")])
         : _vm._l(this.matches, function(m) {
             return _c(
               "b-card",

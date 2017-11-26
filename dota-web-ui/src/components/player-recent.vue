@@ -1,6 +1,6 @@
 <template>
   <b-card class="text-center">
-  	<h3 v-if="this.matches.lenght<1">Looks like you are alone in this world</h3>
+  	<h3 v-if="matches.lenght<1">Looks like you were not playing recently</h3>
     <b-card v-else v-for="m in this.matches" :key="m.match_id" bg-variant="dark" text-variant="white">
       <h4>ID: {{m.match_id}}</h4>
       <h4>WIN: {{m.radiant_win}}</h4>
@@ -41,12 +41,12 @@
   watch: {
    '$route.params.id': function() {
      this.id = this.$route.params.id;
-     this.matches=this.getPeers();
+     this.getPeers();
    }
   },	
 
   created() {
-   this.matches=this.getPeers();
+   this.getPeers();
   },
 
   methods: {
@@ -57,7 +57,7 @@
                       this.matches = response.data;
                   })
                   .catch((error) => {
-                      this.matches='';
+                      this.matches=null;
                   })
                 }
     },
