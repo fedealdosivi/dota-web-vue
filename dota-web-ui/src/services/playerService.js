@@ -7,7 +7,7 @@ export default {
 	},
 
 	getPlayerByPersonaname(name){
-		const promise=axios.get('https://api.opendota.com/api/search?q=peron'+name);
+		const promise=axios.get('https://api.opendota.com/api/search?q='+name);
 		return promise;
 	},
 
