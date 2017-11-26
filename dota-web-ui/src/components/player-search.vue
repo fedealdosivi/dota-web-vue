@@ -1,8 +1,15 @@
 <template>
 	<b-card class="text-center">
-		
+		<b-card title="Search By Name">
+		  <b-form-input v-model="playerName"
+		                type="text"
+		                placeholder="Enter the name of the player"></b-form-input>
+		                <br>
+		                <b-button @click='getPlayer()'>Search</b-button>
+      	</b-card>
+      	<h3 v-if="this.loading==true">LOADING</h3>
 		<div v-if="this.players.lenght<1">
-			<h3>no hay nada</h3>
+			<h3>Player not found</h3>
 		</div>
 		<b-card v-else v-for="p in this.players" :key="p.account_id" class="text-center">
 			{{p.personaname}}
@@ -15,9 +22,9 @@
 	export default {
 		data() {
 			return {
-				name: 'peron',
+				playerName:'',
 				players :[],
-				mensaje:false
+				loading:false
 			}
 		},
 
@@ -32,13 +39,13 @@
 		methods: {
 
 		    getPlayer(){
-		      playerService.getPlayerByPersonaname(this.name)
+	    	  this.mensaje=true;
+		      playerService.getPlayerByPersonaname(this.playerName)
 		      .then((response) => {
 		                      this.players = response.data;
 		                  })
 		                  .catch((error) => {
 		                      this.players='';
-		                      this.mensaje=true;
 		                  })
 		                }
 		    }

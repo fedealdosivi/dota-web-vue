@@ -1,12 +1,14 @@
 <template>
 	 <div>
-    <b-card title="Search a dota player">
-        
-    <b-form-input v-model="idplayer"
-                  type="text"
-                  placeholder="Enter the id of the player"></b-form-input>
-                  <br>
-                  <b-button :href="'/#/player/' + idplayer">Search</b-button>
+    <b-card class="text-center">
+      <b-card title="Search By Id">
+  
+      <b-form-input v-model="idplayer"
+                    type="text"
+                    placeholder="Enter the id of the player"></b-form-input>
+                    <br>
+                    <b-button :href="'/#/player/' + idplayer">Search</b-button>
+      </b-card>
     </b-card>
   </div>
 
@@ -15,7 +17,6 @@
 
 <script>
 	export default {
-          name: 'homeMenu',
           props: ['vista'],
     	data() {
     		return {

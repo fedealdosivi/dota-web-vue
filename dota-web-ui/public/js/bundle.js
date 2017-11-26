@@ -15886,9 +15886,10 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
 
 exports.default = {
-  name: 'homeMenu',
   props: ['vista'],
   data: function data() {
     return {
@@ -15918,24 +15919,34 @@ var render = function() {
     [
       _c(
         "b-card",
-        { attrs: { title: "Search a dota player" } },
+        { staticClass: "text-center" },
         [
-          _c("b-form-input", {
-            attrs: { type: "text", placeholder: "Enter the id of the player" },
-            model: {
-              value: _vm.idplayer,
-              callback: function($$v) {
-                _vm.idplayer = $$v
-              },
-              expression: "idplayer"
-            }
-          }),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("b-button", { attrs: { href: "/#/player/" + _vm.idplayer } }, [
-            _vm._v("Search")
-          ])
+          _c(
+            "b-card",
+            { attrs: { title: "Search By Id" } },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter the id of the player"
+                },
+                model: {
+                  value: _vm.idplayer,
+                  callback: function($$v) {
+                    _vm.idplayer = $$v
+                  },
+                  expression: "idplayer"
+                }
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("b-button", { attrs: { href: "/#/player/" + _vm.idplayer } }, [
+                _vm._v("Search")
+              ])
+            ],
+            1
+          )
         ],
         1
       )
@@ -16217,9 +16228,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
 	data: function data() {
 		return {
-			name: 'peron',
+			playerName: '',
 			players: [],
-			mensaje: false
+			loading: false
 		};
 	},
 	mounted: function mounted() {},
@@ -16232,16 +16243,24 @@ exports.default = {
 		getPlayer: function getPlayer() {
 			var _this = this;
 
-			_playerService2.default.getPlayerByPersonaname(this.name).then(function (response) {
+			this.mensaje = true;
+			_playerService2.default.getPlayerByPersonaname(this.playerName).then(function (response) {
 				_this.players = response.data;
 			}).catch(function (error) {
 				_this.players = '';
-				_this.mensaje = true;
 			});
 		}
 	}
 
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17150,13 +17169,50 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
+      _c(
+        "b-card",
+        { attrs: { title: "Search By Name" } },
+        [
+          _c("b-form-input", {
+            attrs: {
+              type: "text",
+              placeholder: "Enter the name of the player"
+            },
+            model: {
+              value: _vm.playerName,
+              callback: function($$v) {
+                _vm.playerName = $$v
+              },
+              expression: "playerName"
+            }
+          }),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              on: {
+                click: function($event) {
+                  _vm.getPlayer()
+                }
+              }
+            },
+            [_vm._v("Search")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      this.loading == true ? _c("h3", [_vm._v("LOADING")]) : _vm._e(),
+      _vm._v(" "),
       this.players.lenght < 1
-        ? _c("div", [_c("h3", [_vm._v("no hay nada")])])
+        ? _c("div", [_c("h3", [_vm._v("Player not found")])])
         : _vm._l(this.players, function(p) {
             return _c(
               "b-card",
               { key: p.account_id, staticClass: "text-center" },
-              [_vm._v("\n\t\t" + _vm._s(p.personaname) + "\n\t")]
+              [_vm._v("\n\t\t\t" + _vm._s(p.personaname) + "\n\t\t")]
             )
           })
     ],
