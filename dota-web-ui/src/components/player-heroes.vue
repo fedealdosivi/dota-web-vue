@@ -1,5 +1,6 @@
 <template>
 	<b-card class="text-center">
+      <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="heroes.lenght<1">Looks like you need to start playing</h3>
 	    <b-card v-else v-for="h in this.heroes" :key="h.hero_id" bg-variant="dark" text-variant="white">
 	    	<h4>ID: {{h.hero_id}}</h4>
@@ -18,8 +19,8 @@
      props: ['vista'],
      data() {
       return {   			
-       	heroes:[],
- 		mensaje:false
+   	    heroes:[],
+        loading:false
     }
   }, 
 
@@ -47,12 +48,15 @@
   methods: {
 
     getHeroes(){
+      this.loading=true;
       playerService.getWinLosesByPlayerIdPerHeroe(this.id)
       .then((response) => {
                       this.heroes = response.data;
+                      this.loading=false;
                   })
                   .catch((error) => {
                       this.heroes=null;
+                      this.loading=false;
                   })
                 }
     },

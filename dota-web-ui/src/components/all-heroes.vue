@@ -1,16 +1,20 @@
 <template>
-	<b-card class="text-center">
-	    <h3 v-if="heroes.lenght<1">Nothing here</h3>
-	    <b-card v-else bg-variant="dark" text-variant="white">
-  			<b-card v-for="h in this.heroes" :key="h.id" bg-variant="secondary"
-  			text-variant="white"
-  			:header="h.id"
-  			class="text-center">
-  	    	 	<h4>Name: {{h.localized_name}}</h4>
+	<div>
+    <b-card class="text-center">
+      <h3 v-if="heroes.lenght<1">Nothing here</h3>
+          <b-card v-else v-for="h in this.heroes" :key="h.id" bg-variant="dark" text-variant="white">
+            <h4>{{h.localized_name}}</h4>
+            <h4>Attribute: {{h.primary_attr}}</h4>
+            <h4>Attack Type: {{h.attack_type}}</h4>
+            <h4>Roles: {{h.roles}}</h4>
             <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="primary">Discover Matches</b-button>
-  			</b-card>
-	    </b-card>
-  </b-card>
+            <b-button :href="'#/heroes/'+ h.id + '/players/'" variant="primary">Players who used this heroe</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/matchups/'" variant="primary">Matchups</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="primary">Rankings</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/durations/'" variant="primary">Durations</b-button>     
+          </b-card>
+    </b-card>
+</div>
 </template>
 
 <script>
@@ -32,7 +36,7 @@
   methods: {
 
     getHeroes(){
-      heroeService.getAllHeroes()
+      heroeService.getHeroStats()
       .then((response) => {
                       this.heroes = response.data;
                   })

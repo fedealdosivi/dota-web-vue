@@ -9,6 +9,7 @@ import playerHeroes from '../components/player-heroes.vue'
 import playerWords from '../components/player-words.vue'
 import allHeroes from '../components/all-heroes.vue'
 import heroeMatches from '../components/heroe-matches.vue'
+import heroePlayers from '../components/heroe-players.vue'
 
 
 export default new VueRouter({
@@ -22,6 +23,7 @@ export default new VueRouter({
       {path: "/player/:id/heroes", component: playerHeroes},
       {path: "/player/:id/words", component: playerWords},
       {path: "/heroes/", component: allHeroes},
-      {path: "/heroes/:id/matches", component: heroeMatches}
+      {path: "/heroes/:id/matches", component: heroeMatches},
+      {path: "/heroes/:id/players", component: heroePlayers}
 	]
 });

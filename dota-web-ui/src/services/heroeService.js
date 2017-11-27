@@ -26,6 +26,11 @@ export default {
 		return promise;
 	},
 
+	getPlayersByHeroes(idHero){
+		const promise=axios.get('https://api.opendota.com/api/heroes/'+idHero +'/players');
+		return promise;
+	},
+
 	getRankingPlayerByHero(idHero){
 		const promise=axios.get('https://api.opendota.com/api/rankings?hero_id='+idHero);
 		return promise;

@@ -4133,7 +4133,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(83);
+var	fixUrls = __webpack_require__(86);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -4471,15 +4471,15 @@ var _router = __webpack_require__(31);
 
 var _router2 = _interopRequireDefault(_router);
 
-__webpack_require__(81);
-
 __webpack_require__(84);
+
+__webpack_require__(87);
 
 var _axios = __webpack_require__(6);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _bootstrapVue = __webpack_require__(86);
+var _bootstrapVue = __webpack_require__(89);
 
 var _bootstrapVue2 = _interopRequireDefault(_bootstrapVue);
 
@@ -15823,10 +15823,14 @@ var _heroeMatches = __webpack_require__(78);
 
 var _heroeMatches2 = _interopRequireDefault(_heroeMatches);
 
+var _heroePlayers = __webpack_require__(81);
+
+var _heroePlayers2 = _interopRequireDefault(_heroePlayers);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = new _vueRouter2.default({
-    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/", component: _playerSearch2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }, { path: "/player/:id/heroes", component: _playerHeroes2.default }, { path: "/player/:id/words", component: _playerWords2.default }, { path: "/heroes/", component: _allHeroes2.default }, { path: "/heroes/:id/matches", component: _heroeMatches2.default }]
+    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/teams/", component: _allTeams2.default }, { path: "/player/", component: _playerSearch2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }, { path: "/player/:id/heroes", component: _playerHeroes2.default }, { path: "/player/:id/words", component: _playerWords2.default }, { path: "/heroes/", component: _allHeroes2.default }, { path: "/heroes/:id/matches", component: _heroeMatches2.default }, { path: "/heroes/:id/players", component: _heroePlayers2.default }]
 });
 
 /***/ }),
@@ -18092,7 +18096,7 @@ exports.default = {
   data: function data() {
     return {
       heroes: [],
-      mensaje: false
+      loading: false
     };
   },
 
@@ -18122,15 +18126,19 @@ exports.default = {
     getHeroes: function getHeroes() {
       var _this = this;
 
+      this.loading = true;
       _playerService2.default.getWinLosesByPlayerIdPerHeroe(this.id).then(function (response) {
         _this.heroes = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.heroes = null;
+        _this.loading = false;
       });
     }
   }
 
 }; //
+//
 //
 //
 //
@@ -18157,6 +18165,8 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
       _vm.heroes.lenght < 1
         ? _c("h3", [_vm._v("Looks like you need to start playing")])
         : _vm._l(this.heroes, function(h) {
@@ -18484,7 +18494,7 @@ exports.default = {
     getHeroes: function getHeroes() {
       var _this = this;
 
-      _heroeService2.default.getAllHeroes().then(function (response) {
+      _heroeService2.default.getHeroStats().then(function (response) {
         _this.heroes = response.data;
       }).catch(function (error) {
         _this.heroes = null;
@@ -18493,6 +18503,10 @@ exports.default = {
   }
 
 }; //
+//
+//
+//
+//
 //
 //
 //
@@ -18545,6 +18559,10 @@ exports.default = {
 		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/durations');
 		return promise;
 	},
+	getPlayersByHeroes: function getPlayersByHeroes(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/players');
+		return promise;
+	},
 	getRankingPlayerByHero: function getRankingPlayerByHero(idHero) {
 		var promise = _axios2.default.get('https://api.opendota.com/api/rankings?hero_id=' + idHero);
 		return promise;
@@ -18569,44 +18587,91 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "b-card",
-    { staticClass: "text-center" },
+    "div",
     [
-      _vm.heroes.lenght < 1
-        ? _c("h3", [_vm._v("Nothing here")])
-        : _c(
-            "b-card",
-            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
-            _vm._l(this.heroes, function(h) {
-              return _c(
-                "b-card",
-                {
-                  key: h.id,
-                  staticClass: "text-center",
-                  attrs: {
-                    "bg-variant": "secondary",
-                    "text-variant": "white",
-                    header: h.id
-                  }
-                },
-                [
-                  _c("h4", [_vm._v("Name :" + _vm._s(h.localized_name))]),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    {
-                      attrs: {
-                        href: "#/heroes/" + h.id + "/matches/",
-                        variant: "primary"
-                      }
-                    },
-                    [_vm._v("Discover Matches")]
-                  )
-                ],
-                1
-              )
-            })
-          )
+      _c(
+        "b-card",
+        { staticClass: "text-center" },
+        [
+          _vm.heroes.lenght < 1
+            ? _c("h3", [_vm._v("Nothing here")])
+            : _vm._l(this.heroes, function(h) {
+                return _c(
+                  "b-card",
+                  {
+                    key: h.id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
+                  },
+                  [
+                    _c("h4", [_vm._v("Name: " + _vm._s(h.localized_name))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Attribute: " + _vm._s(h.primary_attr))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Attack Type: " + _vm._s(h.attack_type))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Roles: " + _vm._s(h.roles))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/heroes/" + h.id + "/matches/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Discover Matches")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/heroes/" + h.id + "/players/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Players who used this heroe")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/heroes/" + h.id + "/matchups/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Matchups")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/heroes/" + h.id + "/matches/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Rankings")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/heroes/" + h.id + "/durations/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Durations")]
+                    )
+                  ],
+                  1
+                )
+              })
+        ],
+        2
+      )
     ],
     1
   )
@@ -18710,12 +18775,97 @@ if (false) {
 
 /***/ }),
 /* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_players_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_players_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_players_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_022075b0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_players_vue__ = __webpack_require__(83);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_players_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_022075b0_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_players_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/heroe-players.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-022075b0", Component.options)
+  } else {
+    hotAPI.reload("data-v-022075b0", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h1", [_vm._v("heroes used by players")])
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-022075b0", esExports)
+  }
+}
+
+/***/ }),
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(82);
+var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -18740,7 +18890,7 @@ if(false) {
 }
 
 /***/ }),
-/* 82 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(undefined);
@@ -18754,7 +18904,7 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0-beta.2 (https://getbootstrap.c
 
 
 /***/ }),
-/* 83 */
+/* 86 */
 /***/ (function(module, exports) {
 
 
@@ -18849,13 +18999,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 84 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(85);
+var content = __webpack_require__(88);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -18880,7 +19030,7 @@ if(false) {
 }
 
 /***/ }),
-/* 85 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(undefined);
@@ -18894,13 +19044,13 @@ exports.push([module.i, ".b-form-group.form-group.is-invalid .invalid-feedback{d
 
 
 /***/ }),
-/* 86 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_startcase__);
 
 
@@ -30155,7 +30305,7 @@ vueUse(VuePlugin);
 
 
 /***/ }),
-/* 87 */
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32597,7 +32747,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
-/* 88 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
