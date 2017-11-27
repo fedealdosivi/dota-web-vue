@@ -1,19 +1,19 @@
 <template>
   <b-card class="text-center">
+    <h3 v-if="loading">LOADING PAGE</h3>
     <h3 v-if="peers.lenght<1">Looks like you are alone in this world</h3>
-    <b-card v-else v-for="p in this.peers" :key="p.account_id" bg-variant="dark" text-variant="white">
-      <b-img right :src="p.avatarfull" alt="Thumbnail" />
-      <h4>Name: {{p.personaname}}</h4>
-      <h4>Games: {{p.games}}</h4>
-      <h4>Wins: {{p.win}}</h4>
-      <h4>Las played: {{p.last_played}}</h4>
-      <b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
-      <b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
-      <b-button :href="'/#/player/' + p.account_id">See profile</b-button>
-      <b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
-      <b-button :href="'#/player/'+ p.account_id + '/words/'" variant="primary">See what he's saying</b-button>
-
-    </b-card>
+      <b-card v-else v-for="p in this.peers" :key="p.account_id" bg-variant="dark" text-variant="white">
+        <b-img right :src="p.avatarfull" alt="Thumbnail" />
+        <h4>Name: {{p.personaname}}</h4>
+        <h4>Games: {{p.games}}</h4>
+        <h4>Wins: {{p.win}}</h4>
+        <h4>Las played: {{p.last_played}}</h4>
+        <b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
+        <b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
+        <b-button :href="'/#/player/' + p.account_id">See profile</b-button>
+        <b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
+        <b-button :href="'#/player/'+ p.account_id + '/words/'" variant="primary">See what he's saying</b-button>
+      </b-card>
   </b-card>
 </template>
 <script>
@@ -23,8 +23,8 @@
      props: ['vista'],
      data() {
       return {   			
-       	peers:[],
- 		mensaje:false
+     	    peers:[],
+          loading:false
     }
   }, 
 
@@ -52,12 +52,15 @@
   methods: {
 
     getPeers(){
+      this.loading=true;
       playerService.getPeersByPlayerId(this.id)
       .then((response) => {
                       this.peers = response.data;
+                      this.loading=false;
                   })
                   .catch((error) => {
                       this.peers=null;
+                      this.loading=false;
                   })
                 }
     },

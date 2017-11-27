@@ -493,7 +493,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _axios = __webpack_require__(6);
+var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -741,6 +741,61 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _axios = __webpack_require__(7);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+	data: function data() {
+		return {};
+	},
+	getAllHeroes: function getAllHeroes() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes');
+		return promise;
+	},
+	getMatchHeroeById: function getMatchHeroeById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matches');
+		return promise;
+	},
+	getMatchupsHeroeById: function getMatchupsHeroeById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matchups');
+		return promise;
+	},
+	getDurationHeroeById: function getDurationHeroeById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/durations');
+		return promise;
+	},
+	getPlayersByHeroes: function getPlayersByHeroes(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/players');
+		return promise;
+	},
+	getRankingPlayerByHero: function getRankingPlayerByHero(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/rankings?hero_id=' + idHero);
+		return promise;
+	},
+	getHeroStatsById: function getHeroStatsById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/benchmarks?hero_id=' + idHero);
+		return promise;
+	},
+	getHeroStats: function getHeroStats() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroStats');
+		return promise;
+	}
+};
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -767,7 +822,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /*
@@ -849,13 +904,13 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(38);
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -953,61 +1008,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _axios = __webpack_require__(6);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-	data: function data() {
-		return {};
-	},
-	getAllHeroes: function getAllHeroes() {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes');
-		return promise;
-	},
-	getMatchHeroeById: function getMatchHeroeById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matches');
-		return promise;
-	},
-	getMatchupsHeroeById: function getMatchupsHeroeById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matchups');
-		return promise;
-	},
-	getDurationHeroeById: function getDurationHeroeById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/durations');
-		return promise;
-	},
-	getPlayersByHeroes: function getPlayersByHeroes(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/players');
-		return promise;
-	},
-	getRankingPlayerByHero: function getRankingPlayerByHero(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/rankings?hero_id=' + idHero);
-		return promise;
-	},
-	getHeroStatsById: function getHeroStatsById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/benchmarks?hero_id=' + idHero);
-		return promise;
-	},
-	getHeroStats: function getHeroStats() {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroStats');
-		return promise;
-	}
-};
 
 /***/ }),
 /* 9 */
@@ -4188,7 +4188,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(90);
+var	fixUrls = __webpack_require__(93);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -4526,15 +4526,15 @@ var _router = __webpack_require__(32);
 
 var _router2 = _interopRequireDefault(_router);
 
-__webpack_require__(88);
-
 __webpack_require__(91);
 
-var _axios = __webpack_require__(6);
+__webpack_require__(94);
+
+var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _bootstrapVue = __webpack_require__(93);
+var _bootstrapVue = __webpack_require__(96);
 
 var _bootstrapVue2 = _interopRequireDefault(_bootstrapVue);
 
@@ -15172,7 +15172,7 @@ Vue$3.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue$3);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(4), __webpack_require__(19).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3), __webpack_require__(5), __webpack_require__(19).setImmediate))
 
 /***/ }),
 /* 19 */
@@ -15424,7 +15424,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(3)))
 
 /***/ }),
 /* 21 */
@@ -15513,7 +15513,7 @@ if(false) {
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(undefined);
+exports = module.exports = __webpack_require__(6)(undefined);
 // imports
 
 
@@ -15685,7 +15685,7 @@ if(false) {
 /* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(undefined);
+exports = module.exports = __webpack_require__(6)(undefined);
 // imports
 
 
@@ -15873,22 +15873,22 @@ var _heroePlayers = __webpack_require__(78);
 
 var _heroePlayers2 = _interopRequireDefault(_heroePlayers);
 
-var _heroeMatchups = __webpack_require__(81);
-
-var _heroeMatchups2 = _interopRequireDefault(_heroeMatchups);
-
-var _heroesRankings = __webpack_require__(83);
+var _heroesRankings = __webpack_require__(81);
 
 var _heroesRankings2 = _interopRequireDefault(_heroesRankings);
 
-var _heroeDurations = __webpack_require__(85);
+var _heroeDurations = __webpack_require__(84);
 
 var _heroeDurations2 = _interopRequireDefault(_heroeDurations);
+
+var _matchDetails = __webpack_require__(87);
+
+var _matchDetails2 = _interopRequireDefault(_matchDetails);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = new _vueRouter2.default({
-    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/player/", component: _playerSearch2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }, { path: "/player/:id/heroes", component: _playerHeroes2.default }, { path: "/player/:id/words", component: _playerWords2.default }, { path: "/heroes/", component: _allHeroes2.default }, { path: "/heroes/:id/matches", component: _heroeMatches2.default }, { path: "/heroes/:id/players", component: _heroePlayers2.default }, { path: "/heroes/:id/matchups", component: _heroeMatchups2.default }, { path: "/heroes/:id/rankings", component: _heroesRankings2.default }, { path: "/heroes/:id/durations", component: _heroeDurations2.default }]
+    routes: [{ path: '/', component: _homeMenu2.default }, { path: "/player/", component: _playerSearch2.default }, { path: "/player/:id", component: _playerProfile2.default }, { path: "/player/:id/peers", component: _playerPeers2.default }, { path: "/player/:id/rmatches", component: _playerRecent2.default }, { path: "/player/:id/heroes", component: _playerHeroes2.default }, { path: "/player/:id/words", component: _playerWords2.default }, { path: "/heroes/", component: _allHeroes2.default }, { path: "/heroes/:id/matches", component: _heroeMatches2.default }, { path: "/heroes/:id/players", component: _heroePlayers2.default }, { path: "/heroes/:id/rankings", component: _heroesRankings2.default }, { path: "/heroes/:id/durations", component: _heroeDurations2.default }, { path: "/matches/:id", component: _matchDetails2.default }]
 });
 
 /***/ }),
@@ -16136,11 +16136,13 @@ exports.default = {
 		getPlayer: function getPlayer() {
 			var _this = this;
 
-			this.mensaje = true;
+			this.loading = true;
 			_playerService2.default.getPlayerByPersonaname(this.playerName).then(function (response) {
 				_this.players = response.data;
+				_this.loading = false;
 			}).catch(function (error) {
 				_this.players = '';
+				_this.loading = false;
 			});
 		}
 	}
@@ -16183,7 +16185,7 @@ exports.default = {
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(11);
 var Axios = __webpack_require__(40);
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(8);
 
 /**
  * Create an instance of Axios
@@ -16266,7 +16268,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(8);
 var utils = __webpack_require__(1);
 var InterceptorManager = __webpack_require__(49);
 var dispatchRequest = __webpack_require__(50);
@@ -16807,7 +16809,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(51);
 var isCancel = __webpack_require__(14);
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(8);
 var isAbsoluteURL = __webpack_require__(52);
 var combineURLs = __webpack_require__(53);
 
@@ -17111,7 +17113,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.loading ? _c("h3", [_vm._v("LOADING")]) : _vm._e(),
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
       _vm._v(" "),
       this.players.lenght < 1
         ? _c("div", [_c("h3", [_vm._v("Player not found")])])
@@ -17273,12 +17275,10 @@ var _playerService2 = _interopRequireDefault(_playerService);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'playerProfile',
-  props: ['vista'],
   data: function data() {
     return {
       player: {},
-      mensaje: false
+      loading: false
     };
   },
 
@@ -17308,15 +17308,19 @@ exports.default = {
     getPlayer: function getPlayer() {
       var _this = this;
 
+      this.loading = true;
       _playerService2.default.getPlayerById(this.id).then(function (response) {
         _this.player = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.player = '';
+        _this.loading = false;
       });
     }
   }
 
 }; //
+//
 //
 //
 //
@@ -17348,6 +17352,8 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
       _vm.player == null
         ? _c("h3", [_vm._v("Looks so empty")])
         : _c(
@@ -17533,7 +17539,7 @@ exports.default = {
   data: function data() {
     return {
       peers: [],
-      mensaje: false
+      loading: false
     };
   },
 
@@ -17563,10 +17569,13 @@ exports.default = {
     getPeers: function getPeers() {
       var _this = this;
 
+      this.loading = true;
       _playerService2.default.getPeersByPlayerId(this.id).then(function (response) {
         _this.peers = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.peers = null;
+        _this.loading = false;
       });
     }
   }
@@ -17603,6 +17612,8 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
       _vm.peers.lenght < 1
         ? _c("h3", [_vm._v("Looks like you are alone in this world")])
         : _vm._l(this.peers, function(p) {
@@ -17764,12 +17775,10 @@ var _playerService2 = _interopRequireDefault(_playerService);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'playerPeers',
-  props: ['vista'],
   data: function data() {
     return {
       matches: [],
-      mensaje: false
+      loading: false
     };
   },
 
@@ -17799,15 +17808,20 @@ exports.default = {
     getPeers: function getPeers() {
       var _this = this;
 
+      this.loading = true;
       _playerService2.default.getRecentMatchesByPlayerId(this.id).then(function (response) {
         _this.matches = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.matches = null;
+        _this.loading = false;
       });
     }
   }
 
 }; //
+//
+//
 //
 //
 //
@@ -17839,6 +17853,8 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
       _vm.matches.lenght < 1
         ? _c("h3", [_vm._v("Looks like you were not playing recently")])
         : _vm._l(this.matches, function(m) {
@@ -17869,8 +17885,15 @@ var render = function() {
                 _vm._v(" "),
                 _c("h4", [_vm._v("CLUSTER: " + _vm._s(m.cluster))]),
                 _vm._v(" "),
-                _c("h4", [_vm._v("LEAVER: " + _vm._s(m.leaver_status))])
-              ]
+                _c("h4", [_vm._v("LEAVER: " + _vm._s(m.leaver_status))]),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { href: "/#/matches/" + m.match_id } },
+                  [_vm._v("See details")]
+                )
+              ],
+              1
             )
           })
     ],
@@ -18338,19 +18361,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _heroeService = __webpack_require__(8);
+var _heroeService = __webpack_require__(4);
 
 var _heroeService2 = _interopRequireDefault(_heroeService);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'playerPeers',
-  props: ['vista'],
   data: function data() {
     return {
       heroes: [],
-      mensaje: false
+      loading: false
     };
   },
   created: function created() {
@@ -18362,10 +18383,13 @@ exports.default = {
     getHeroes: function getHeroes() {
       var _this = this;
 
+      this.loading = true;
       _heroeService2.default.getHeroStats().then(function (response) {
         _this.heroes = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.heroes = null;
+        _this.loading = false;
       });
     }
   }
@@ -18406,6 +18430,8 @@ var render = function() {
         "b-card",
         { staticClass: "text-center" },
         [
+          _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+          _vm._v(" "),
           _vm.heroes.lenght < 1
             ? _c("h3", [_vm._v("Nothing here")])
             : _vm._l(this.heroes, function(h) {
@@ -18444,17 +18470,6 @@ var render = function() {
                         }
                       },
                       [_vm._v("Players who used this heroe")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        attrs: {
-                          href: "#/heroes/" + h.id + "/matchups/",
-                          variant: "primary"
-                        }
-                      },
-                      [_vm._v("Matchups")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -18558,11 +18573,81 @@ if (false) {(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-//
-//
-//
-//
 
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _heroeService = __webpack_require__(4);
+
+var _heroeService2 = _interopRequireDefault(_heroeService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {
+      matches: [],
+      loading: false
+    };
+  },
+
+
+  computed: {
+    params: function params() {
+      return this.$route.params;
+    },
+    id: function id() {
+      return this.$route.params.id;
+    }
+  },
+
+  watch: {
+    '$route.params.id': function $routeParamsId() {
+      this.id = this.$route.params.id;
+      this.getMatches(this.id);
+    }
+  },
+
+  created: function created() {
+    this.getMatches(this.id);
+  },
+
+
+  methods: {
+    getMatches: function getMatches() {
+      var _this = this;
+
+      this.loading = true;
+      _heroeService2.default.getMatchHeroeById(this.id).then(function (response) {
+        _this.matches = response.data;
+        _this.loading = false;
+      }).catch(function (error) {
+        _this.matches = null;
+        _this.loading = false;
+      });
+    }
+  }
+
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /***/ }),
 /* 77 */
@@ -18573,7 +18658,54 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("hola heroes matches")])
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.matches.lenght < 1
+        ? _c("h3", [_vm._v("Looks so empty")])
+        : _vm._l(this.matches, function(m) {
+            return _c(
+              "b-card",
+              {
+                key: m.match_id,
+                attrs: { "bg-variant": "dark", "text-variant": "white" }
+              },
+              [
+                _c("h4", [_vm._v("ID: " + _vm._s(m.match_id))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("League Name: " + _vm._s(m.league_name))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Radiant Win: " + _vm._s(m.radiant_win))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Play for Radiant: " + _vm._s(m.radiant))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Kills: " + _vm._s(m.kills))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Deaths: " + _vm._s(m.deaths))]),
+                _vm._v(" "),
+                _c("h4", [_vm._v("Assists: " + _vm._s(m.assists))]),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { href: "/#/matches/" + m.match_id } },
+                  [_vm._v("See details")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { href: "/#/player/" + m.account_id } },
+                  [_vm._v("Who picked up this hero?")]
+                )
+              ],
+              1
+            )
+          })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18650,7 +18782,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _heroeService = __webpack_require__(8);
+var _heroeService = __webpack_require__(4);
 
 var _heroeService2 = _interopRequireDefault(_heroeService);
 
@@ -18776,11 +18908,13 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_050a6676_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_matchups_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroes_rankings_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroes_rankings_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroes_rankings_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2c611622_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroes_rankings_vue__ = __webpack_require__(83);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+
 /* template */
 
 /* template functional */
@@ -18792,81 +18926,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_050a6676_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_matchups_vue__["a" /* default */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "src/components/heroe-matchups.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-050a6676", Component.options)
-  } else {
-    hotAPI.reload("data-v-050a6676", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
-
-
-/***/ }),
-/* 82 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("h4", [_vm._v("matchupssss")])
-}
-var staticRenderFns = []
-render._withStripped = true
-var esExports = { render: render, staticRenderFns: staticRenderFns }
-/* harmony default export */ __webpack_exports__["a"] = (esExports);
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-050a6676", esExports)
-  }
-}
-
-/***/ }),
-/* 83 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2c611622_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroes_rankings_vue__ = __webpack_require__(84);
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = null
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2c611622_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroes_rankings_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroes_rankings_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_2c611622_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroes_rankings_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -18895,7 +18956,86 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 84 */
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _heroeService = __webpack_require__(4);
+
+var _heroeService2 = _interopRequireDefault(_heroeService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {
+      ranking: '',
+      loading: false
+    };
+  },
+
+
+  computed: {
+    params: function params() {
+      return this.$route.params;
+    },
+    id: function id() {
+      return this.$route.params.id;
+    }
+  },
+
+  watch: {
+    '$route.params.id': function $routeParamsId() {
+      this.id = this.$route.params.id;
+      this.getMatches(this.id);
+    }
+  },
+
+  created: function created() {
+    this.getMatches(this.id);
+  },
+
+
+  methods: {
+    getMatches: function getMatches() {
+      var _this = this;
+
+      this.loading = true;
+      _heroeService2.default.getRankingPlayerByHero(this.id).then(function (response) {
+        _this.ranking = response.data;
+        _this.loading = false;
+      }).catch(function (error) {
+        _this.ranking = null;
+        _this.loading = false;
+      });
+    }
+  }
+
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18903,7 +19043,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h4", [_vm._v("Rankingsss")])
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.ranking == null
+        ? _c("h3", [_vm._v("Looks so empty")])
+        : _c(
+            "b-card",
+            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
+            _vm._l(_vm.ranking.rankings, function(r) {
+              return _c(
+                "b-card",
+                {
+                  key: r.account_id,
+                  attrs: { "bg-variant": "dark", "text-variant": "white" }
+                },
+                [
+                  _c("b-img", {
+                    attrs: { right: "", src: r.avatar, alt: "Thumbnail" }
+                  }),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v("Name: " + _vm._s(r.personaname))]),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v("Score: " + _vm._s(r.score))]),
+                  _vm._v(" "),
+                  _c("h4", [_vm._v("Last Login: " + _vm._s(r.last_login))]),
+                  _vm._v(" "),
+                  _c("h4", [
+                    _vm._v("Rank: " + _vm._s(r.solo_competitive_rank))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-button",
+                    { attrs: { href: "/#/player/" + r.account_id } },
+                    [_vm._v("See profile")]
+                  )
+                ],
+                1
+              )
+            })
+          )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18917,14 +19102,14 @@ if (false) {
 }
 
 /***/ }),
-/* 85 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9ca70d46_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9ca70d46_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(86);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -18970,7 +19155,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 86 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18980,7 +19165,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _heroeService = __webpack_require__(8);
+var _heroeService = __webpack_require__(4);
 
 var _heroeService2 = _interopRequireDefault(_heroeService);
 
@@ -19023,10 +19208,11 @@ exports.default = {
       this.loading = true;
       _heroeService2.default.getDurationHeroeById(this.id).then(function (response) {
         _this.durations = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.durations = null;
+        _this.loading = false;
       });
-      this.loading = false;
     }
   }
 }; //
@@ -19039,7 +19225,7 @@ exports.default = {
 //
 
 /***/ }),
-/* 87 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19072,13 +19258,270 @@ if (false) {
 }
 
 /***/ }),
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_match_details_vue__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_match_details_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_match_details_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5c9e315a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_match_details_vue__ = __webpack_require__(90);
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+
+/* template */
+
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_match_details_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5c9e315a_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_match_details_vue__["a" /* default */],
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "src/components/match-details.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5c9e315a", Component.options)
+  } else {
+    hotAPI.reload("data-v-5c9e315a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+/* harmony default export */ __webpack_exports__["default"] = (Component.exports);
+
+
+/***/ }),
 /* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _matchService = __webpack_require__(89);
+
+var _matchService2 = _interopRequireDefault(_matchService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {
+      match: '',
+      loading: false
+    };
+  },
+
+
+  computed: {
+    params: function params() {
+      return this.$route.params;
+    },
+    id: function id() {
+      return this.$route.params.id;
+    }
+  },
+
+  watch: {
+    '$route.params.id': function $routeParamsId() {
+      this.id = this.$route.params.id;
+      this.getMatch(this.id);
+    }
+  },
+
+  created: function created() {
+    this.getMatch(this.id);
+  },
+
+
+  methods: {
+    getMatch: function getMatch() {
+      var _this = this;
+
+      this.loading = true;
+      _matchService2.default.getMatchById(this.id).then(function (response) {
+        _this.match = response.data;
+        _this.loading = false;
+      }).catch(function (error) {
+        _this.match = null;
+        _this.loading = false;
+      });
+    }
+  }
+
+}; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _axios = __webpack_require__(7);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+	data: function data() {
+		return {};
+	},
+	getPublicMatches: function getPublicMatches() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/publicMatches');
+		return promise;
+	},
+	getMatchById: function getMatchById(idMatch) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/matches/' + idMatch);
+		return promise;
+	},
+	getProMatches: function getProMatches() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/proMatches');
+		return promise;
+	}
+};
+
+/***/ }),
+/* 90 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.match == null
+        ? _c("h3", [_vm._v("Looks so empty")])
+        : _c(
+            "b-card",
+            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
+            [
+              _c("h3", [_vm._v("Dire Score: " + _vm._s(_vm.match.dire_score))]),
+              _vm._v(" "),
+              _c("h3", [
+                _vm._v("Radiant Score: " + _vm._s(_vm.match.radiant_score))
+              ]),
+              _vm._v(" "),
+              _c("h3", [
+                _vm._v("Radiant win?: " + _vm._s(_vm.match.radiant_win))
+              ]),
+              _vm._v(" "),
+              _c("h3", [
+                _vm._v("Human Players: " + _vm._s(_vm.match.human_players))
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.match.players, function(p) {
+                return _c(
+                  "b-card",
+                  {
+                    key: p.account_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
+                  },
+                  [
+                    _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Kills: " + _vm._s(p.kills))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Deaths: " + _vm._s(p.deaths))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Assists: " + _vm._s(p.assists))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Gold: " + _vm._s(p.gold))]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v("Gold per Min: " + _vm._s(p.gold_per_min))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/player/" + p.account_id } },
+                      [_vm._v("See profile")]
+                    )
+                  ],
+                  1
+                )
+              })
+            ],
+            2
+          )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+var esExports = { render: render, staticRenderFns: staticRenderFns }
+/* harmony default export */ __webpack_exports__["a"] = (esExports);
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5c9e315a", esExports)
+  }
+}
+
+/***/ }),
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(89);
+var content = __webpack_require__(92);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -19103,10 +19546,10 @@ if(false) {
 }
 
 /***/ }),
-/* 89 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(undefined);
+exports = module.exports = __webpack_require__(6)(undefined);
 // imports
 
 
@@ -19117,7 +19560,7 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0-beta.2 (https://getbootstrap.c
 
 
 /***/ }),
-/* 90 */
+/* 93 */
 /***/ (function(module, exports) {
 
 
@@ -19212,13 +19655,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 91 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(92);
+var content = __webpack_require__(95);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -19243,10 +19686,10 @@ if(false) {
 }
 
 /***/ }),
-/* 92 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(undefined);
+exports = module.exports = __webpack_require__(6)(undefined);
 // imports
 
 
@@ -19257,13 +19700,13 @@ exports.push([module.i, ".b-form-group.form-group.is-invalid .invalid-feedback{d
 
 
 /***/ }),
-/* 93 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_startcase__);
 
 
@@ -30518,7 +30961,7 @@ vueUse(VuePlugin);
 
 
 /***/ }),
-/* 94 */
+/* 97 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32957,10 +33400,10 @@ Popper.Defaults = Defaults;
 /* harmony default export */ __webpack_exports__["a"] = (Popper);
 //# sourceMappingURL=popper.js.map
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(5)))
 
 /***/ }),
-/* 95 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -33544,7 +33987,7 @@ function words(string, pattern, guard) {
 
 module.exports = startCase;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ })
 /******/ ]);

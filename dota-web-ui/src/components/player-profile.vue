@@ -1,5 +1,6 @@
 <template>
   <b-card class="text-center">
+    <h3 v-if="loading">LOADING PAGE</h3>
     <h3 v-if="player==null">Looks so empty</h3>
     <b-card v-else bg-variant="dark" text-variant="white">
       <b-img right :src="this.player.profile.avatarfull" alt="Thumbnail" />
@@ -19,12 +20,10 @@
 <script>
     import playerService from '../services/playerService';
     export default {
-        name: 'playerProfile',
-        props: ['vista'],
      data() {
       return {   			
         player :{},
-        mensaje:false
+        loading:false
     }
   },
 
@@ -52,12 +51,15 @@
   methods: {
 
     getPlayer(){
+      this.loading=true;
       playerService.getPlayerById(this.id)
       .then((response) => {
                       this.player = response.data;
+                      this.loading=false;
                   })
                   .catch((error) => {
                       this.player='';
+                      this.loading=false;
                   })
                 }
     }

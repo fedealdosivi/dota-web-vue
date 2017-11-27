@@ -7,7 +7,7 @@
 		                <br>
 		                <b-button @click='getPlayer()'>Search</b-button>
       	</b-card>
-      	<h3 v-if="loading">LOADING</h3>
+      	<h3 v-if="loading">LOADING PAGE</h3>
 		<div v-if="this.players.lenght<1">
 			<h3>Player not found</h3>
 		</div>
@@ -47,13 +47,15 @@
 		methods: {
 
 		    getPlayer(){
-	    	  this.mensaje=true;
+	    	  this.loading=true;
 		      playerService.getPlayerByPersonaname(this.playerName)
 		      .then((response) => {
 		                      this.players = response.data;
+		                      this.loading = false;
 		                  })
 		                  .catch((error) => {
 		                      this.players='';
+		                      this.loading=false;
 		                  })
 		                }
 		    }

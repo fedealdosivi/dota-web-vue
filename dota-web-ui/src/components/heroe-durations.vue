@@ -44,11 +44,12 @@
       heroeService.getDurationHeroeById(this.id)
       .then((response) => {
                       this.durations = response.data;
+                      this.loading=false;
                   })
                   .catch((error) => {
                       this.durations=null;
+                      this.loading=false;
                   })
-                  this.loading=false;
                 }
     },
   }

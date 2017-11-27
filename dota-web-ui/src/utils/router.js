@@ -9,9 +9,9 @@ import playerWords from '../components/player-words.vue'
 import allHeroes from '../components/all-heroes.vue'
 import heroeMatches from '../components/heroe-matches.vue'
 import heroePlayers from '../components/heroe-players.vue'
-import heroeMatchups from '../components/heroe-matchups.vue'
 import heroesRankings from '../components/heroes-rankings.vue'
 import heroeDurations from '../components/heroe-durations.vue'
+import matchDetails from '../components/match-details.vue'
 
 
 export default new VueRouter({
@@ -26,8 +26,8 @@ export default new VueRouter({
       {path: "/heroes/", component: allHeroes},
       {path: "/heroes/:id/matches", component: heroeMatches},
       {path: "/heroes/:id/players", component: heroePlayers},
-      {path: "/heroes/:id/matchups", component: heroeMatchups},
       {path: "/heroes/:id/rankings", component: heroesRankings},
-      {path: "/heroes/:id/durations", component: heroeDurations}
+      {path: "/heroes/:id/durations", component: heroeDurations},
+      {path: "/matches/:id", component: matchDetails}
 	]
 });
