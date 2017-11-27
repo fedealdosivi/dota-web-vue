@@ -179,7 +179,7 @@ module.exports = function normalizeComponent (
 "use strict";
 
 
-var bind = __webpack_require__(10);
+var bind = __webpack_require__(11);
 var isBuffer = __webpack_require__(39);
 
 /*global toString:true*/
@@ -878,10 +878,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(11);
+    adapter = __webpack_require__(12);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(11);
+    adapter = __webpack_require__(12);
   }
   return adapter;
 }
@@ -956,6 +956,61 @@ module.exports = defaults;
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _axios = __webpack_require__(6);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+	data: function data() {
+		return {};
+	},
+	getAllHeroes: function getAllHeroes() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes');
+		return promise;
+	},
+	getMatchHeroeById: function getMatchHeroeById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matches');
+		return promise;
+	},
+	getMatchupsHeroeById: function getMatchupsHeroeById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matchups');
+		return promise;
+	},
+	getDurationHeroeById: function getDurationHeroeById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/durations');
+		return promise;
+	},
+	getPlayersByHeroes: function getPlayersByHeroes(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/players');
+		return promise;
+	},
+	getRankingPlayerByHero: function getRankingPlayerByHero(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/rankings?hero_id=' + idHero);
+		return promise;
+	},
+	getHeroStatsById: function getHeroStatsById(idHero) {
+		var promise = _axios2.default.get('https://api.opendota.com/api/benchmarks?hero_id=' + idHero);
+		return promise;
+	},
+	getHeroStats: function getHeroStats() {
+		var promise = _axios2.default.get('https://api.opendota.com/api/heroStats');
+		return promise;
+	}
+};
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3587,7 +3642,7 @@ if (inBrowser && window.Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(3)))
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -3808,7 +3863,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3826,7 +3881,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3837,7 +3892,7 @@ var settle = __webpack_require__(42);
 var buildURL = __webpack_require__(44);
 var parseHeaders = __webpack_require__(45);
 var isURLSameOrigin = __webpack_require__(46);
-var createError = __webpack_require__(12);
+var createError = __webpack_require__(13);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(47);
 
 module.exports = function xhrAdapter(config) {
@@ -4014,7 +4069,7 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4039,7 +4094,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4051,7 +4106,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4075,61 +4130,6 @@ Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
 
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _axios = __webpack_require__(6);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-	data: function data() {
-		return {};
-	},
-	getAllHeroes: function getAllHeroes() {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes');
-		return promise;
-	},
-	getMatchHeroeById: function getMatchHeroeById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matches');
-		return promise;
-	},
-	getMatchupsHeroeById: function getMatchupsHeroeById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/matchups');
-		return promise;
-	},
-	getDurationHeroeById: function getDurationHeroeById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/durations');
-		return promise;
-	},
-	getPlayersByHeroes: function getPlayersByHeroes(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroes/' + idHero + '/players');
-		return promise;
-	},
-	getRankingPlayerByHero: function getRankingPlayerByHero(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/rankings?hero_id=' + idHero);
-		return promise;
-	},
-	getHeroStatsById: function getHeroStatsById(idHero) {
-		var promise = _axios2.default.get('https://api.opendota.com/api/benchmarks?hero_id=' + idHero);
-		return promise;
-	},
-	getHeroStats: function getHeroStats() {
-		var promise = _axios2.default.get('https://api.opendota.com/api/heroStats');
-		return promise;
-	}
-};
 
 /***/ }),
 /* 16 */
@@ -4188,7 +4188,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(89);
+var	fixUrls = __webpack_require__(90);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -4514,7 +4514,7 @@ var _vue = __webpack_require__(18);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(8);
+var _vueRouter = __webpack_require__(9);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -4526,15 +4526,15 @@ var _router = __webpack_require__(32);
 
 var _router2 = _interopRequireDefault(_router);
 
-__webpack_require__(87);
+__webpack_require__(88);
 
-__webpack_require__(90);
+__webpack_require__(91);
 
 var _axios = __webpack_require__(6);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _bootstrapVue = __webpack_require__(92);
+var _bootstrapVue = __webpack_require__(93);
 
 var _bootstrapVue2 = _interopRequireDefault(_bootstrapVue);
 
@@ -15494,7 +15494,7 @@ var content = __webpack_require__(23);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("04960165", content, false);
+var update = __webpack_require__(10)("04960165", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -15666,7 +15666,7 @@ var content = __webpack_require__(28);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(9)("11f300d3", content, false);
+var update = __webpack_require__(10)("11f300d3", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -15829,7 +15829,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _vueRouter = __webpack_require__(8);
+var _vueRouter = __webpack_require__(9);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -16181,7 +16181,7 @@ exports.default = {
 
 
 var utils = __webpack_require__(1);
-var bind = __webpack_require__(10);
+var bind = __webpack_require__(11);
 var Axios = __webpack_require__(40);
 var defaults = __webpack_require__(7);
 
@@ -16216,9 +16216,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(14);
+axios.Cancel = __webpack_require__(15);
 axios.CancelToken = __webpack_require__(54);
-axios.isCancel = __webpack_require__(13);
+axios.isCancel = __webpack_require__(14);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -16371,7 +16371,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(12);
+var createError = __webpack_require__(13);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -16806,7 +16806,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(51);
-var isCancel = __webpack_require__(13);
+var isCancel = __webpack_require__(14);
 var defaults = __webpack_require__(7);
 var isAbsoluteURL = __webpack_require__(52);
 var combineURLs = __webpack_require__(53);
@@ -16966,7 +16966,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(14);
+var Cancel = __webpack_require__(15);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -18338,7 +18338,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _heroeService = __webpack_require__(15);
+var _heroeService = __webpack_require__(8);
 
 var _heroeService2 = _interopRequireDefault(_heroeService);
 
@@ -18650,7 +18650,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _heroeService = __webpack_require__(15);
+var _heroeService = __webpack_require__(8);
 
 var _heroeService2 = _interopRequireDefault(_heroeService);
 
@@ -18702,6 +18702,7 @@ exports.default = {
   }
 
 }; //
+//
 //
 //
 //
@@ -18921,11 +18922,13 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9ca70d46_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9ca70d46_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_durations_vue__ = __webpack_require__(87);
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+
 /* template */
 
 /* template functional */
@@ -18937,8 +18940,8 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __vue_script__,
-  __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9ca70d46_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_durations_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_heroe_durations_vue___default.a,
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_9ca70d46_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_heroe_durations_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -18968,6 +18971,75 @@ if (false) {(function () {
 
 /***/ }),
 /* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _heroeService = __webpack_require__(8);
+
+var _heroeService2 = _interopRequireDefault(_heroeService);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  data: function data() {
+    return {
+      durations: [],
+      loading: false
+    };
+  },
+
+
+  computed: {
+    params: function params() {
+      return this.$route.params;
+    },
+    id: function id() {
+      return this.$route.params.id;
+    }
+  },
+
+  watch: {
+    '$route.params.id': function $routeParamsId() {
+      this.id = this.$route.params.id;
+      this.getDurations(this.id);
+    }
+  },
+
+  created: function created() {
+    this.getDurations(this.id);
+  },
+
+
+  methods: {
+    getDurations: function getDurations() {
+      var _this = this;
+
+      this.loading = true;
+      _heroeService2.default.getDurationHeroeById(this.id).then(function (response) {
+        _this.durations = response.data;
+      }).catch(function (error) {
+        _this.durations = null;
+      });
+      this.loading = false;
+    }
+  }
+}; //
+//
+//
+//
+//
+//
+//
+//
+
+/***/ }),
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18975,7 +19047,18 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h4", [_vm._v("DURATIONSSS")])
+  return _c(
+    "b-card",
+    { staticClass: "text-center" },
+    [
+      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.durations.lenght < 1
+        ? _c("h3", [_vm._v("Looks so empty")])
+        : _c("b-table", { attrs: { dark: "", items: _vm.durations } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -18989,13 +19072,13 @@ if (false) {
 }
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(88);
+var content = __webpack_require__(89);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -19020,7 +19103,7 @@ if(false) {
 }
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(undefined);
@@ -19034,7 +19117,7 @@ exports.push([module.i, "/*!\n * Bootstrap v4.0.0-beta.2 (https://getbootstrap.c
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports) {
 
 
@@ -19129,13 +19212,13 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(91);
+var content = __webpack_require__(92);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -19160,7 +19243,7 @@ if(false) {
 }
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(undefined);
@@ -19174,13 +19257,13 @@ exports.push([module.i, ".b-form-group.form-group.is-invalid .invalid-feedback{d
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_popper_js__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_startcase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_startcase__);
 
 
@@ -30435,7 +30518,7 @@ vueUse(VuePlugin);
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32877,7 +32960,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**

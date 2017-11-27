@@ -10,6 +10,7 @@
 		</b-card>
   </b-card>
 </template>
+
 <script>
 	import heroeService from '../services/heroeService';
     export default {
