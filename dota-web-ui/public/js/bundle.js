@@ -19582,7 +19582,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.bounce-enter-active {\n  animation: bounce-in .5s;\n}\n.bounce-leave-active {\n  animation: bounce-in .5s reverse;\n}\n@keyframes bounce-in {\n0% {\n    transform: scale(0);\n}\n50% {\n    transform: scale(1.5);\n}\n100% {\n    transform: scale(1);\n}\n}\n", ""]);
+exports.push([module.i, "\n.bounce-enter-active {\n  animation: bounce-in .5s;\n}\n.bounce-leave-active {\n  animation: bounce-in .5s reverse;\n}\n@keyframes bounce-in {\nbody{\n    background-color: black;\n}\n0% {\n    transform: scale(0);\n}\n50% {\n    transform: scale(1.5);\n}\n100% {\n    transform: scale(1);\n}\n}\n", ""]);
 
 // exports
 
@@ -19605,22 +19605,12 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
-  props: ['vista'],
   data: function data() {
     return {
       idplayer: '',
-      mensaje: false
+      loading: false
     };
   },
   mounted: function mounted() {},
@@ -19643,39 +19633,9 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "b-card",
-        { staticClass: "text-center" },
-        [
-          _c(
-            "b-card",
-            { attrs: { title: "Search By Id" } },
-            [
-              _c("b-form-input", {
-                attrs: {
-                  type: "text",
-                  placeholder: "Enter the id of the player"
-                },
-                model: {
-                  value: _vm.idplayer,
-                  callback: function($$v) {
-                    _vm.idplayer = $$v
-                  },
-                  expression: "idplayer"
-                }
-              }),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("b-button", { attrs: { href: "/#/player/" + _vm.idplayer } }, [
-                _vm._v("Search")
-              ])
-            ],
-            1
-          )
-        ],
-        1
-      )
+      _c("transition", { attrs: { name: "bounce" } }, [
+        _c("h1", [_vm._v("HOLA")])
+      ])
     ],
     1
   )

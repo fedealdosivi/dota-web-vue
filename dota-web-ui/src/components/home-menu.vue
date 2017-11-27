@@ -1,27 +1,17 @@
 <template>
-	 <div>
-    <b-card class="text-center">
-      <b-card title="Search By Id">
-  
-      <b-form-input v-model="idplayer"
-                    type="text"
-                    placeholder="Enter the id of the player"></b-form-input>
-                    <br>
-                    <b-button :href="'/#/player/' + idplayer">Search</b-button>
-      </b-card>
-    </b-card>
+  <div>
+    <transition name="bounce">
+        <h1>HOLA</h1>
+    </transition>
   </div>
-
-
 </template>
 
 <script>
 	export default {
-          props: ['vista'],
     	data() {
     		return {
           idplayer: '',
-          mensaje:false
+          loading:false
     		}
     	},
 
@@ -47,6 +37,10 @@
     animation: bounce-in .5s reverse;
   }
   @keyframes bounce-in {
+
+    body{
+      background-color: black;
+    }
     0% {
       transform: scale(0);
     }
