@@ -2,12 +2,13 @@
 	<b-card class="text-center">
 	    <h3 v-if="heroes.lenght<1">Nothing here</h3>
 	    <b-card v-else bg-variant="dark" text-variant="white">
-			<b-card v-for="h in this.heroes" :key="h.id" bg-variant="secondary"
-			text-variant="white"
-			:header="h.id"
-			class="text-center">
-	    	 	<h4>Name :{{h.localized_name}}</h4>
-			</b-card>
+  			<b-card v-for="h in this.heroes" :key="h.id" bg-variant="secondary"
+  			text-variant="white"
+  			:header="h.id"
+  			class="text-center">
+  	    	 	<h4>Name: {{h.localized_name}}</h4>
+            <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="primary">Discover Matches</b-button>
+  			</b-card>
 	    </b-card>
   </b-card>
 </template>

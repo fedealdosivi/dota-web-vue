@@ -2,7 +2,7 @@
   <b-card class="text-center">
   	<b-button :href="'#/player/'+ this.id +'/peers'" variant="primary">Discover Peers</b-button>
   	<b-button :href="'#/player/'+ this.id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
-  	<b-button :href="'#/player/'+ id + '/heroes/'" variant="primary">Discover Heroes</b-button>
+  	<b-button :href="'#/player/'+ this.id + '/heroes/'" variant="primary">Discover Heroes</b-button>
     <h3 v-if="words==null">Looks so empty</h3>
     <b-card v-else bg-variant="dark" text-variant="white">
 		{{words.my_word_counts}}
