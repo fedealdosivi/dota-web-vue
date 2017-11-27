@@ -27507,6 +27507,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 144 */
@@ -27520,80 +27524,89 @@ var render = function() {
   return _c(
     "div",
     [
-      _c(
-        "b-card",
-        { staticClass: "text-center" },
-        [
-          _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-          _vm._v(" "),
-          _vm.heroes.lenght < 1
-            ? _c("h3", [_vm._v("Nothing here")])
-            : _vm._l(this.heroes, function(h) {
-                return _c(
-                  "b-card",
-                  {
-                    key: h.id,
-                    attrs: { "bg-variant": "dark", "text-variant": "white" }
-                  },
-                  [
-                    _c("h4", [_vm._v(_vm._s(h.localized_name))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Attribute: " + _vm._s(h.primary_attr))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Attack Type: " + _vm._s(h.attack_type))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Roles: " + _vm._s(h.roles))]),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
+      _c("b-card", { staticClass: "text-center" }, [
+        _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+        _vm._v(" "),
+        _vm.heroes.lenght < 1
+          ? _c("h3", [_vm._v("Nothing here")])
+          : _c(
+              "div",
+              [
+                _c(
+                  "transition-group",
+                  { attrs: { name: "bounce" } },
+                  _vm._l(this.heroes, function(h) {
+                    return _c(
+                      "b-card",
                       {
-                        attrs: {
-                          href: "#/heroes/" + h.id + "/matches/",
-                          variant: "primary"
-                        }
+                        key: h.id,
+                        attrs: { "bg-variant": "dark", "text-variant": "white" }
                       },
-                      [_vm._v("Discover Matches")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        attrs: {
-                          href: "#/heroes/" + h.id + "/players/",
-                          variant: "primary"
-                        }
-                      },
-                      [_vm._v("Players who used this heroe")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        attrs: {
-                          href: "#/heroes/" + h.id + "/rankings/",
-                          variant: "primary"
-                        }
-                      },
-                      [_vm._v("Rankings")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        attrs: {
-                          href: "#/heroes/" + h.id + "/durations/",
-                          variant: "primary"
-                        }
-                      },
-                      [_vm._v("Durations")]
+                      [
+                        _c("h4", [_vm._v(_vm._s(h.localized_name))]),
+                        _vm._v(" "),
+                        _c("h4", [
+                          _vm._v("Attribute: " + _vm._s(h.primary_attr))
+                        ]),
+                        _vm._v(" "),
+                        _c("h4", [
+                          _vm._v("Attack Type: " + _vm._s(h.attack_type))
+                        ]),
+                        _vm._v(" "),
+                        _c("h4", [_vm._v("Roles: " + _vm._s(h.roles))]),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              href: "#/heroes/" + h.id + "/matches/",
+                              variant: "primary"
+                            }
+                          },
+                          [_vm._v("Discover Matches")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              href: "#/heroes/" + h.id + "/players/",
+                              variant: "primary"
+                            }
+                          },
+                          [_vm._v("Players who used this heroe")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              href: "#/heroes/" + h.id + "/rankings/",
+                              variant: "primary"
+                            }
+                          },
+                          [_vm._v("Rankings")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            attrs: {
+                              href: "#/heroes/" + h.id + "/durations/",
+                              variant: "primary"
+                            }
+                          },
+                          [_vm._v("Durations")]
+                        )
+                      ],
+                      1
                     )
-                  ],
-                  1
+                  })
                 )
-              })
-        ],
-        2
-      )
+              ],
+              1
+            )
+      ])
     ],
     1
   )
@@ -28493,6 +28506,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 164 */
@@ -28503,18 +28520,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.durations.lenght < 1
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _c("b-table", { attrs: { dark: "", items: _vm.durations } })
-    ],
-    1
-  )
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.durations.lenght < 1
+      ? _c("h3", [_vm._v("Looks so empty")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition",
+              { attrs: { name: "bounce" } },
+              [_c("b-table", { attrs: { dark: "", items: _vm.durations } })],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

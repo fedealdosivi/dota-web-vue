@@ -2,7 +2,11 @@
 	<b-card class="text-center">
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="durations.lenght<1">Looks so empty</h3>
-	    <b-table v-else dark :items="durations"></b-table>
+      <div v-else>  
+        <transition name="bounce">
+  	     <b-table dark :items="durations"></b-table>
+        </transition>
+      </div>
   </b-card>
 </template>
 
