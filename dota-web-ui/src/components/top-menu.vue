@@ -1,19 +1,14 @@
 <template>
-<b-navbar toggleable="md" type="dark" variant="primary">
-
-  <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-
-  <b-navbar-brand href="/#/">Dota Stats</b-navbar-brand>
-
-  <b-collapse is-nav id="nav_collapse">
-
-    <b-navbar-nav>
-      <b-nav-item href="/#/player">Players</b-nav-item>
-      <b-nav-item href="/#/heroes">Heroes</b-nav-item>
-    </b-navbar-nav>
-
-  </b-collapse>
-</b-navbar>
+  <b-navbar toggleable="md" type="dark" variant="primary">
+    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <b-navbar-brand href="/#/">Dota Stats</b-navbar-brand>
+    <b-collapse is-nav id="nav_collapse">
+      <b-navbar-nav>
+        <b-nav-item href="/#/player">Players</b-nav-item>
+        <b-nav-item href="/#/heroes">Heroes</b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
 </template>
 
 <script>
@@ -41,5 +36,7 @@
 </script>
 
 <style>
-
+  .b-navbar{
+    background: purple;
+  }
 </style>

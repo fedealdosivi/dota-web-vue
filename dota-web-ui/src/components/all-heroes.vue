@@ -1,6 +1,7 @@
 <template>
 	<div>
     <b-card class="text-center">
+      <h1>List of Heros</h1>
       <h3 v-if="loading">LOADING PAGE</h3>
       <h3 v-if="heroes.lenght<1">Nothing here</h3>
       <div v-else>

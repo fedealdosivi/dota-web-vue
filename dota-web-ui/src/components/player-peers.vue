@@ -1,5 +1,6 @@
 <template>
   <b-card class="text-center">
+    <h1>Recently played with</h1>
     <h3 v-if="loading">LOADING PAGE</h3>
     <h3 v-if="peers.lenght<1">Looks like you are alone in this world</h3>
     <div v-else>

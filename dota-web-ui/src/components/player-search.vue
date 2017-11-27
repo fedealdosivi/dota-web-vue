@@ -1,5 +1,6 @@
 <template>
 	<b-card class="text-center">
+		<h1>Search Page</h1>
 		<b-card title="Search By Name" bg-variant="dark" text-variant="white">
 		  <b-form-input v-model="playerName"
 		                type="text"

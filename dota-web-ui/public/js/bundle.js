@@ -19294,7 +19294,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.b-navbar{\n  background: purple;\n}\n", ""]);
 
 // exports
 
@@ -19309,11 +19309,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -19840,6 +19835,7 @@ exports.default = {
 	}
 
 }; //
+//
 //
 //
 //
@@ -20766,6 +20762,8 @@ var render = function() {
     "b-card",
     { staticClass: "text-center" },
     [
+      _c("h1", [_vm._v("Search Page")]),
+      _vm._v(" "),
       _c(
         "b-card",
         {
@@ -21025,6 +21023,7 @@ var _playerService2 = _interopRequireDefault(_playerService);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
 //
 //
 //
@@ -26226,6 +26225,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Player Profile")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.player == null
@@ -26544,6 +26545,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 124 */
@@ -26555,6 +26557,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Recently played with")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.peers.lenght < 1
@@ -26837,6 +26841,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 129 */
@@ -26848,6 +26853,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Recent Matches")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.matches.lenght < 1
@@ -27093,6 +27100,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 134 */
@@ -27104,6 +27112,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Player Stats with this hero")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.heroes.lenght < 1
@@ -27334,6 +27344,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 139 */
@@ -27345,6 +27356,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Most used Words")]),
+    _vm._v(" "),
     _vm.words == null ? _c("h3", [_vm._v("Looks so empty")]) : _vm._e(),
     _vm._v(" "),
     _vm.loading
@@ -27548,6 +27561,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 144 */
@@ -27562,6 +27576,8 @@ var render = function() {
     "div",
     [
       _c("b-card", { staticClass: "text-center" }, [
+        _c("h1", [_vm._v("List of Heros")]),
+        _vm._v(" "),
         _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
         _vm._v(" "),
         _vm.heroes.lenght < 1
@@ -27840,6 +27856,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 149 */
@@ -27851,6 +27868,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Recent Matches with this Hero")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.matches.lenght < 1
@@ -28332,6 +28351,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 159 */
@@ -28343,6 +28363,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Top players with this hero")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.ranking == null
@@ -28571,6 +28593,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 164 */
@@ -28582,6 +28605,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Heros Durations")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.durations.lenght < 1
@@ -28796,6 +28821,7 @@ exports.default = {
 //
 //
 //
+//
 
 /***/ }),
 /* 169 */
@@ -28842,6 +28868,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("b-card", { staticClass: "text-center" }, [
+    _c("h1", [_vm._v("Match details")]),
+    _vm._v(" "),
     _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
     _vm._v(" "),
     _vm.match == null

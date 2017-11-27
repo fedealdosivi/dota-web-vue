@@ -1,5 +1,6 @@
 <template>
 	<b-card class="text-center">
+    <h1>Player Stats with this hero</h1>
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="heroes.lenght<1">Looks like you need to start playing</h3>
       <div v-else>

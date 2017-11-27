@@ -1,5 +1,6 @@
 <template>
   <b-card class="text-center">
+    <h1>Most used Words</h1>
     <h3 v-if="words==null">Looks so empty</h3>
     <h3 v-if="loading">LOADING PAGE</h3>
     <div v-else>

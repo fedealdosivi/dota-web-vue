@@ -1,5 +1,6 @@
 <template>
   <b-card class="text-center">
+  <h1>Recent Matches</h1>
     <h3 v-if="loading">LOADING PAGE</h3>
   	<h3 v-if="matches.lenght<1">Looks like you were not playing recently</h3>
     <div v-else>

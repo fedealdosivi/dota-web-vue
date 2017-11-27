@@ -1,5 +1,6 @@
 <template>
 	<b-card class="text-center">
+    <h1>Top players with this hero</h1>
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="ranking==null">Looks so empty</h3>
       <div v-else>
