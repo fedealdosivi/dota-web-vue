@@ -8,7 +8,7 @@
 		                <b-button @click='getPlayer()'>Search</b-button>
       	</b-card>
       	<h3 v-if="loading">LOADING PAGE</h3>
-  		<transition name="bounce">
+  		<transition-group name="bounce">
 			<div v-if="this.players.lenght<1">
 				<h3>Player not found</h3>
 			</div>
@@ -23,7 +23,7 @@
 	  	      	<b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
 	  	      	<b-button :href="'#/player/'+ p.account_id + '/words/'" variant="primary">See what he's saying</b-button>
 			</b-card>
-		</transition>
+		</transition-group>
 	</b-card>
 </template>
 

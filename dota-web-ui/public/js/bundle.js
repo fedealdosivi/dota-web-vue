@@ -20810,7 +20810,7 @@ var render = function() {
       _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
       _vm._v(" "),
       _c(
-        "transition",
+        "transition-group",
         { attrs: { name: "bounce" } },
         [
           this.players.lenght < 1
@@ -21025,6 +21025,10 @@ var _playerService2 = _interopRequireDefault(_playerService);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -26221,111 +26225,130 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.player == null
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _c(
-            "b-card",
-            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
-            [
-              _c("b-img", {
-                attrs: {
-                  right: "",
-                  src: this.player.profile.avatarfull,
-                  alt: "Thumbnail"
-                }
-              }),
-              _vm._v(" "),
-              _c("h3", { staticClass: "Card Title" }, [
-                _vm._v(
-                  _vm._s(this.player.profile.personaname) +
-                    " " +
-                    _vm._s(this.player.profile.loccountrycode)
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.player == null
+      ? _c("h3", [_vm._v("Looks so empty")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition",
+              { attrs: { name: "bounce" } },
+              [
+                _c(
+                  "b-card",
+                  { attrs: { "bg-variant": "dark", "text-variant": "white" } },
+                  [
+                    _c("b-img", {
+                      attrs: {
+                        right: "",
+                        src: this.player.profile.avatarfull,
+                        alt: "Thumbnail"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h3", { staticClass: "Card Title" }, [
+                      _vm._v(
+                        _vm._s(this.player.profile.personaname) +
+                          " " +
+                          _vm._s(this.player.profile.loccountrycode)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v(
+                        "Solo Rank: " +
+                          _vm._s(this.player.solo_competitive_rank)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v(
+                        "MMR points: " +
+                          _vm._s(this.player.mmr_estimate.estimate)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v(
+                        "Competitive Rank: " +
+                          _vm._s(this.player.competitive_rank)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v("Rank tier: " + _vm._s(this.player.rank_tier))
+                    ]),
+                    _vm._v(" "),
+                    _c("h2", [_vm._v("views: " + _vm._s(this.views))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href:
+                            "#/player/" +
+                            this.player.profile.account_id +
+                            "/peers",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Discover Peers")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href:
+                            "#/player/" +
+                            this.player.profile.account_id +
+                            "/rmatches/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("See Recent Matches")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href:
+                            "#/player/" +
+                            this.player.profile.account_id +
+                            "/heroes/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Discover Heroes")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href:
+                            "#/player/" +
+                            this.player.profile.account_id +
+                            "/words/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("See what he's saying")]
+                    )
+                  ],
+                  1
                 )
-              ]),
-              _vm._v(" "),
-              _c("h4", [
-                _vm._v(
-                  "Solo Rank: " + _vm._s(this.player.solo_competitive_rank)
-                )
-              ]),
-              _vm._v(" "),
-              _c("h4", [
-                _vm._v(
-                  "MMR points: " + _vm._s(this.player.mmr_estimate.estimate)
-                )
-              ]),
-              _vm._v(" "),
-              _c("h4", [
-                _vm._v(
-                  "Competitive Rank: " + _vm._s(this.player.competitive_rank)
-                )
-              ]),
-              _vm._v(" "),
-              _c("h4", [_vm._v("Rank tier: " + _vm._s(this.player.rank_tier))]),
-              _vm._v(" "),
-              _c("h2", [_vm._v("views: " + _vm._s(this.views))]),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: {
-                    href:
-                      "#/player/" + this.player.profile.account_id + "/peers",
-                    variant: "primary"
-                  }
-                },
-                [_vm._v("Discover Peers")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: {
-                    href:
-                      "#/player/" +
-                      this.player.profile.account_id +
-                      "/rmatches/",
-                    variant: "primary"
-                  }
-                },
-                [_vm._v("See Recent Matches")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: {
-                    href:
-                      "#/player/" + this.player.profile.account_id + "/heroes/",
-                    variant: "primary"
-                  }
-                },
-                [_vm._v("Discover Heroes")]
-              ),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: {
-                    href:
-                      "#/player/" + this.player.profile.account_id + "/words/",
-                    variant: "primary"
-                  }
-                },
-                [_vm._v("See what he's saying")]
-              )
-            ],
-            1
-          )
-    ],
-    1
-  )
+              ],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26517,6 +26540,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 124 */
@@ -26527,90 +26554,95 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.peers.lenght < 1
-        ? _c("h3", [_vm._v("Looks like you are alone in this world")])
-        : _vm._l(this.peers, function(p) {
-            return _c(
-              "b-card",
-              {
-                key: p.account_id,
-                attrs: { "bg-variant": "dark", "text-variant": "white" }
-              },
-              [
-                _c("b-img", {
-                  attrs: { right: "", src: p.avatarfull, alt: "Thumbnail" }
-                }),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Games: " + _vm._s(p.games))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Wins: " + _vm._s(p.win))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Las played: " + _vm._s(p.last_played))]),
-                _vm._v(" "),
-                _c(
-                  "b-button",
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.peers.lenght < 1
+      ? _c("h3", [_vm._v("Looks like you are alone in this world")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition-group",
+              { attrs: { name: "bounce" } },
+              _vm._l(this.peers, function(p) {
+                return _c(
+                  "b-card",
                   {
-                    attrs: {
-                      href: "#/player/" + p.account_id + "/peers",
-                      variant: "primary"
-                    }
+                    key: p.account_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
                   },
-                  [_vm._v("Discover Peers")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  {
-                    attrs: {
-                      href: "#/player/" + p.account_id + "/rmatches/",
-                      variant: "primary"
-                    }
-                  },
-                  [_vm._v("See Recent Matches")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  { attrs: { href: "/#/player/" + p.account_id } },
-                  [_vm._v("See profile")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  {
-                    attrs: {
-                      href: "#/player/" + p.account_id + "/heroes/",
-                      variant: "primary"
-                    }
-                  },
-                  [_vm._v("Discover Heroes")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  {
-                    attrs: {
-                      href: "#/player/" + p.account_id + "/words/",
-                      variant: "primary"
-                    }
-                  },
-                  [_vm._v("See what he's saying")]
+                  [
+                    _c("b-img", {
+                      attrs: { right: "", src: p.avatarfull, alt: "Thumbnail" }
+                    }),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Games: " + _vm._s(p.games))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Wins: " + _vm._s(p.win))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Las played: " + _vm._s(p.last_played))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/player/" + p.account_id + "/peers",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Discover Peers")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/player/" + p.account_id + "/rmatches/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("See Recent Matches")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/player/" + p.account_id } },
+                      [_vm._v("See profile")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/player/" + p.account_id + "/heroes/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Discover Heroes")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/player/" + p.account_id + "/words/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("See what he's saying")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              })
             )
-          })
-    ],
-    2
-  )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26801,6 +26833,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 129 */
@@ -26811,56 +26847,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.matches.lenght < 1
-        ? _c("h3", [_vm._v("Looks like you were not playing recently")])
-        : _vm._l(this.matches, function(m) {
-            return _c(
-              "b-card",
-              {
-                key: m.match_id,
-                attrs: { "bg-variant": "dark", "text-variant": "white" }
-              },
-              [
-                _c("h4", [_vm._v("ID: " + _vm._s(m.match_id))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("WIN: " + _vm._s(m.radiant_win))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("KILLS: " + _vm._s(m.kills))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("DEATHS: " + _vm._s(m.deaths))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("ASSISTS: " + _vm._s(m.assists))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("GAME MODE: " + _vm._s(m.game_mode))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("LOBBY TYPE: " + _vm._s(m.lobby_type))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("PARTY SIZE: " + _vm._s(m.party_size))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("DURATION: " + _vm._s(m.duration))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("CLUSTER: " + _vm._s(m.cluster))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("LEAVER: " + _vm._s(m.leaver_status))]),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  { attrs: { href: "/#/matches/" + m.match_id } },
-                  [_vm._v("See details")]
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.matches.lenght < 1
+      ? _c("h3", [_vm._v("Looks like you were not playing recently")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition-group",
+              { attrs: { name: "bounce" } },
+              _vm._l(this.matches, function(m) {
+                return _c(
+                  "b-card",
+                  {
+                    key: m.match_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
+                  },
+                  [
+                    _c("h4", [_vm._v("ID: " + _vm._s(m.match_id))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("WIN: " + _vm._s(m.radiant_win))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("KILLS: " + _vm._s(m.kills))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("DEATHS: " + _vm._s(m.deaths))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("ASSISTS: " + _vm._s(m.assists))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("GAME MODE: " + _vm._s(m.game_mode))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("LOBBY TYPE: " + _vm._s(m.lobby_type))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("PARTY SIZE: " + _vm._s(m.party_size))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("DURATION: " + _vm._s(m.duration))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("CLUSTER: " + _vm._s(m.cluster))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("LEAVER: " + _vm._s(m.leaver_status))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/matches/" + m.match_id } },
+                      [_vm._v("See details")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              })
             )
-          })
-    ],
-    2
-  )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -27048,6 +27089,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 134 */
@@ -27058,47 +27103,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.heroes.lenght < 1
-        ? _c("h3", [_vm._v("Looks like you need to start playing")])
-        : _vm._l(this.heroes, function(h) {
-            return _c(
-              "b-card",
-              {
-                key: h.hero_id,
-                attrs: { "bg-variant": "dark", "text-variant": "white" }
-              },
-              [
-                _c("h4", [_vm._v("ID: " + _vm._s(h.hero_id))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("GAMES: " + _vm._s(h.games))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("WINS :" + _vm._s(h.win))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("LAST PLAYED: " + _vm._s(h.last_played))]),
-                _vm._v(" "),
-                _c(
-                  "b-button",
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.heroes.lenght < 1
+      ? _c("h3", [_vm._v("Looks like you need to start playing")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition-group",
+              { attrs: { name: "bounce" } },
+              _vm._l(this.heroes, function(h) {
+                return _c(
+                  "b-card",
                   {
-                    attrs: {
-                      href: "#/heroes/" + h.hero_id + "/matches/",
-                      variant: "primary"
-                    }
+                    key: h.hero_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
                   },
-                  [_vm._v("Discover Matches")]
+                  [
+                    _c("h4", [_vm._v("ID: " + _vm._s(h.hero_id))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("GAMES: " + _vm._s(h.games))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("WINS :" + _vm._s(h.win))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("LAST PLAYED: " + _vm._s(h.last_played))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: {
+                          href: "#/heroes/" + h.hero_id + "/matches/",
+                          variant: "primary"
+                        }
+                      },
+                      [_vm._v("Discover Matches")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              })
             )
-          })
-    ],
-    2
-  )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -27226,12 +27276,10 @@ var _playerService2 = _interopRequireDefault(_playerService);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'playerPeers',
-  props: ['vista'],
   data: function data() {
     return {
       words: '',
-      mensaje: false
+      loading: false
     };
   },
 
@@ -27261,15 +27309,20 @@ exports.default = {
     getWords: function getWords() {
       var _this = this;
 
+      this.loading = true;
       _playerService2.default.getWordsByPlayerId(this.id).then(function (response) {
         _this.words = response.data;
+        _this.loading = false;
       }).catch(function (error) {
         _this.words = null;
+        _this.loading = false;
       });
     }
   }
 
 }; //
+//
+//
 //
 //
 //
@@ -27291,50 +27344,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _c(
-        "b-button",
-        {
-          attrs: { href: "#/player/" + this.id + "/peers", variant: "primary" }
-        },
-        [_vm._v("Discover Peers")]
-      ),
-      _vm._v(" "),
-      _c(
-        "b-button",
-        {
-          attrs: {
-            href: "#/player/" + this.id + "/rmatches/",
-            variant: "primary"
-          }
-        },
-        [_vm._v("See Recent Matches")]
-      ),
-      _vm._v(" "),
-      _c(
-        "b-button",
-        {
-          attrs: {
-            href: "#/player/" + this.id + "/heroes/",
-            variant: "primary"
-          }
-        },
-        [_vm._v("Discover Heroes")]
-      ),
-      _vm._v(" "),
-      _vm.words == null
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _c(
-            "b-card",
-            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
-            [_vm._v("\n\t\t" + _vm._s(_vm.words.my_word_counts) + "\n    ")]
-          )
-    ],
-    1
-  )
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.words == null ? _c("h3", [_vm._v("Looks so empty")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.loading
+      ? _c("h3", [_vm._v("LOADING PAGE")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition",
+              { attrs: { name: "bounce" } },
+              [
+                _c(
+                  "b-card",
+                  { attrs: { "bg-variant": "dark", "text-variant": "white" } },
+                  [
+                    _vm._v(
+                      "\n  \t\t" + _vm._s(_vm.words.my_word_counts) + "\n      "
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -27799,6 +27836,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 149 */
@@ -27809,54 +27850,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.matches.lenght < 1
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _vm._l(this.matches, function(m) {
-            return _c(
-              "b-card",
-              {
-                key: m.match_id,
-                attrs: { "bg-variant": "dark", "text-variant": "white" }
-              },
-              [
-                _c("h4", [_vm._v("ID: " + _vm._s(m.match_id))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("League Name: " + _vm._s(m.league_name))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Radiant Win: " + _vm._s(m.radiant_win))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Play for Radiant: " + _vm._s(m.radiant))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Kills: " + _vm._s(m.kills))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Deaths: " + _vm._s(m.deaths))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("Assists: " + _vm._s(m.assists))]),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  { attrs: { href: "/#/matches/" + m.match_id } },
-                  [_vm._v("See details")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  { attrs: { href: "/#/player/" + m.account_id } },
-                  [_vm._v("Who picked up this hero?")]
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.matches.lenght < 1
+      ? _c("h3", [_vm._v("Looks so empty")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition-group",
+              { attrs: { name: "bounce" } },
+              _vm._l(this.matches, function(m) {
+                return _c(
+                  "b-card",
+                  {
+                    key: m.match_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
+                  },
+                  [
+                    _c("h4", [_vm._v("ID: " + _vm._s(m.match_id))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("League Name: " + _vm._s(m.league_name))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Radiant Win: " + _vm._s(m.radiant_win))]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v("Play for Radiant: " + _vm._s(m.radiant))
+                    ]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Kills: " + _vm._s(m.kills))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Deaths: " + _vm._s(m.deaths))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Assists: " + _vm._s(m.assists))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/matches/" + m.match_id } },
+                      [_vm._v("See details")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/player/" + m.account_id } },
+                      [_vm._v("Who picked up this hero?")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              })
             )
-          })
-    ],
-    2
-  )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -28041,6 +28089,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 154 */
@@ -28051,40 +28103,45 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.players.lenght < 1
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _vm._l(this.players, function(p) {
-            return _c(
-              "b-card",
-              {
-                key: p.account_id,
-                attrs: { "bg-variant": "dark", "text-variant": "white" }
-              },
-              [
-                _c("h4", [_vm._v("ID: " + _vm._s(p.account_id))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("GAMES: " + _vm._s(p.games_played))]),
-                _vm._v(" "),
-                _c("h4", [_vm._v("WINS :" + _vm._s(p.wins))]),
-                _vm._v(" "),
-                _c(
-                  "b-button",
-                  { attrs: { href: "/#/player/" + p.account_id } },
-                  [_vm._v("See profile")]
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.players.lenght < 1
+      ? _c("h3", [_vm._v("Looks so empty")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition-group",
+              { attrs: { name: "bounce" } },
+              _vm._l(this.players, function(p) {
+                return _c(
+                  "b-card",
+                  {
+                    key: p.account_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
+                  },
+                  [
+                    _c("h4", [_vm._v("ID: " + _vm._s(p.account_id))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("GAMES: " + _vm._s(p.games_played))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("WINS :" + _vm._s(p.wins))]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/player/" + p.account_id } },
+                      [_vm._v("See profile")]
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
+              })
             )
-          })
-    ],
-    2
-  )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -28272,6 +28329,9 @@ exports.default = {
 //
 //
 //
+//
+//
+//
 
 /***/ }),
 /* 159 */
@@ -28282,52 +28342,53 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.ranking == null
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _c(
-            "b-card",
-            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
-            _vm._l(_vm.ranking.rankings, function(r) {
-              return _c(
-                "b-card",
-                {
-                  key: r.account_id,
-                  attrs: { "bg-variant": "dark", "text-variant": "white" }
-                },
-                [
-                  _c("b-img", {
-                    attrs: { right: "", src: r.avatar, alt: "Thumbnail" }
-                  }),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Name: " + _vm._s(r.personaname))]),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Score: " + _vm._s(r.score))]),
-                  _vm._v(" "),
-                  _c("h4", [_vm._v("Last Login: " + _vm._s(r.last_login))]),
-                  _vm._v(" "),
-                  _c("h4", [
-                    _vm._v("Rank: " + _vm._s(r.solo_competitive_rank))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    { attrs: { href: "/#/player/" + r.account_id } },
-                    [_vm._v("See profile")]
-                  )
-                ],
-                1
-              )
-            })
-          )
-    ],
-    1
-  )
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.ranking == null
+      ? _c("h3", [_vm._v("Looks so empty")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition-group",
+              { attrs: { name: "bounce" } },
+              _vm._l(_vm.ranking.rankings, function(r) {
+                return _c(
+                  "b-card",
+                  {
+                    key: r.account_id,
+                    attrs: { "bg-variant": "dark", "text-variant": "white" }
+                  },
+                  [
+                    _c("b-img", {
+                      attrs: { right: "", src: r.avatar, alt: "Thumbnail" }
+                    }),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Name: " + _vm._s(r.personaname))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Score: " + _vm._s(r.score))]),
+                    _vm._v(" "),
+                    _c("h4", [_vm._v("Last Login: " + _vm._s(r.last_login))]),
+                    _vm._v(" "),
+                    _c("h4", [
+                      _vm._v("Rank: " + _vm._s(r.solo_competitive_rank))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      { attrs: { href: "/#/player/" + r.account_id } },
+                      [_vm._v("See profile")]
+                    )
+                  ],
+                  1
+                )
+              })
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -28731,6 +28792,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 169 */
@@ -28776,69 +28841,86 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "b-card",
-    { staticClass: "text-center" },
-    [
-      _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-      _vm._v(" "),
-      _vm.match == null
-        ? _c("h3", [_vm._v("Looks so empty")])
-        : _c(
-            "b-card",
-            { attrs: { "bg-variant": "dark", "text-variant": "white" } },
-            [
-              _c("h3", [_vm._v("Dire Score: " + _vm._s(_vm.match.dire_score))]),
-              _vm._v(" "),
-              _c("h3", [
-                _vm._v("Radiant Score: " + _vm._s(_vm.match.radiant_score))
-              ]),
-              _vm._v(" "),
-              _c("h3", [
-                _vm._v("Radiant win?: " + _vm._s(_vm.match.radiant_win))
-              ]),
-              _vm._v(" "),
-              _c("h3", [
-                _vm._v("Human Players: " + _vm._s(_vm.match.human_players))
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.match.players, function(p) {
-                return _c(
+  return _c("b-card", { staticClass: "text-center" }, [
+    _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+    _vm._v(" "),
+    _vm.match == null
+      ? _c("h3", [_vm._v("Looks so empty")])
+      : _c(
+          "div",
+          [
+            _c(
+              "transition",
+              { attrs: { name: "bounce" } },
+              [
+                _c(
                   "b-card",
-                  {
-                    key: p.account_id,
-                    attrs: { "bg-variant": "dark", "text-variant": "white" }
-                  },
+                  { attrs: { "bg-variant": "dark", "text-variant": "white" } },
                   [
-                    _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Kills: " + _vm._s(p.kills))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Deaths: " + _vm._s(p.deaths))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Assists: " + _vm._s(p.assists))]),
-                    _vm._v(" "),
-                    _c("h4", [_vm._v("Gold: " + _vm._s(p.gold))]),
-                    _vm._v(" "),
-                    _c("h4", [
-                      _vm._v("Gold per Min: " + _vm._s(p.gold_per_min))
+                    _c("h3", [
+                      _vm._v("Dire Score: " + _vm._s(_vm.match.dire_score))
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "b-button",
-                      { attrs: { href: "/#/player/" + p.account_id } },
-                      [_vm._v("See profile")]
-                    )
+                    _c("h3", [
+                      _vm._v(
+                        "Radiant Score: " + _vm._s(_vm.match.radiant_score)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _vm._v("Radiant win?: " + _vm._s(_vm.match.radiant_win))
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _vm._v(
+                        "Human Players: " + _vm._s(_vm.match.human_players)
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.match.players, function(p) {
+                      return _c(
+                        "b-card",
+                        {
+                          key: p.account_id,
+                          attrs: {
+                            "bg-variant": "dark",
+                            "text-variant": "white"
+                          }
+                        },
+                        [
+                          _c("h4", [_vm._v("Name: " + _vm._s(p.personaname))]),
+                          _vm._v(" "),
+                          _c("h4", [_vm._v("Kills: " + _vm._s(p.kills))]),
+                          _vm._v(" "),
+                          _c("h4", [_vm._v("Deaths: " + _vm._s(p.deaths))]),
+                          _vm._v(" "),
+                          _c("h4", [_vm._v("Assists: " + _vm._s(p.assists))]),
+                          _vm._v(" "),
+                          _c("h4", [_vm._v("Gold: " + _vm._s(p.gold))]),
+                          _vm._v(" "),
+                          _c("h4", [
+                            _vm._v("Gold per Min: " + _vm._s(p.gold_per_min))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            { attrs: { href: "/#/player/" + p.account_id } },
+                            [_vm._v("See profile")]
+                          )
+                        ],
+                        1
+                      )
+                    })
                   ],
-                  1
+                  2
                 )
-              })
-            ],
-            2
-          )
-    ],
-    1
-  )
+              ],
+              1
+            )
+          ],
+          1
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

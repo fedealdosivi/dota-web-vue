@@ -2,21 +2,25 @@
 	<b-card class="text-center">
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="match==null">Looks so empty</h3>
-	    <b-card v-else bg-variant="dark" text-variant="white">
-	    	<h3>Dire Score: {{match.dire_score}}</h3>
-	    	<h3>Radiant Score: {{match.radiant_score}}</h3>
-	    	<h3>Radiant win?: {{match.radiant_win}}</h3>
-	    	<h3>Human Players: {{match.human_players}}</h3>
-	    	<b-card v-for="p in match.players" :key="p.account_id" bg-variant="dark" text-variant="white">
-				<h4>Name: {{p.personaname}}</h4>
-				<h4>Kills: {{p.kills}}</h4>
-				<h4>Deaths: {{p.deaths}}</h4>
-				<h4>Assists: {{p.assists}}</h4>
-				<h4>Gold: {{p.gold}}</h4>
-				<h4>Gold per Min: {{p.gold_per_min}}</h4>
-	  	      	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
-    		</b-card>
-		</b-card>
+      <div v-else>
+        <transition name="bounce">
+    	    <b-card bg-variant="dark" text-variant="white">
+    	    	<h3>Dire Score: {{match.dire_score}}</h3>
+    	    	<h3>Radiant Score: {{match.radiant_score}}</h3>
+    	    	<h3>Radiant win?: {{match.radiant_win}}</h3>
+    	    	<h3>Human Players: {{match.human_players}}</h3>
+      	    	<b-card v-for="p in match.players" :key="p.account_id" bg-variant="dark" text-variant="white">
+        				<h4>Name: {{p.personaname}}</h4>
+        				<h4>Kills: {{p.kills}}</h4>
+        				<h4>Deaths: {{p.deaths}}</h4>
+        				<h4>Assists: {{p.assists}}</h4>
+        				<h4>Gold: {{p.gold}}</h4>
+        				<h4>Gold per Min: {{p.gold_per_min}}</h4>
+  	  	      	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
+          		</b-card>
+    		  </b-card>
+        </transition>
+      </div>
   	</b-card>
 </template>
 

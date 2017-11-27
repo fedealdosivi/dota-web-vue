@@ -1,24 +1,24 @@
 <template>
   <b-card class="text-center">
-  	<b-button :href="'#/player/'+ this.id +'/peers'" variant="primary">Discover Peers</b-button>
-  	<b-button :href="'#/player/'+ this.id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
-  	<b-button :href="'#/player/'+ this.id + '/heroes/'" variant="primary">Discover Heroes</b-button>
     <h3 v-if="words==null">Looks so empty</h3>
-    <b-card v-else bg-variant="dark" text-variant="white">
-		{{words.my_word_counts}}
-    </b-card>
+    <h3 v-if="loading">LOADING PAGE</h3>
+    <div v-else>
+      <transition name="bounce">
+        <b-card bg-variant="dark" text-variant="white">
+    		{{words.my_word_counts}}
+        </b-card>
+      </transition>
+    </div>
   </b-card>
 </template>
 
 <script>
 	import playerService from '../services/playerService';
     export default {
-     name: 'playerPeers',
-     props: ['vista'],
      data() {
       return {   			
-       	words:'',
- 		mensaje:false
+        words:'',
+        loading:false
     }
   }, 
 
@@ -46,12 +46,15 @@
   methods: {
 
     getWords(){
+      this.loading=true
       playerService.getWordsByPlayerId(this.id)
       .then((response) => {
                       this.words = response.data;
+                      this.loading=false;
                   })
                   .catch((error) => {
                       this.words=null;
+                      this.loading=false;
                   })
                 }
     },

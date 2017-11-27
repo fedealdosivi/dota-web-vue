@@ -2,13 +2,17 @@
 	<b-card class="text-center">
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="heroes.lenght<1">Looks like you need to start playing</h3>
-	    <b-card v-else v-for="h in this.heroes" :key="h.hero_id" bg-variant="dark" text-variant="white">
-	    	<h4>ID: {{h.hero_id}}</h4>
-	    	<h4>GAMES: {{h.games}}</h4>
-	    	<h4>WINS :{{h.win}}</h4>
-	    	<h4>LAST PLAYED: {{h.last_played}}</h4>
-        <b-button :href="'#/heroes/'+ h.hero_id + '/matches/'" variant="primary">Discover Matches</b-button>
-	    </b-card>
+      <div v-else>
+        <transition-group name="bounce">
+    	    <b-card v-for="h in this.heroes" :key="h.hero_id" bg-variant="dark" text-variant="white">
+    	    	<h4>ID: {{h.hero_id}}</h4>
+    	    	<h4>GAMES: {{h.games}}</h4>
+    	    	<h4>WINS :{{h.win}}</h4>
+    	    	<h4>LAST PLAYED: {{h.last_played}}</h4>
+            <b-button :href="'#/heroes/'+ h.hero_id + '/matches/'" variant="primary">Discover Matches</b-button>
+    	    </b-card>
+        </transition-group>
+      </div>
   </b-card>
 </template>
 

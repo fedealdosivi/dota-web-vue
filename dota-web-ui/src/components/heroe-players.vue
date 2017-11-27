@@ -2,12 +2,16 @@
 	<b-card class="text-center">
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="players.lenght<1">Looks so empty</h3>
-	    <b-card v-else v-for="p in this.players" :key="p.account_id" bg-variant="dark" text-variant="white">
-	    	<h4>ID: {{p.account_id}}</h4>
-	    	<h4>GAMES: {{p.games_played}}</h4>
-	    	<h4>WINS :{{p.wins}}</h4>
-	    	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
-		</b-card>
+      <div v-else>
+        <transition-group name="bounce">
+    	    <b-card v-for="p in this.players" :key="p.account_id" bg-variant="dark" text-variant="white">
+    	    	<h4>ID: {{p.account_id}}</h4>
+    	    	<h4>GAMES: {{p.games_played}}</h4>
+    	    	<h4>WINS :{{p.wins}}</h4>
+    	    	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
+    		  </b-card>
+        </transition-group>
+      </div>
   </b-card>
 </template>
 

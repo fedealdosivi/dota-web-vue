@@ -2,15 +2,18 @@
 	<b-card class="text-center">
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="ranking==null">Looks so empty</h3>
-	    <b-card v-else bg-variant="dark" text-variant="white">
-	    	<b-card v-for="r in ranking.rankings" :key="r.account_id" bg-variant="dark" text-variant="white">
-	    		<b-img right :src="r.avatar" alt="Thumbnail" />
-				<h4>Name: {{r.personaname}}</h4>
-				<h4>Score: {{r.score}}</h4>
-				<h4>Last Login: {{r.last_login}}</h4>
-				<h4>Rank: {{r.solo_competitive_rank}}</h4>
+      <div v-else>
+        <transition-group name="bounce">
+	         <b-card v-for="r in ranking.rankings" :key="r.account_id" bg-variant="dark" text-variant="white">
+  	    		<b-img right :src="r.avatar" alt="Thumbnail" />
+  				    <h4>Name: {{r.personaname}}</h4>
+  				    <h4>Score: {{r.score}}</h4>
+  				    <h4>Last Login: {{r.last_login}}</h4>
+  				    <h4>Rank: {{r.solo_competitive_rank}}</h4>
 	  	      	<b-button :href="'/#/player/' + r.account_id">See profile</b-button>
-    		</b-card>
+      		</b-card>
+        </transition-group>
+      </div>
 		</b-card>
   	</b-card>
 </template>

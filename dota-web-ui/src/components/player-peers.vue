@@ -2,18 +2,22 @@
   <b-card class="text-center">
     <h3 v-if="loading">LOADING PAGE</h3>
     <h3 v-if="peers.lenght<1">Looks like you are alone in this world</h3>
-      <b-card v-else v-for="p in this.peers" :key="p.account_id" bg-variant="dark" text-variant="white">
-        <b-img right :src="p.avatarfull" alt="Thumbnail" />
-        <h4>Name: {{p.personaname}}</h4>
-        <h4>Games: {{p.games}}</h4>
-        <h4>Wins: {{p.win}}</h4>
-        <h4>Las played: {{p.last_played}}</h4>
-        <b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
-        <b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
-        <b-button :href="'/#/player/' + p.account_id">See profile</b-button>
-        <b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
-        <b-button :href="'#/player/'+ p.account_id + '/words/'" variant="primary">See what he's saying</b-button>
-      </b-card>
+    <div v-else>
+      <transition-group name="bounce"> 
+        <b-card v-for="p in this.peers" :key="p.account_id" bg-variant="dark" text-variant="white">
+          <b-img right :src="p.avatarfull" alt="Thumbnail" />
+          <h4>Name: {{p.personaname}}</h4>
+          <h4>Games: {{p.games}}</h4>
+          <h4>Wins: {{p.win}}</h4>
+          <h4>Las played: {{p.last_played}}</h4>
+          <b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
+          <b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
+          <b-button :href="'/#/player/' + p.account_id">See profile</b-button>
+          <b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
+          <b-button :href="'#/player/'+ p.account_id + '/words/'" variant="primary">See what he's saying</b-button>
+        </b-card>
+      </transition-group>
+    </div>
   </b-card>
 </template>
 <script>
