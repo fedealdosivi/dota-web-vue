@@ -8,7 +8,6 @@
   <b-collapse is-nav id="nav_collapse">
 
     <b-navbar-nav>
-      <b-nav-item href="/#/teams">Teams</b-nav-item>
       <b-nav-item href="/#/player">Players</b-nav-item>
       <b-nav-item href="/#/heroes">Heroes</b-nav-item>
     </b-navbar-nav>

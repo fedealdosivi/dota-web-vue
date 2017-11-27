@@ -10,7 +10,7 @@
             <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="primary">Discover Matches</b-button>
             <b-button :href="'#/heroes/'+ h.id + '/players/'" variant="primary">Players who used this heroe</b-button>
             <b-button :href="'#/heroes/'+ h.id + '/matchups/'" variant="primary">Matchups</b-button>
-            <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="primary">Rankings</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/rankings/'" variant="primary">Rankings</b-button>
             <b-button :href="'#/heroes/'+ h.id + '/durations/'" variant="primary">Durations</b-button>     
           </b-card>
     </b-card>
