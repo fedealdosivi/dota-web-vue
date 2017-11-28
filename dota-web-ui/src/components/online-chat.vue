@@ -6,11 +6,11 @@
         <b-form inline >
           <b-input class="mb-2 mr-sm-2 mb-sm-0" v-model="user" placeholder="Username" />
           <b-input class="mb-2 mr-sm-2 mb-sm-0" v-model="newMessage" placeholder="Type your message" />
-          <b-button type="submit" variant="primary" :disabled="!formOk" @click="sendMessage">Submit</b-button>
+          <b-button type="submit" :disabled="!formOk" @click="sendMessage">Submit</b-button>
         </b-form>
           <b-list-group>
             <b-list-group-item v-for="(message,index) in messages" :key=index>
-              {{ message.userP }} : {{ message.newMessageP }}
+              {{ message.user }} : {{ message.newMessage }}
             </b-list-group-item>
         </b-list-group>
       </b-card>
@@ -42,8 +42,8 @@ export default {
     methods: {
       sendMessage() {
         const payload = {
-          userP : this.user,
-          newMessageP : this.newMessage
+          user : this.user,
+          newMessage : this.newMessage
         }
         this.socket.emit('chat_message', payload);
         this.newMessage = '';

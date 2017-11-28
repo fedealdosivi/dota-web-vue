@@ -10,7 +10,7 @@
     	    	<h4>GAMES: {{h.games}}</h4>
     	    	<h4>WINS :{{h.win}}</h4>
     	    	<h4>LAST PLAYED: {{h.last_played}}</h4>
-            <b-button :href="'#/heroes/'+ h.hero_id + '/matches/'" variant="primary">Discover Matches</b-button>
+            <b-button :href="'#/heroes/'+ h.hero_id + '/matches/'" >Discover Matches</b-button>
     	    </b-card>
         </transition-group>
       </div>

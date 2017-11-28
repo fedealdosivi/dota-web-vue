@@ -19,12 +19,6 @@
             }
         },
 
-        methods: {
-            cambiarVista(vista) {
-                this.vista=vista;
-            }
-        },
-
         mounted()
         {
 

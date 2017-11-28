@@ -22,22 +22,30 @@
       <b-carousel-slide caption="Players"
                         text="Search for players and discover their stats"
                         img-src="https://i.redd.it/5csw96tgafjy.jpg"
-      ></b-carousel-slide>
+      >
+        <b-button :href="'/#/player'">GO!</b-button>
+      </b-carousel-slide>
 
       <b-carousel-slide caption="Heroes"
                         text="Search for heros and discover their stats"
                         img-src="http://wallpapersdsc.net/wp-content/uploads/2015/11/Dota_2_Iphone_wallpapers14.jpg"
-      ></b-carousel-slide>
+      >
+        <b-button :href="'/#/heroes'">GO!</b-button>
+      </b-carousel-slide>
 
       <b-carousel-slide caption="Teams"
                         text="Search for teams and discover their stats"
                         img-src="https://images2.alphacoders.com/466/thumb-1920-466303.jpg"
-      ></b-carousel-slide>
+      >
+        <b-button :href="'/#/teams'">GO!</b-button>
+      </b-carousel-slide>
 
       <b-carousel-slide caption="Chat"
-                        text="Chat in real team with other dota players"
+                        text="Chat in real time with other dota players"
                         img-src="https://wallpaperscraft.com/image/dota_2_chibi_heroes_art_93793_1920x1080.jpg"
-      ></b-carousel-slide>
+      >
+        <b-button :href="'/#/chat'">GO!</b-button>
+      </b-carousel-slide>
 
     </b-carousel>
   </div>

@@ -12,10 +12,9 @@
           <h4>MMR points: {{this.player.mmr_estimate.estimate}}</h4>
           <h4>Competitive Rank: {{this.player.competitive_rank}}</h4>
           <h4>Rank tier: {{this.player.rank_tier}}</h4>
-          <b-button :href="'#/player/'+ this.player.profile.account_id +'/peers'" variant="primary">Discover Peers</b-button>
-          <b-button :href="'#/player/'+ this.player.profile.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
-          <b-button :href="'#/player/'+ this.player.profile.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
-          <b-button :href="'#/player/'+ this.player.profile.account_id + '/words/'" variant="primary">See what he's saying</b-button>
+          <b-button :href="'#/player/'+ this.player.profile.account_id +'/peers'" >Discover Peers</b-button>
+          <b-button :href="'#/player/'+ this.player.profile.account_id + '/rmatches/'" >See Recent Matches</b-button>
+          <b-button :href="'#/player/'+ this.player.profile.account_id + '/heroes/'" >Discover Heroes</b-button>
         </b-card>
       </transition>
     </div>

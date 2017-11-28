@@ -11,11 +11,10 @@
           <h4>Games: {{p.games}}</h4>
           <h4>Wins: {{p.win}}</h4>
           <h4>Las played: {{p.last_played}}</h4>
-          <b-button :href="'#/player/'+ p.account_id +'/peers'" variant="primary">Discover Peers</b-button>
-          <b-button :href="'#/player/'+ p.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
+          <b-button :href="'#/player/'+ p.account_id +'/peers'" >Discover Peers</b-button>
+          <b-button :href="'#/player/'+ p.account_id + '/rmatches/'" >See Recent Matches</b-button>
           <b-button :href="'/#/player/' + p.account_id">See profile</b-button>
-          <b-button :href="'#/player/'+ p.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
-          <b-button :href="'#/player/'+ p.account_id + '/words/'" variant="primary">See what he's saying</b-button>
+          <b-button :href="'#/player/'+ p.account_id + '/heroes/'" >Discover Heroes</b-button>
         </b-card>
       </transition-group>
     </div>

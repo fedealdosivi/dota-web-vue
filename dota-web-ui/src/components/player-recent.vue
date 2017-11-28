@@ -6,17 +6,15 @@
     <div v-else>
       <transition-group name="bounce">
         <b-card v-for="m in this.matches" :key="m.match_id" bg-variant="dark" text-variant="white">
-          <h4>ID: {{m.match_id}}</h4>
-          <h4>WIN: {{m.radiant_win}}</h4>
+          <h4 v-if="m.radiant_win">Match Won</h4>
+          <h4 v-else>Match Lost</h4>
           <h4>KILLS: {{m.kills}}</h4>
           <h4>DEATHS: {{m.deaths}}</h4>
           <h4>ASSISTS: {{m.assists}}</h4>
-          <h4>GAME MODE: {{m.game_mode}}</h4>
-          <h4>LOBBY TYPE: {{m.lobby_type}}</h4>
           <h4>PARTY SIZE: {{m.party_size}}</h4>
           <h4>DURATION: {{m.duration}}</h4>
           <h4>CLUSTER: {{m.cluster}}</h4>
-          <h4>LEAVER: {{m.leaver_status}}</h4>
+          <h4 v-if="m.leaver_status">Left the game</h4>
           <b-button :href="'/#/matches/' + m.match_id">See details</b-button>
         </b-card>
       </transition-group>
@@ -24,7 +22,7 @@
   </b-card>
 </template>
 <script>
-    import playerService from '../services/playerService';
+import playerService from '../services/playerService';
     export default {
      data() {
       return {   			

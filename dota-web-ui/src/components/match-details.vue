@@ -8,7 +8,6 @@
     	    <b-card bg-variant="dark" text-variant="white">
     	    	<h3>Dire Score: {{match.dire_score}}</h3>
     	    	<h3>Radiant Score: {{match.radiant_score}}</h3>
-    	    	<h3>Radiant win?: {{match.radiant_win}}</h3>
     	    	<h3>Human Players: {{match.human_players}}</h3>
       	    	<b-card v-for="p in match.players" :key="p.account_id" bg-variant="dark" text-variant="white">
         				<h4>Name: {{p.personaname}}</h4>
