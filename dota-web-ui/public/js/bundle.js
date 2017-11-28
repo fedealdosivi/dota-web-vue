@@ -27462,7 +27462,7 @@ exports.push([module.i, "\n.bounce-enter-active {\n  animation: bounce-in .5s;\n
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _heroeService = __webpack_require__(8);
@@ -27472,33 +27472,52 @@ var _heroeService2 = _interopRequireDefault(_heroeService);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  data: function data() {
-    return {
-      heroes: [],
-      loading: false
-    };
-  },
-  created: function created() {
-    this.getHeroes();
-  },
+    data: function data() {
+        return {
+            heroFilter: '',
+            heroes: [],
+            loading: false
+        };
+    },
 
 
-  methods: {
-    getHeroes: function getHeroes() {
-      var _this = this;
+    computed: {
+        heroesFilter: function heroesFilter() {
+            var _this = this;
 
-      this.loading = true;
-      _heroeService2.default.getHeroStats().then(function (response) {
-        _this.heroes = response.data;
-        _this.loading = false;
-      }).catch(function (error) {
-        _this.heroes = null;
-        _this.loading = false;
-      });
+            return this.heroes.filter(function (h) {
+                return h.localized_name.toLowerCase().indexOf(_this.heroFilter.toLowerCase()) >= 0 || h.primary_attr.toLowerCase().indexOf(_this.heroFilter.toLowerCase()) >= 0 || h.attack_type.toLowerCase().indexOf(_this.heroFilter.toLowerCase()) >= 0;
+            });
+        }
+    },
+
+    created: function created() {
+        this.getHeroes();
+    },
+
+
+    methods: {
+        getHeroes: function getHeroes() {
+            var _this2 = this;
+
+            this.loading = true;
+            _heroeService2.default.getHeroStats().then(function (response) {
+                _this2.heroes = response.data;
+                _this2.loading = false;
+            }).catch(function (error) {
+                _this2.heroes = null;
+                _this2.loading = false;
+            });
+        }
     }
-  }
 
 }; //
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -27535,91 +27554,125 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("b-card", { staticClass: "text-center" }, [
-        _c("h1", [_vm._v("List of Heros")]),
-        _vm._v(" "),
-        _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
-        _vm._v(" "),
-        _vm.heroes.lenght < 1
-          ? _c("h3", [_vm._v("Nothing here")])
-          : _c(
-              "div",
-              [
-                _c(
-                  "transition-group",
-                  { attrs: { name: "bounce" } },
-                  _vm._l(this.heroes, function(h) {
-                    return _c(
-                      "b-card",
-                      {
-                        key: h.id,
-                        attrs: { "bg-variant": "dark", "text-variant": "white" }
-                      },
-                      [
-                        _c("h4", [_vm._v(_vm._s(h.localized_name))]),
-                        _vm._v(" "),
-                        _c("h4", [
-                          _vm._v("Attribute: " + _vm._s(h.primary_attr))
-                        ]),
-                        _vm._v(" "),
-                        _c("h4", [
-                          _vm._v("Attack Type: " + _vm._s(h.attack_type))
-                        ]),
-                        _vm._v(" "),
-                        _c("h4", [_vm._v("Roles: " + _vm._s(h.roles))]),
-                        _vm._v(" "),
-                        _c(
-                          "b-button",
-                          {
-                            attrs: {
-                              href: "#/heroes/" + h.id + "/matches/",
-                              variant: "primary"
-                            }
-                          },
-                          [_vm._v("Discover Matches")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-button",
-                          {
-                            attrs: {
-                              href: "#/heroes/" + h.id + "/players/",
-                              variant: "primary"
-                            }
-                          },
-                          [_vm._v("Players who used this heroe")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-button",
-                          {
-                            attrs: {
-                              href: "#/heroes/" + h.id + "/rankings/",
-                              variant: "primary"
-                            }
-                          },
-                          [_vm._v("Rankings")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "b-button",
-                          {
-                            attrs: {
-                              href: "#/heroes/" + h.id + "/durations/",
-                              variant: "primary"
-                            }
-                          },
-                          [_vm._v("Durations")]
-                        )
-                      ],
-                      1
-                    )
-                  })
-                )
-              ],
-              1
-            )
-      ])
+      _c(
+        "b-card",
+        { staticClass: "text-center" },
+        [
+          _c("h1", [_vm._v("List of Heros")]),
+          _vm._v(" "),
+          _c(
+            "b-card",
+            {
+              attrs: {
+                title: "Search",
+                "bg-variant": "dark",
+                "text-variant": "white"
+              }
+            },
+            [
+              _c("b-form-input", {
+                attrs: { type: "text", placeholder: "Type here" },
+                model: {
+                  value: _vm.heroFilter,
+                  callback: function($$v) {
+                    _vm.heroFilter = $$v
+                  },
+                  expression: "heroFilter"
+                }
+              }),
+              _vm._v(" "),
+              _c("br")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.loading ? _c("h3", [_vm._v("LOADING PAGE")]) : _vm._e(),
+          _vm._v(" "),
+          _vm.heroes.lenght < 1
+            ? _c("h3", [_vm._v("Nothing here")])
+            : _c(
+                "div",
+                [
+                  _c(
+                    "transition-group",
+                    { attrs: { name: "bounce" } },
+                    _vm._l(_vm.heroesFilter, function(h) {
+                      return _c(
+                        "b-card",
+                        {
+                          key: h.id,
+                          attrs: {
+                            "bg-variant": "dark",
+                            "text-variant": "white"
+                          }
+                        },
+                        [
+                          _c("h4", [_vm._v(_vm._s(h.localized_name))]),
+                          _vm._v(" "),
+                          _c("h4", [
+                            _vm._v("Attribute: " + _vm._s(h.primary_attr))
+                          ]),
+                          _vm._v(" "),
+                          _c("h4", [
+                            _vm._v("Attack Type: " + _vm._s(h.attack_type))
+                          ]),
+                          _vm._v(" "),
+                          _c("h4", [_vm._v("Roles: " + _vm._s(h.roles))]),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              attrs: {
+                                href: "#/heroes/" + h.id + "/matches/",
+                                variant: "primary"
+                              }
+                            },
+                            [_vm._v("Discover Matches")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              attrs: {
+                                href: "#/heroes/" + h.id + "/players/",
+                                variant: "primary"
+                              }
+                            },
+                            [_vm._v("Players who used this heroe")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              attrs: {
+                                href: "#/heroes/" + h.id + "/rankings/",
+                                variant: "primary"
+                              }
+                            },
+                            [_vm._v("Rankings")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "b-button",
+                            {
+                              attrs: {
+                                href: "#/heroes/" + h.id + "/durations/",
+                                variant: "primary"
+                              }
+                            },
+                            [_vm._v("Durations")]
+                          )
+                        ],
+                        1
+                      )
+                    })
+                  )
+                ],
+                1
+              )
+        ],
+        1
+      )
     ],
     1
   )
