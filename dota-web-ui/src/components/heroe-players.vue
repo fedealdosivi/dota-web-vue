@@ -1,5 +1,6 @@
 <template>
 	<b-card class="text-center">
+      <h3>Players who recently played with {{this.hero}}</h3>
       <h3 v-if="loading">LOADING PAGE</h3>
 	    <h3 v-if="players.lenght<1">Looks so empty</h3>
       <div v-else>
@@ -18,7 +19,8 @@
 <script>
 	import heroeService from '../services/heroeService';
     export default {
-     data() {
+      props:['hero'],
+      data() {
       return {   			
    	    players:[],
         loading:false

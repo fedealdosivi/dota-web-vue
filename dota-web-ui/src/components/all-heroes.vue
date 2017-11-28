@@ -17,10 +17,10 @@
             <h4>Attribute: {{h.primary_attr}}</h4>
             <h4>Attack Type: {{h.attack_type}}</h4>
             <h4>Roles: {{h.roles}}</h4>
-            <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="primary">Discover Matches</b-button>
-            <b-button :href="'#/heroes/'+ h.id + '/players/'" variant="primary">Players who used this heroe</b-button>
-            <b-button :href="'#/heroes/'+ h.id + '/rankings/'" variant="primary">Rankings</b-button>
-            <b-button :href="'#/heroes/'+ h.id + '/durations/'" variant="primary">Durations</b-button>     
+            <b-button :href="'#/heroes/'+ h.id + '/matches/'" variant="info">Discover Matches</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/players/'" variant="info" :hero="h.localized_name">Players who used this heroe</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/rankings/'" variant="info">Rankings</b-button>
+            <b-button :href="'#/heroes/'+ h.id + '/durations/'" variant="info">Durations</b-button>     
           </b-card>
         </transition-group>
       </div>

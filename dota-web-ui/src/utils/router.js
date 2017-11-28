@@ -13,6 +13,7 @@ import heroesRankings from '../components/heroes-rankings.vue'
 import heroeDurations from '../components/heroe-durations.vue'
 import matchDetails from '../components/match-details.vue'
 import allTeams from '../components/all-teams.vue'
+import onlineChat from '../components/online-chat.vue'
 
 
 export default new VueRouter({
@@ -31,5 +32,6 @@ export default new VueRouter({
       {path: "/heroes/:id/durations", component: heroeDurations},
       {path: "/matches/:id", component: matchDetails},
       {path: "/teams/", component: allTeams},
+      {path: "/chat/", component: onlineChat}
 	]
 });
