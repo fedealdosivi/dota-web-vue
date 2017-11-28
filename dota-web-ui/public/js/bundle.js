@@ -19367,18 +19367,64 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   data: function data() {
-    return {};
+    return {
+      slide: 0,
+      sliding: null
+    };
   },
 
-
-  methods: {},
-
-  computed: {},
-
-  created: function created() {}
+  methods: {
+    onSlideStart: function onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd: function onSlideEnd(slide) {
+      this.sliding = false;
+    }
+  }
 };
 
 /***/ }),
@@ -19390,7 +19436,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h3", [_vm._v("hola")])
+  return _c(
+    "div",
+    [
+      _c(
+        "b-carousel",
+        {
+          staticStyle: { "text-shadow": "1px 1px 2px #333" },
+          attrs: {
+            id: "carousel1",
+            controls: "",
+            indicators: "",
+            background: "#ababab",
+            interval: 4000,
+            "img-width": "1024",
+            "img-height": "480"
+          },
+          on: {
+            "sliding-start": _vm.onSlideStart,
+            "sliding-end": _vm.onSlideEnd
+          },
+          model: {
+            value: _vm.slide,
+            callback: function($$v) {
+              _vm.slide = $$v
+            },
+            expression: "slide"
+          }
+        },
+        [
+          _c("b-carousel-slide", {
+            attrs: {
+              caption: "Dota Stats Web Page",
+              text:
+                "Dota 2 is a free-to-play multiplayer online battle arena video game developed and published by Valve Corporation.",
+              "img-src":
+                "http://esports.inquirer.net/wp-content/uploads/2016/10/22.jpg"
+            }
+          }),
+          _vm._v(" "),
+          _c("b-carousel-slide", {
+            attrs: {
+              caption: "Players",
+              text: "Search for players and discover their stats",
+              "img-src": "https://i.redd.it/5csw96tgafjy.jpg"
+            }
+          }),
+          _vm._v(" "),
+          _c("b-carousel-slide", {
+            attrs: {
+              caption: "Heroes",
+              text: "Search for heros and discover their stats",
+              "img-src":
+                "http://wallpapersdsc.net/wp-content/uploads/2015/11/Dota_2_Iphone_wallpapers14.jpg"
+            }
+          }),
+          _vm._v(" "),
+          _c("b-carousel-slide", {
+            attrs: {
+              caption: "Teams",
+              text: "Search for teams and discover their stats",
+              "img-src":
+                "https://images2.alphacoders.com/466/thumb-1920-466303.jpg"
+            }
+          }),
+          _vm._v(" "),
+          _c("b-carousel-slide", {
+            attrs: {
+              caption: "Chat",
+              text: "Chat in real team with other dota players",
+              "img-src":
+                "https://wallpaperscraft.com/image/dota_2_chibi_heroes_art_93793_1920x1080.jpg"
+            }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26923,7 +27047,9 @@ var render = function() {
               attrs: { "border-variant": "dark", align: "center" }
             },
             [
-              _c("h1", [_vm._v("Leave a massage'!")]),
+              _c("h1", { attrs: { align: "left" } }, [
+                _vm._v("Leave a massage'!")
+              ]),
               _vm._v(" "),
               _c(
                 "b-form",
@@ -26931,7 +27057,7 @@ var render = function() {
                 [
                   _c("b-input", {
                     staticClass: "mb-2 mr-sm-2 mb-sm-0",
-                    attrs: { placeholder: "User name" },
+                    attrs: { placeholder: "Username" },
                     model: {
                       value: _vm.user,
                       callback: function($$v) {

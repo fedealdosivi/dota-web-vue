@@ -2,7 +2,7 @@
 	<div>
    <transition name="bounce">
       <b-card class="text-center" border-variant="dark" align="center">
-        <h1>Leave a massage'!</h1>
+        <h1 align="left">Leave a massage'!</h1>
         <b-form inline >
           <b-input class="mb-2 mr-sm-2 mb-sm-0" v-model="user" placeholder="Username" />
           <b-input class="mb-2 mr-sm-2 mb-sm-0" v-model="newMessage" placeholder="Type your message" />
