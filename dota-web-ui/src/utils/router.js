@@ -12,6 +12,7 @@ import heroePlayers from '../components/heroe-players.vue'
 import heroesRankings from '../components/heroes-rankings.vue'
 import heroeDurations from '../components/heroe-durations.vue'
 import matchDetails from '../components/match-details.vue'
+import allTeams from '../components/all-teams.vue'
 
 
 export default new VueRouter({
@@ -28,6 +29,7 @@ export default new VueRouter({
       {path: "/heroes/:id/players", component: heroePlayers},
       {path: "/heroes/:id/rankings", component: heroesRankings},
       {path: "/heroes/:id/durations", component: heroeDurations},
-      {path: "/matches/:id", component: matchDetails}
+      {path: "/matches/:id", component: matchDetails},
+      {path: "/teams/", component: allTeams},
 	]
 });

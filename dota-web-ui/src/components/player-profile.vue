@@ -12,7 +12,6 @@
           <h4>MMR points: {{this.player.mmr_estimate.estimate}}</h4>
           <h4>Competitive Rank: {{this.player.competitive_rank}}</h4>
           <h4>Rank tier: {{this.player.rank_tier}}</h4>
-          <h2>views: {{this.views}}</h2>
           <b-button :href="'#/player/'+ this.player.profile.account_id +'/peers'" variant="primary">Discover Peers</b-button>
           <b-button :href="'#/player/'+ this.player.profile.account_id + '/rmatches/'" variant="primary">See Recent Matches</b-button>
           <b-button :href="'#/player/'+ this.player.profile.account_id + '/heroes/'" variant="primary">Discover Heroes</b-button>
@@ -24,13 +23,10 @@
 </template>
 
 <script>
-    import io from "socket.io-client";
     import playerService from '../services/playerService';
     export default {
      data() {
-      return {
-        socket: {},
-        views:0, 			
+      return {			
         player :{},
         loading:false
     }
@@ -54,31 +50,10 @@
   },	
 
   created() {
-    this.socket = io('http://localhost:3000');
     this.player=this.getPlayer();
-    this.views++;
-    this.sendView()
   },
 
-  socketito: {
-          connect: function(){
-            console.log('Sockete connected')
-          },
-
-          getViews(views) {
-            this.views=views;
-          }
-
-        },
-
   methods: {
-
-    sendView() {
-            const payload = {
-              viewsP:views
-            }
-            this.socket.emit('profile_view', payload);
-          },
 
     getPlayer(){
       this.loading=true;
