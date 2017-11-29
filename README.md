@@ -5,7 +5,7 @@
 2. npm install
 3. npm run start
 
-#run the socket
+# run the socket
 1. cd socket
 2. node socketito.js
 
