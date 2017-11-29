@@ -6,6 +6,6 @@
 3. npm run start
 
 # run the socket
-1. cd socket
+1. cd dota-web-ui/socket
 2. node socketito.js
 
