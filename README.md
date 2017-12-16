@@ -1,6 +1,6 @@
-# dota-stats
+# Preview
 
-> A Vue.js project
+> https://dotastats-fpalomero.herokuapp.com/#/
 
 ## Build Setup
 
