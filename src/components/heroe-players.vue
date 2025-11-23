@@ -1,88 +1,353 @@
 <template>
-	<b-card class="text-center">
-      <h3>Players who recently played with {{this.hero}}</h3>
-      <h3 v-if="loading">LOADING PAGE</h3>
-	    <h3 v-if="players.lenght<1">Looks so empty</h3>
-      <div v-else>
-        <transition-group name="bounce">
-    	    <b-card v-for="p in this.players" :key="p.account_id" bg-variant="dark" text-variant="white">
-    	    	<h4>ID: {{p.account_id}}</h4>
-    	    	<h4>GAMES: {{p.games_played}}</h4>
-    	    	<h4>WINS :{{p.wins}}</h4>
-    	    	<b-button :href="'/#/player/' + p.account_id">See profile</b-button>
-    		  </b-card>
-        </transition-group>
-      </div>
-  </b-card>
+	<div class="players-container">
+		<div class="players-header">
+			<h1 class="page-title">
+				<span class="title-icon">👥</span>
+				Players with {{ hero }}
+			</h1>
+			<p class="subtitle">Top players who recently played with this hero</p>
+		</div>
+
+		<div v-if="loading" class="loading-state">
+			<div class="spinner"></div>
+			<p>Loading players...</p>
+		</div>
+
+		<div v-else-if="!players || players.length < 1" class="empty-state">
+			<div class="empty-icon">😕</div>
+			<h3>No players found</h3>
+			<p>No one has played with this hero recently</p>
+		</div>
+
+		<transition-group v-else name="fade-slide" tag="div" class="players-grid">
+			<b-card
+				v-for="p in players"
+				:key="p.account_id"
+				class="player-card"
+			>
+				<div class="player-header">
+					<div class="player-id-section">
+						<span class="id-label">Player ID</span>
+						<span class="id-value">{{ p.account_id }}</span>
+					</div>
+				</div>
+
+				<div class="stats-section">
+					<div class="stat-box games">
+						<div class="stat-icon">🎮</div>
+						<div class="stat-content">
+							<div class="stat-label">Games</div>
+							<div class="stat-value">{{ p.games_played }}</div>
+						</div>
+					</div>
+					<div class="stat-box wins">
+						<div class="stat-icon">✅</div>
+						<div class="stat-content">
+							<div class="stat-label">Wins</div>
+							<div class="stat-value">{{ p.wins }}</div>
+						</div>
+					</div>
+					<div class="stat-box winrate">
+						<div class="stat-icon">📊</div>
+						<div class="stat-content">
+							<div class="stat-label">Win Rate</div>
+							<div class="stat-value">{{ calculateWinRate(p.wins, p.games_played) }}%</div>
+						</div>
+					</div>
+				</div>
+
+				<b-button
+					:href="'/#/player/' + p.account_id"
+					class="profile-btn"
+				>
+					<span class="btn-icon">👤</span>
+					View Profile
+				</b-button>
+			</b-card>
+		</transition-group>
+	</div>
 </template>
 
 <script>
 	import heroeService from '../services/heroeService';
-    export default {
-      props:['hero'],
-      data() {
-      return {   			
-   	    players:[],
-        loading:false
-    }
-  }, 
+	export default {
+		props: ['hero'],
+		data() {
+			return {
+				players: [],
+				loading: false
+			}
+		},
 
-  computed:{
-    params() {
-      return this.$route.params;
-    },
-    id() {
-      return this.$route.params.id;
-    }
+		computed: {
+			params() {
+				return this.$route.params;
+			},
+			id() {
+				return this.$route.params.id;
+			}
+		},
 
-  },
+		watch: {
+			'$route.params.id': function() {
+				this.id = this.$route.params.id;
+				this.getPlayers(this.id);
+			}
+		},
 
-  watch: {
-   '$route.params.id': function() {
-     this.id = this.$route.params.id;
-     this.getPlayers(this.id);
-   }
-  },	
+		created() {
+			this.getPlayers(this.id);
+		},
 
-  created() {
-   this.getPlayers(this.id);
-  },
+		methods: {
+			getPlayers() {
+				this.loading = true;
+				heroeService.getPlayersByHeroes(this.id)
+					.then((response) => {
+						this.players = response.data;
+						this.loading = false;
+					})
+					.catch(() => {
+						this.players = [];
+						this.loading = false;
+					})
+			},
 
-  methods: {
-
-    getPlayers(){
-      this.loading=true;
-      heroeService.getPlayersByHeroes(this.id)
-      .then((response) => {
-                      this.players = response.data;
-                      this.loading=false;
-                  })
-                  .catch((error) => {
-                      this.players=null;
-                      this.loading=false;
-                  })
-                }
-    },
-
-
-  }
+			calculateWinRate(wins, games) {
+				if (!games || games === 0) return 0;
+				return Math.round((wins / games) * 100);
+			}
+		}
+	}
 </script>
-<style>
-  .bounce-enter-active {
-    animation: bounce-in .5s;
-  }
-  .bounce-leave-active {
-    animation: bounce-in .5s reverse;
-  }
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
+
+<style scoped>
+.players-container {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.players-header {
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	margin-bottom: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.title-icon {
+	font-size: 2.5rem;
+}
+
+.subtitle {
+	color: #6c757d;
+	font-size: 1.1rem;
+}
+
+.loading-state {
+	text-align: center;
+	padding: 4rem 2rem;
+}
+
+.spinner {
+	width: 60px;
+	height: 60px;
+	border: 5px solid #f3f3f3;
+	border-top: 5px solid #667eea;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.empty-state {
+	text-align: center;
+	padding: 4rem 2rem;
+	background: #f8f9fa;
+	border-radius: 16px;
+}
+
+.empty-icon {
+	font-size: 5rem;
+	margin-bottom: 1.5rem;
+}
+
+.players-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1.5rem;
+}
+
+.player-card {
+	border-radius: 16px;
+	border: none;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+	overflow: hidden;
+}
+
+.player-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.player-header {
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid #f0f0f0;
+}
+
+.player-id-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.id-label {
+	font-size: 0.85rem;
+	color: #6c757d;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: 600;
+}
+
+.id-value {
+	font-size: 1.4rem;
+	font-weight: 800;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.stats-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.stat-box {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 1rem;
+	background: #f8f9fa;
+	border-radius: 12px;
+	transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+	background: #e9ecef;
+}
+
+.stat-box.games {
+	border-left: 4px solid #667eea;
+}
+
+.stat-box.wins {
+	border-left: 4px solid #00b894;
+}
+
+.stat-box.winrate {
+	border-left: 4px solid #fdcb6e;
+}
+
+.stat-icon {
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.stat-content {
+	flex: 1;
+}
+
+.stat-label {
+	font-size: 0.85rem;
+	color: #6c757d;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 0.25rem;
+}
+
+.stat-value {
+	font-size: 1.8rem;
+	font-weight: 800;
+	color: #2c3e50;
+}
+
+.profile-btn {
+	width: 100%;
+	padding: 0.875rem;
+	border-radius: 12px;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border: none;
+	color: white;
+	font-weight: 600;
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-icon {
+	font-size: 1.2rem;
+}
+
+.fade-slide-enter-active {
+	transition: all 0.4s ease-out;
+}
+
+.fade-slide-leave-active {
+	transition: all 0.3s ease-in;
+}
+
+.fade-slide-enter-from {
+	opacity: 0;
+	transform: translateY(20px);
+}
+
+.fade-slide-leave-to {
+	opacity: 0;
+	transform: translateY(-20px);
+}
+
+@media (max-width: 768px) {
+	.players-container {
+		padding: 1rem;
+	}
+
+	.page-title {
+		font-size: 2rem;
+		flex-direction: column;
+	}
+
+	.players-grid {
+		grid-template-columns: 1fr;
+	}
+}
 </style>
