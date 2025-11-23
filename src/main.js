@@ -12,9 +12,16 @@ import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 
 import socketio from 'socket.io-client'
-import VueSocketio from 'vue-socket.io'
-export const SocketInstance = socketio('http://localhost:3000'); 
-Vue.use(VueSocketio, SocketInstance);
+import VueSocketIO from 'vue-socket.io'
+// Use window.location.hostname to automatically use the correct IP
+const socketUrl = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000'
+  : `http://${window.location.hostname}:3000`;
+export const SocketInstance = socketio(socketUrl);
+Vue.use(new VueSocketIO({
+  debug: true,
+  connection: SocketInstance
+}));
 Vue.use(BootstrapVue);
 Vue.use(VueRouter);
 Vue.prototype.$http = axios;
