@@ -13,10 +13,14 @@ import BootstrapVue from 'bootstrap-vue'
 
 import socketio from 'socket.io-client'
 import VueSocketIO from 'vue-socket.io'
-// Use window.location.hostname to automatically use the correct IP
-const socketUrl = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000'
-  : `http://${window.location.hostname}:3000`;
+
+// Socket.IO configuration
+// In development: connect to separate socket server on port 3000
+// In production: connect to the same server (no port needed)
+const socketUrl = process.env.NODE_ENV === 'production'
+  ? window.location.origin  // Production: same host and port
+  : 'http://localhost:3000'; // Development: separate socket server
+
 export const SocketInstance = socketio(socketUrl);
 Vue.use(new VueSocketIO({
   debug: true,
