@@ -5,7 +5,9 @@
   "author": "Federico Palomero Garcia <fedepalo13@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack serve --config build/webpack.dev.conf.js",
+    "dev": "concurrently \"npm run dev:webpack\" \"npm run dev:socket\" --names \"VUE,SOCKET\" --prefix-colors \"cyan,magenta\"",
+    "dev:webpack": "webpack serve --config build/webpack.dev.conf.js",
+    "dev:socket": "node socket/socketito.js",
     "start": "node server.js",
     "build": "node build/build.js"
   },
@@ -28,6 +30,7 @@
     "axios": "^1.6.0",
     "babel-loader": "^9.1.3",
     "chalk": "^4.1.2",
+    "concurrently": "^9.2.1",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^7.0.2",
