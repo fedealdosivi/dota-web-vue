@@ -1,0 +1,14 @@
+[
+  {
+    "user": "TestUser",
+    "newMessage": "Hello! This is a test message from 1 hour ago",
+    "timestamp": "2025-11-24T14:46:00.000Z",
+    "id": 1732457160000.123
+  },
+  {
+    "user": "AnotherUser",
+    "newMessage": "This message should persist after refresh!",
+    "timestamp": "2025-11-24T15:00:00.000Z",
+    "id": 1732458000000.456
+  }
+]

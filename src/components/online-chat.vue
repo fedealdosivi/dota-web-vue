@@ -147,6 +147,11 @@ export default {
 
   mounted() {
     this.scrollToBottom();
+
+    // Ensure we request history if socket is already connected
+    if (this.socket && this.socket.connected) {
+      console.log('Socket already connected, messages should load automatically');
+    }
   }
 }
 </script>
