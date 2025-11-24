@@ -109,6 +109,12 @@ export default {
 
 			// Get first letters of each word (max 3)
 			const words = name.trim().split(/\s+/);
+
+			// For single word names (like "OG"), take first 2 characters
+			if (words.length === 1 && words[0].length >= 2) {
+				return words[0].substring(0, 2).toUpperCase();
+			}
+
 			const initials = words
 				.slice(0, 3)
 				.map(word => word[0])

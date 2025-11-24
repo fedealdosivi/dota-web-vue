@@ -85,6 +85,32 @@ The production server runs on port 5000 (or PORT environment variable) and serve
 npm run build --report
 ```
 
+### Testing
+
+The project uses Jest and Vue Test Utils for unit testing.
+
+```bash
+# Run tests once
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage report
+npm run test:coverage
+```
+
+The test suite includes:
+- Component rendering tests
+- Loading and empty state tests
+- Data display verification
+- Utility function tests (KDA calculation, win rate, number formatting, team initials)
+
+Test coverage includes:
+- [all-teams.vue](src/components/all-teams.vue) - 100% coverage
+- [team-player.vue](src/components/team-player.vue) - 100% coverage
+- [match-details.vue](src/components/match-details.vue) - 100% coverage
+
 ## Deployment
 
 This project is configured for easy deployment to Render.com (free tier available).
