@@ -83,6 +83,14 @@ export default {
       console.log('Socket connected')
       this.onlineUsers = Math.floor(Math.random() * 10) + 1; // Simulated for now
     },
+    loadHistory(messages) {
+      // Load historical messages when connecting
+      console.log(`Loaded ${messages.length} historical messages`);
+      this.messages = messages;
+      this.$nextTick(() => {
+        this.scrollToBottom();
+      });
+    },
     receiveMessage(message) {
       // Add timestamp if not present
       if (!message.timestamp) {
