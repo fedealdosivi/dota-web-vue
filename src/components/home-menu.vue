@@ -11,165 +11,154 @@
     </div>
 
     <b-carousel
-      id="carousel1"
       class="modern-carousel"
-      controls
-      indicators
+      :autoplay="true"
       :interval="5000"
+      :indicator="true"
+      :arrow="true"
+      :arrow-hover="true"
       v-model="slide"
-      @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
     >
       <!-- Intro Slide -->
-      <b-carousel-slide class="carousel-slide-custom">
-        <template #img>
-          <div class="slide-wrapper intro-slide">
-            <div class="slide-overlay"></div>
-            <img
-              src="http://esports.inquirer.net/wp-content/uploads/2016/10/22.jpg"
-              alt="Dota 2"
-              class="slide-bg-img"
-            />
-            <div class="slide-content">
-              <h2 class="slide-title">Welcome to Dota Stats</h2>
-              <p class="slide-text">
-                Dota 2 is a free-to-play multiplayer online battle arena video game developed and published by Valve Corporation.
-              </p>
-              <div class="slide-badge">
-                <span class="badge-icon">🎮</span>
-                Explore Stats
-              </div>
+      <b-carousel-item>
+        <div class="slide-wrapper intro-slide">
+          <div class="slide-overlay"></div>
+          <img
+            src="http://esports.inquirer.net/wp-content/uploads/2016/10/22.jpg"
+            alt="Dota 2"
+            class="slide-bg-img"
+          />
+          <div class="slide-content">
+            <h2 class="slide-title">Welcome to Dota Stats</h2>
+            <p class="slide-text">
+              Dota 2 is a free-to-play multiplayer online battle arena video game developed and published by Valve Corporation.
+            </p>
+            <div class="slide-badge">
+              <span class="badge-icon">🎮</span>
+              Explore Stats
             </div>
           </div>
-        </template>
-      </b-carousel-slide>
+        </div>
+      </b-carousel-item>
 
       <!-- Players Slide -->
-      <b-carousel-slide class="carousel-slide-custom">
-        <template #img>
-          <div class="slide-wrapper players-slide">
-            <div class="slide-overlay"></div>
-            <img
-              src="https://i.redd.it/5csw96tgafjy.jpg"
-              alt="Players"
-              class="slide-bg-img"
-            />
-            <div class="slide-content">
-              <h2 class="slide-title">
-                <span class="slide-icon">👥</span>
-                Players
-              </h2>
-              <p class="slide-text">
-                Search for players and discover their comprehensive statistics, match history, and performance metrics
-              </p>
-              <b-button href="/#/player" class="slide-cta">
-                Explore Players
-                <span class="cta-arrow">→</span>
-              </b-button>
-            </div>
+      <b-carousel-item>
+        <div class="slide-wrapper players-slide">
+          <div class="slide-overlay"></div>
+          <img
+            src="https://i.redd.it/5csw96tgafjy.jpg"
+            alt="Players"
+            class="slide-bg-img"
+          />
+          <div class="slide-content">
+            <h2 class="slide-title">
+              <span class="slide-icon">👥</span>
+              Players
+            </h2>
+            <p class="slide-text">
+              Search for players and discover their comprehensive statistics, match history, and performance metrics
+            </p>
+            <b-button tag="a" href="/#/player" type="is-white is-light" size="is-large" class="slide-cta">
+              Explore Players
+              <span class="cta-arrow">→</span>
+            </b-button>
           </div>
-        </template>
-      </b-carousel-slide>
+        </div>
+      </b-carousel-item>
 
       <!-- Heroes Slide -->
-      <b-carousel-slide class="carousel-slide-custom">
-        <template #img>
-          <div class="slide-wrapper heroes-slide">
-            <div class="slide-overlay"></div>
-            <img
-              src="http://wallpapersdsc.net/wp-content/uploads/2015/11/Dota_2_Iphone_wallpapers14.jpg"
-              alt="Heroes"
-              class="slide-bg-img"
-            />
-            <div class="slide-content">
-              <h2 class="slide-title">
-                <span class="slide-icon">🦸</span>
-                Heroes
-              </h2>
-              <p class="slide-text">
-                Discover hero statistics, rankings, and find out which players excel with each character
-              </p>
-              <b-button href="/#/heroes" class="slide-cta">
-                Browse Heroes
-                <span class="cta-arrow">→</span>
-              </b-button>
-            </div>
+      <b-carousel-item>
+        <div class="slide-wrapper heroes-slide">
+          <div class="slide-overlay"></div>
+          <img
+            src="http://wallpapersdsc.net/wp-content/uploads/2015/11/Dota_2_Iphone_wallpapers14.jpg"
+            alt="Heroes"
+            class="slide-bg-img"
+          />
+          <div class="slide-content">
+            <h2 class="slide-title">
+              <span class="slide-icon">🦸</span>
+              Heroes
+            </h2>
+            <p class="slide-text">
+              Discover hero statistics, rankings, and find out which players excel with each character
+            </p>
+            <b-button tag="a" href="/#/heroes" type="is-white is-light" size="is-large" class="slide-cta">
+              Browse Heroes
+              <span class="cta-arrow">→</span>
+            </b-button>
           </div>
-        </template>
-      </b-carousel-slide>
+        </div>
+      </b-carousel-item>
 
       <!-- Teams Slide -->
-      <b-carousel-slide class="carousel-slide-custom">
-        <template #img>
-          <div class="slide-wrapper teams-slide">
-            <div class="slide-overlay"></div>
-            <img
-              src="https://images2.alphacoders.com/466/thumb-1920-466303.jpg"
-              alt="Teams"
-              class="slide-bg-img"
-            />
-            <div class="slide-content">
-              <h2 class="slide-title">
-                <span class="slide-icon">🛡️</span>
-                Teams
-              </h2>
-              <p class="slide-text">
-                Explore professional teams, their rosters, and tournament performance
-              </p>
-              <b-button href="/#/teams" class="slide-cta">
-                View Teams
-                <span class="cta-arrow">→</span>
-              </b-button>
-            </div>
+      <b-carousel-item>
+        <div class="slide-wrapper teams-slide">
+          <div class="slide-overlay"></div>
+          <img
+            src="https://images2.alphacoders.com/466/thumb-1920-466303.jpg"
+            alt="Teams"
+            class="slide-bg-img"
+          />
+          <div class="slide-content">
+            <h2 class="slide-title">
+              <span class="slide-icon">🛡️</span>
+              Teams
+            </h2>
+            <p class="slide-text">
+              Explore professional teams, their rosters, and tournament performance
+            </p>
+            <b-button tag="a" href="/#/teams" type="is-white is-light" size="is-large" class="slide-cta">
+              View Teams
+              <span class="cta-arrow">→</span>
+            </b-button>
           </div>
-        </template>
-      </b-carousel-slide>
+        </div>
+      </b-carousel-item>
 
       <!-- Chat Slide -->
-      <b-carousel-slide class="carousel-slide-custom">
-        <template #img>
-          <div class="slide-wrapper chat-slide">
-            <div class="slide-overlay"></div>
-            <img
-              src="https://wallpaperscraft.com/image/dota_2_chibi_heroes_art_93793_1920x1080.jpg"
-              alt="Chat"
-              class="slide-bg-img"
-            />
-            <div class="slide-content">
-              <h2 class="slide-title">
-                <span class="slide-icon">💬</span>
-                Live Chat
-              </h2>
-              <p class="slide-text">
-                Connect and chat in real-time with other Dota 2 players from around the world
-              </p>
-              <b-button href="/#/chat" class="slide-cta chat-cta">
-                Join Chat
-                <span class="cta-arrow">→</span>
-              </b-button>
-            </div>
+      <b-carousel-item>
+        <div class="slide-wrapper chat-slide">
+          <div class="slide-overlay"></div>
+          <img
+            src="https://wallpaperscraft.com/image/dota_2_chibi_heroes_art_93793_1920x1080.jpg"
+            alt="Chat"
+            class="slide-bg-img"
+          />
+          <div class="slide-content">
+            <h2 class="slide-title">
+              <span class="slide-icon">💬</span>
+              Live Chat
+            </h2>
+            <p class="slide-text">
+              Connect and chat in real-time with other Dota 2 players from around the world
+            </p>
+            <b-button tag="a" href="/#/chat" type="is-white is-light" size="is-large" class="slide-cta chat-cta">
+              Join Chat
+              <span class="cta-arrow">→</span>
+            </b-button>
           </div>
-        </template>
-      </b-carousel-slide>
+        </div>
+      </b-carousel-item>
     </b-carousel>
 
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card box">
         <div class="feature-icon">📊</div>
         <h3>Detailed Stats</h3>
         <p>In-depth analytics and performance metrics</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card box">
         <div class="feature-icon">🏆</div>
         <h3>Rankings</h3>
         <p>Track top players and hero rankings</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card box">
         <div class="feature-icon">🔄</div>
         <h3>Real-time Updates</h3>
         <p>Stay updated with live data</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card box">
         <div class="feature-icon">🌐</div>
         <h3>Community</h3>
         <p>Connect with players worldwide</p>
@@ -182,16 +171,7 @@
 export default {
   data () {
     return {
-      slide: 0,
-      sliding: null
-    }
-  },
-  methods: {
-    onSlideStart (slide) {
-      this.sliding = true
-    },
-    onSlideEnd (slide) {
-      this.sliding = false
+      slide: 0
     }
   }
 }
@@ -213,7 +193,7 @@ export default {
 .hero-title {
   font-size: 3.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -231,7 +211,7 @@ export default {
 
 .hero-subtitle {
   font-size: 1.3rem;
-  color: #6c757d;
+  color: #7a7a7a;
   max-width: 800px;
   margin: 0 auto;
   line-height: 1.6;
@@ -242,9 +222,6 @@ export default {
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   margin-bottom: 3rem;
-}
-
-.carousel-slide-custom {
   height: 500px;
 }
 
@@ -274,7 +251,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(121, 87, 213, 0.8) 0%, rgba(142, 68, 173, 0.8) 100%);
   opacity: 0.7;
 }
 
@@ -327,33 +304,24 @@ export default {
 }
 
 .slide-cta {
-  background: white;
-  color: #667eea;
-  border: none;
-  padding: 1rem 2.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border-radius: 50px;
-  transition: all 0.3s ease;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
 }
 
 .slide-cta:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  color: #764ba2;
+  transform: translateY(-4px) scale(1.05) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3) !important;
 }
 
 .chat-cta {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
-}
-
-.chat-cta:hover {
-  color: white;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+  color: white !important;
+  border: none !important;
 }
 
 .cta-arrow {
@@ -375,15 +343,12 @@ export default {
 .feature-card {
   text-align: center;
   padding: 2rem;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 .feature-icon {
@@ -399,7 +364,7 @@ export default {
 }
 
 .feature-card p {
-  color: #6c757d;
+  color: #7a7a7a;
   font-size: 1rem;
 }
 
@@ -420,7 +385,7 @@ export default {
     font-size: 1.1rem;
   }
 
-  .carousel-slide-custom,
+  .modern-carousel,
   .slide-wrapper {
     height: 400px;
   }
@@ -435,11 +400,6 @@ export default {
 
   .slide-text {
     font-size: 1.1rem;
-  }
-
-  .slide-cta {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
   }
 
   .features-grid {

@@ -8,35 +8,30 @@
 			<p class="subtitle">Match duration statistics for this hero</p>
 		</div>
 
-		<div v-if="loading" class="loading-state">
-			<div class="spinner"></div>
-			<p>Loading duration statistics...</p>
-		</div>
+		<b-loading :active="loading" :is-full-page="false"></b-loading>
 
-		<div v-else-if="!durations || durations.length < 1" class="empty-state">
+		<div v-if="!loading && (!durations || durations.length < 1)" class="empty-state">
 			<div class="empty-icon">📊</div>
 			<h3>No data available</h3>
 			<p>Duration statistics are not available for this hero</p>
 		</div>
 
-		<div v-else class="table-container">
+		<div v-else-if="!loading" class="box table-container">
 			<b-table
-				:items="durations"
-				:fields="tableFields"
-				striped
-				hover
-				responsive
-				class="modern-table"
+				:data="durations"
+				:striped="true"
+				:hoverable="true"
+				:mobile-cards="true"
 			>
-				<template #cell(duration_bin)="data">
-					<span class="duration-badge">{{ formatDuration(data.value) }}</span>
-				</template>
-				<template #cell(games_played)="data">
-					<span class="stat-value games">{{ data.value }}</span>
-				</template>
-				<template #cell(wins)="data">
-					<span class="stat-value wins">{{ data.value }}</span>
-				</template>
+				<b-table-column field="duration_bin" label="Duration Range" centered v-slot="props">
+					<b-tag class="duration-badge">{{ formatDuration(props.row.duration_bin) }}</b-tag>
+				</b-table-column>
+				<b-table-column field="games_played" label="Games Played" centered numeric v-slot="props">
+					<span class="stat-value games">{{ props.row.games_played }}</span>
+				</b-table-column>
+				<b-table-column field="wins" label="Wins" centered numeric v-slot="props">
+					<span class="stat-value wins">{{ props.row.wins }}</span>
+				</b-table-column>
 			</b-table>
 		</div>
 	</div>
@@ -48,12 +43,7 @@
 		data() {
 			return {
 				durations: [],
-				loading: false,
-				tableFields: [
-					{ key: 'duration_bin', label: 'Duration Range', sortable: true, class: 'text-center' },
-					{ key: 'games_played', label: 'Games Played', sortable: true, class: 'text-center' },
-					{ key: 'wins', label: 'Wins', sortable: true, class: 'text-center' }
-				]
+				loading: false
 			}
 		},
 
@@ -105,6 +95,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 2rem;
+	position: relative;
 }
 
 .durations-header {
@@ -115,7 +106,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -131,28 +122,8 @@
 }
 
 .subtitle {
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 1.1rem;
-}
-
-.loading-state {
-	text-align: center;
-	padding: 4rem 2rem;
-}
-
-.spinner {
-	width: 60px;
-	height: 60px;
-	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	margin: 0 auto 1.5rem;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
 }
 
 .empty-state {
@@ -168,54 +139,17 @@
 }
 
 .table-container {
-	background: white;
 	border-radius: 16px;
-	padding: 2rem;
+	border: 1px solid #dbdbdb;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.modern-table {
-	margin-bottom: 0;
-}
-
-.modern-table >>> thead {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: white;
-}
-
-.modern-table >>> thead th {
-	border: none;
-	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-	font-size: 0.9rem;
-	padding: 1rem;
-}
-
-.modern-table >>> tbody tr {
-	transition: all 0.3s ease;
-}
-
-.modern-table >>> tbody tr:hover {
-	background: #f8f9fa;
-	transform: scale(1.01);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.modern-table >>> tbody td {
-	padding: 1rem;
-	vertical-align: middle;
-	font-size: 1rem;
-}
-
 .duration-badge {
-	display: inline-block;
-	padding: 0.5rem 1rem;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	color: white;
-	border-radius: 20px;
 	font-weight: 600;
 	font-size: 0.95rem;
+	border: none;
 }
 
 .stat-value {
@@ -226,8 +160,8 @@
 }
 
 .stat-value.games {
-	color: #667eea;
-	background: rgba(102, 126, 234, 0.1);
+	color: #7957d5;
+	background: rgba(121, 87, 213, 0.1);
 }
 
 .stat-value.wins {
@@ -247,13 +181,6 @@
 
 	.table-container {
 		padding: 1rem;
-		overflow-x: auto;
-	}
-
-	.modern-table >>> thead th,
-	.modern-table >>> tbody td {
-		padding: 0.75rem 0.5rem;
-		font-size: 0.85rem;
 	}
 }
 </style>

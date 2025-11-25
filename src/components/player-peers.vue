@@ -20,13 +20,15 @@
 		</div>
 
 		<transition-group v-else name="fade-slide" tag="div" class="peers-grid">
-			<b-card
+			<div
 				v-for="p in peers"
 				:key="p.account_id"
-				class="peer-card"
+				class="box peer-card"
 			>
 				<div class="peer-header">
-					<b-img :src="p.avatarfull" alt="Avatar" class="peer-avatar" />
+					<figure class="image is-96x96 avatar-figure">
+						<img :src="p.avatarfull" alt="Avatar" class="peer-avatar" />
+					</figure>
 					<div class="peer-info">
 						<h3 class="peer-name">{{ p.personaname }}</h3>
 						<p class="peer-id">ID: {{ p.account_id }}</p>
@@ -68,35 +70,43 @@
 
 				<div class="action-buttons">
 					<b-button
+						tag="a"
 						:href="'/#/player/' + p.account_id"
+						type="is-light"
 						class="action-btn profile-btn"
 					>
 						<span class="btn-icon">👤</span>
 						Profile
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id +'/peers'"
+						type="is-light"
 						class="action-btn peers-btn"
 					>
 						<span class="btn-icon">👥</span>
 						Peers
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id + '/rmatches/'"
+						type="is-light"
 						class="action-btn matches-btn"
 					>
 						<span class="btn-icon">📋</span>
 						Matches
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id + '/heroes/'"
+						type="is-light"
 						class="action-btn heroes-btn"
 					>
 						<span class="btn-icon">🦸</span>
 						Heroes
 					</b-button>
 				</div>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -183,7 +193,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -212,7 +222,7 @@
 	width: 60px;
 	height: 60px;
 	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
+	border-top: 5px solid #7957d5;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1.5rem;
@@ -263,12 +273,13 @@
 	border-bottom: 2px solid #f0f0f0;
 }
 
+.avatar-figure {
+	flex-shrink: 0;
+}
+
 .peer-avatar {
-	width: 80px;
-	height: 80px;
 	border-radius: 12px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	flex-shrink: 0;
 }
 
 .peer-info {
@@ -321,7 +332,7 @@
 }
 
 .stat-box.games {
-	border-left: 4px solid #667eea;
+	border-left: 4px solid #7957d5;
 }
 
 .stat-box.wins {
@@ -390,9 +401,9 @@
 }
 
 .profile-btn:hover {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border-color: transparent;
-	color: white;
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%) !important;
+	border-color: transparent !important;
+	color: white !important;
 }
 
 .peers-btn:hover {

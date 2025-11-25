@@ -9,52 +9,49 @@
 		</div>
 
 		<!-- Search Bar -->
-		<b-card class="search-card">
+		<div class="box search-card">
 			<div class="search-wrapper">
 				<span class="search-icon">🔍</span>
-				<b-form-input
+				<b-input
 					v-model="heroFilter"
 					type="text"
 					placeholder="Search by name, attribute, attack type..."
 					class="modern-search-input"
-				></b-form-input>
+				></b-input>
 				<span v-if="heroFilter" class="clear-btn" @click="heroFilter = ''">✕</span>
 			</div>
 			<div v-if="heroFilter && heroesFilter.length > 0" class="results-count">
 				Found {{ heroesFilter.length }} hero{{ heroesFilter.length !== 1 ? 'es' : '' }}
 			</div>
-		</b-card>
-
-		<!-- Loading State -->
-		<div v-if="loading" class="loading-state">
-			<div class="spinner"></div>
-			<p>Loading heroes...</p>
 		</div>
 
+		<!-- Loading State -->
+		<b-loading :active="loading" :is-full-page="false"></b-loading>
+
 		<!-- Empty State -->
-		<div v-else-if="!heroes || heroes.length < 1" class="empty-state">
+		<div v-if="!loading && (!heroes || heroes.length < 1)" class="empty-state">
 			<div class="empty-icon">🎯</div>
 			<h3>No heroes found</h3>
 			<p>Try adjusting your search criteria</p>
 		</div>
 
 		<!-- Heroes Grid -->
-		<transition-group v-else name="fade-slide" tag="div" class="heroes-grid">
-			<b-card
+		<transition-group v-else-if="!loading" name="fade-slide" tag="div" class="heroes-grid">
+			<div
 				v-for="h in heroesFilter"
 				:key="h.id"
-				class="hero-card"
+				class="box hero-card"
 			>
 				<!-- Hero Header -->
 				<div class="hero-header">
 					<h3 class="hero-name">{{ h.localized_name }}</h3>
 					<div class="hero-badges">
-						<span :class="['attribute-badge', getAttributeClass(h.primary_attr)]">
+						<b-tag :class="['attribute-badge', getAttributeClass(h.primary_attr)]">
 							{{ getAttributeIcon(h.primary_attr) }} {{ h.primary_attr }}
-						</span>
-						<span :class="['attack-badge', getAttackClass(h.attack_type)]">
+						</b-tag>
+						<b-tag :class="['attack-badge', getAttackClass(h.attack_type)]">
 							{{ getAttackIcon(h.attack_type) }} {{ h.attack_type }}
-						</span>
+						</b-tag>
 					</div>
 				</div>
 
@@ -65,15 +62,16 @@
 						Roles
 					</div>
 					<div class="roles-tags">
-						<span v-for="(role, index) in h.roles" :key="index" class="role-tag">
+						<b-tag v-for="(role, index) in h.roles" :key="index" class="role-tag">
 							{{ role }}
-						</span>
+						</b-tag>
 					</div>
 				</div>
 
 				<!-- Action Buttons -->
 				<div class="action-buttons">
 					<b-button
+						tag="a"
 						:href="'#/heroes/'+ h.id + '/matches/'"
 						class="action-btn matches-btn"
 					>
@@ -81,6 +79,7 @@
 						<span class="btn-label">Matches</span>
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/heroes/'+ h.id + '/players/'"
 						class="action-btn players-btn"
 					>
@@ -88,6 +87,7 @@
 						<span class="btn-label">Players</span>
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/heroes/'+ h.id + '/rankings/'"
 						class="action-btn rankings-btn"
 					>
@@ -95,6 +95,7 @@
 						<span class="btn-label">Rankings</span>
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/heroes/'+ h.id + '/durations/'"
 						class="action-btn durations-btn"
 					>
@@ -102,7 +103,7 @@
 						<span class="btn-label">Durations</span>
 					</b-button>
 				</div>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -184,6 +185,7 @@
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 2rem;
+	position: relative;
 }
 
 .heroes-header {
@@ -194,7 +196,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -210,14 +212,14 @@
 }
 
 .subtitle {
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 1.1rem;
 }
 
 .search-card {
 	margin-bottom: 2rem;
 	border-radius: 16px;
-	border: none;
+	border: 1px solid #dbdbdb;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -230,28 +232,18 @@
 
 .search-icon {
 	font-size: 1.5rem;
-	color: #6c757d;
+	color: #7a7a7a;
 }
 
 .modern-search-input {
 	flex: 1;
-	padding: 0.75rem 1.25rem;
-	border-radius: 12px;
-	border: 2px solid #e9ecef;
-	font-size: 1.1rem;
-	transition: all 0.3s ease;
-}
-
-.modern-search-input:focus {
-	border-color: #667eea;
-	box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
 }
 
 .clear-btn {
 	position: absolute;
 	right: 1rem;
 	font-size: 1.2rem;
-	color: #6c757d;
+	color: #7a7a7a;
 	cursor: pointer;
 	transition: color 0.3s ease;
 	padding: 0.25rem 0.5rem;
@@ -264,29 +256,9 @@
 .results-count {
 	margin-top: 1rem;
 	text-align: center;
-	color: #667eea;
+	color: #7957d5;
 	font-weight: 600;
 	font-size: 0.95rem;
-}
-
-.loading-state {
-	text-align: center;
-	padding: 4rem 2rem;
-}
-
-.spinner {
-	width: 60px;
-	height: 60px;
-	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	margin: 0 auto 1.5rem;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
 }
 
 .empty-state {
@@ -309,7 +281,7 @@
 
 .hero-card {
 	border-radius: 16px;
-	border: none;
+	border: 1px solid #dbdbdb;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 	transition: all 0.3s ease;
 	overflow: hidden;
@@ -343,50 +315,52 @@
 
 .attribute-badge,
 .attack-badge {
-	padding: 0.5rem 1rem;
-	border-radius: 20px;
 	font-weight: 600;
 	font-size: 0.85rem;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
 }
 
 .attribute-badge.strength {
 	background: linear-gradient(135deg, #d63031 0%, #ff7675 100%);
 	color: white;
+	border: none;
 }
 
 .attribute-badge.agility {
 	background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
 	color: white;
+	border: none;
 }
 
 .attribute-badge.intelligence {
 	background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%);
 	color: white;
+	border: none;
 }
 
 .attribute-badge.default {
-	background: linear-gradient(135deg, #6c757d 0%, #adb5bd 100%);
+	background: linear-gradient(135deg, #7a7a7a 0%, #adb5bd 100%);
 	color: white;
+	border: none;
 }
 
 .attack-badge.melee {
 	background: linear-gradient(135deg, #e17055 0%, #fab1a0 100%);
 	color: white;
+	border: none;
 }
 
 .attack-badge.ranged {
 	background: linear-gradient(135deg, #a29bfe 0%, #dfe6e9 100%);
 	color: #2c3e50;
+	border: none;
 }
 
 .attack-badge.default {
 	background: linear-gradient(135deg, #b2bec3 0%, #dfe6e9 100%);
 	color: #2c3e50;
+	border: none;
 }
 
 .roles-section {
@@ -397,7 +371,7 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 0.85rem;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
@@ -416,13 +390,9 @@
 }
 
 .role-tag {
-	padding: 0.4rem 0.8rem;
 	background: #f8f9fa;
-	border-radius: 12px;
 	color: #2c3e50;
-	font-size: 0.85rem;
-	font-weight: 500;
-	border: 1px solid #e9ecef;
+	border: 1px solid #dbdbdb;
 }
 
 .action-buttons {
@@ -432,10 +402,9 @@
 }
 
 .action-btn {
-	padding: 0.75rem;
 	border-radius: 12px;
 	background: white;
-	border: 2px solid #e9ecef;
+	border: 2px solid #dbdbdb;
 	color: #2c3e50;
 	font-weight: 600;
 	font-size: 0.9rem;
@@ -452,7 +421,7 @@
 }
 
 .matches-btn:hover {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	border-color: transparent;
 	color: white;
 }

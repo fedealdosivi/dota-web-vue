@@ -8,91 +8,93 @@
 			<p class="subtitle">Find and discover Dota 2 player statistics</p>
 		</div>
 
-		<b-card class="search-card">
-			<div class="search-input-wrapper">
-				<b-form-input
+		<div class="box search-card">
+			<b-field grouped>
+				<b-input
 					v-model="playerName"
 					type="text"
 					placeholder="Enter player name..."
-					class="modern-search-input"
-					@keyup.enter="getPlayer()"
-				></b-form-input>
-				<b-button
-					type="submit"
-					:disabled="!formOk"
-					@click='getPlayer()'
-					class="search-button"
-				>
-					<span v-if="loading">🔄</span>
-					<span v-else>Search</span>
-				</b-button>
-			</div>
-		</b-card>
-
-		<div v-if="loading" class="loading-state">
-			<div class="spinner"></div>
-			<p>Searching for players...</p>
+					expanded
+					@keyup.native.enter="getPlayer()"
+				></b-input>
+				<p class="control">
+					<b-button
+						type="is-primary"
+						:disabled="!formOk"
+						:loading="loading"
+						@click="getPlayer()"
+					>
+						Search
+					</b-button>
+				</p>
+			</b-field>
 		</div>
 
+		<b-loading :active="loading" :is-full-page="false">
+			<p>Searching for players...</p>
+		</b-loading>
+
 		<transition-group name="fade-slide" tag="div" class="results-grid">
-			<div v-if="this.players === null && !loading" key="no-results" class="no-results">
+			<div v-if="this.players === null && !loading" key="no-results" class="box no-results">
 				<div class="no-results-icon">😕</div>
-				<h3>Player not found</h3>
-				<p>Try searching with a different name</p>
+				<h3 class="title is-4">Player not found</h3>
+				<p class="subtitle is-6">Try searching with a different name</p>
 			</div>
 
-			<b-card
+			<div
 				v-else
 				v-for="p in this.players"
 				:key="p.account_id"
-				class="player-card"
+				class="box player-card"
 			>
 				<div class="player-header">
-					<b-img :src="p.avatarfull" alt="Avatar" class="player-avatar" />
+					<figure class="image is-96x96 player-avatar">
+						<img :src="p.avatarfull" alt="Avatar" class="is-rounded" />
+					</figure>
 					<div class="player-info">
-						<h4 class="player-name">{{ p.personaname }}</h4>
-						<p class="player-id">ID: {{ p.account_id }}</p>
+						<h4 class="title is-4 player-name">{{ p.personaname }}</h4>
+						<p class="subtitle is-6 player-id">ID: {{ p.account_id }}</p>
 						<p class="player-last-match">
 							Last Match: {{ formatDate(p.last_match_time) }}
 						</p>
 					</div>
 				</div>
 
-				<div class="player-actions">
+				<div class="buttons player-actions">
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id"
-						variant="primary"
-						class="action-btn primary-action"
+						type="is-primary"
+						icon-left="account"
 					>
-						<span class="btn-icon">👤</span>
 						Profile
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id + '/heroes/'"
-						variant="outline-primary"
-						class="action-btn"
+						type="is-info"
+						outlined
 					>
-						<span class="btn-icon">🦸</span>
-						Heroes
+						🦸 Heroes
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id + '/rmatches/'"
-						variant="outline-primary"
-						class="action-btn"
+						type="is-info"
+						outlined
 					>
-						<span class="btn-icon">📊</span>
-						Matches
+						📊 Matches
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/player/'+ p.account_id +'/peers'"
-						variant="outline-primary"
-						class="action-btn"
+						type="is-info"
+						outlined
 					>
-						<span class="btn-icon">👥</span>
-						Peers
+						👥 Peers
 					</b-button>
 				</div>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -157,7 +159,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -173,74 +175,12 @@
 }
 
 .subtitle {
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 1.1rem;
 }
 
 .search-card {
 	margin-bottom: 2rem;
-	border-radius: 16px;
-	border: none;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.search-input-wrapper {
-	display: flex;
-	gap: 1rem;
-}
-
-.modern-search-input {
-	flex: 1;
-	padding: 0.75rem 1.25rem;
-	border-radius: 12px;
-	border: 2px solid #e9ecef;
-	font-size: 1.1rem;
-	transition: all 0.3s ease;
-}
-
-.modern-search-input:focus {
-	border-color: #667eea;
-	box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-}
-
-.search-button {
-	padding: 0.75rem 2rem;
-	border-radius: 12px;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border: none;
-	font-weight: 600;
-	font-size: 1.1rem;
-	transition: all 0.3s ease;
-}
-
-.search-button:hover:not(:disabled) {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.search-button:disabled {
-	opacity: 0.6;
-	cursor: not-allowed;
-}
-
-.loading-state {
-	text-align: center;
-	padding: 3rem;
-}
-
-.spinner {
-	width: 50px;
-	height: 50px;
-	border: 4px solid #f3f3f3;
-	border-top: 4px solid #667eea;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	margin: 0 auto 1rem;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
 }
 
 .results-grid {
@@ -251,8 +191,6 @@
 .no-results {
 	text-align: center;
 	padding: 3rem;
-	background: #f8f9fa;
-	border-radius: 16px;
 }
 
 .no-results-icon {
@@ -261,16 +199,12 @@
 }
 
 .player-card {
-	border-radius: 16px;
-	border: none;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 	transition: all 0.3s ease;
-	overflow: hidden;
 }
 
 .player-card:hover {
 	transform: translateY(-4px);
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 .player-header {
@@ -278,14 +212,12 @@
 	gap: 1.5rem;
 	margin-bottom: 1.5rem;
 	padding-bottom: 1.5rem;
-	border-bottom: 2px solid #f0f0f0;
+	border-bottom: 1px solid #dbdbdb;
+	align-items: center;
 }
 
 .player-avatar {
-	width: 100px;
-	height: 100px;
-	border-radius: 12px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	flex-shrink: 0;
 }
 
 .player-info {
@@ -293,53 +225,20 @@
 }
 
 .player-name {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: #2c3e50;
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.5rem !important;
 }
 
 .player-id {
-	color: #6c757d;
-	font-size: 0.9rem;
-	margin-bottom: 0.25rem;
+	margin-bottom: 0.25rem !important;
 }
 
 .player-last-match {
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 0.9rem;
 }
 
 .player-actions {
-	display: flex;
-	gap: 0.75rem;
-	flex-wrap: wrap;
-}
-
-.action-btn {
-	flex: 1;
-	min-width: 120px;
-	border-radius: 8px;
-	font-weight: 600;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	transition: all 0.3s ease;
-}
-
-.primary-action {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border: none;
-}
-
-.primary-action:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.btn-icon {
-	font-size: 1.1rem;
+	margin-top: 1rem;
 }
 
 .fade-slide-enter-active {
@@ -369,10 +268,6 @@
 		font-size: 2rem;
 	}
 
-	.search-input-wrapper {
-		flex-direction: column;
-	}
-
 	.player-header {
 		flex-direction: column;
 		text-align: center;
@@ -380,10 +275,6 @@
 
 	.player-avatar {
 		margin: 0 auto;
-	}
-
-	.action-btn {
-		min-width: calc(50% - 0.375rem);
 	}
 }
 </style>

@@ -15,11 +15,9 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "bootstrap": "^4.6.2",
-    "bootstrap-vue": "^2.23.1",
+    "buefy": "^0.9.29",
     "dateformat": "^5.0.3",
     "express": "^4.18.2",
-    "popper.js": "^1.16.1",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
     "vue": "^2.7.15",

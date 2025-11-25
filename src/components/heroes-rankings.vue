@@ -20,17 +20,19 @@
 		</div>
 
 		<transition-group v-else name="fade-slide" tag="div" class="rankings-grid">
-			<b-card
+			<div
 				v-for="(r, index) in ranking.rankings"
 				:key="r.account_id"
-				class="player-rank-card"
+				class="box player-rank-card"
 			>
 				<div class="rank-badge">
 					<span class="rank-number">#{{ index + 1 }}</span>
 				</div>
 
 				<div class="player-content">
-					<b-img :src="r.avatar" alt="Avatar" class="player-avatar-img" />
+					<figure class="image is-128x128 avatar-figure">
+						<img :src="r.avatar" alt="Avatar" class="player-avatar-img is-rounded" />
+					</figure>
 
 					<div class="player-details">
 						<h4 class="player-persona">{{ r.personaname }}</h4>
@@ -54,13 +56,15 @@
 				</div>
 
 				<b-button
+					tag="a"
 					:href="'/#/player/' + r.account_id"
+					type="is-primary"
 					class="view-profile-btn"
 				>
 					<span class="btn-icon">👤</span>
 					View Profile
 				</b-button>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -140,7 +144,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -169,7 +173,7 @@
 	width: 50px;
 	height: 50px;
 	border: 4px solid #f3f3f3;
-	border-top: 4px solid #667eea;
+	border-top: 4px solid #7957d5;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1rem;
@@ -238,13 +242,13 @@
 	padding: 1rem 0;
 }
 
+.avatar-figure {
+	margin: 0 auto 1rem;
+}
+
 .player-avatar-img {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
 	border: 4px solid #f0f0f0;
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-	margin-bottom: 1rem;
 }
 
 .player-details {
@@ -287,7 +291,7 @@
 }
 
 .stat-value.score {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -316,8 +320,6 @@
 	margin-top: 1rem;
 	padding: 0.75rem;
 	border-radius: 12px;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border: none;
 	font-weight: 600;
 	font-size: 1rem;
 	display: flex;
@@ -329,7 +331,7 @@
 
 .view-profile-btn:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+	box-shadow: 0 4px 12px rgba(121, 87, 213, 0.4);
 }
 
 .btn-icon {

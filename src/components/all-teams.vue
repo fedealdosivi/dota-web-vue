@@ -8,35 +8,33 @@
 			<p class="subtitle">Browse professional Dota 2 teams</p>
 		</div>
 
-		<div v-if="loading" class="loading-state">
-			<div class="spinner"></div>
-			<p>Loading teams...</p>
-		</div>
+		<b-loading :active="loading" :is-full-page="false"></b-loading>
 
-		<div v-else-if="!teams || teams.length < 1" class="empty-state">
+		<div v-if="!loading && (!teams || teams.length < 1)" class="empty-state">
 			<div class="empty-icon">🏆</div>
 			<h3>No teams found</h3>
 			<p>No teams are available at the moment</p>
 		</div>
 
-		<transition-group v-else name="fade-slide" tag="div" class="teams-grid">
-			<b-card
+		<transition-group v-else-if="!loading" name="fade-slide" tag="div" class="teams-grid">
+			<div
 				v-for="t in teams"
 				:key="t.team_id"
-				class="team-card"
+				class="box team-card"
 			>
 				<div class="team-logo-container">
 					<div v-if="!imageLoaded[t.team_id]" class="team-logo-fallback">
 						{{ getTeamInitials(t.name || t.tag) }}
 					</div>
-					<b-img
-						v-show="imageLoaded[t.team_id]"
-						:src="getTeamLogoUrl(t)"
-						:alt="t.name"
-						class="team-logo"
-						@load="onImageLoad(t.team_id)"
-						@error="onImageError(t.team_id)"
-					/>
+					<figure v-show="imageLoaded[t.team_id]" class="image is-128x128">
+						<img
+							:src="getTeamLogoUrl(t)"
+							:alt="t.name"
+							class="team-logo"
+							@load="onImageLoad(t.team_id)"
+							@error="onImageError(t.team_id)"
+						/>
+					</figure>
 				</div>
 
 				<div class="team-info">
@@ -46,6 +44,7 @@
 
 				<div class="action-buttons">
 					<b-button
+						tag="a"
 						:href="'#/teams/' + t.team_id"
 						class="action-btn details-btn"
 					>
@@ -53,6 +52,7 @@
 						Team Details
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'#/teams/' + t.team_id + '/players/'"
 						class="action-btn players-btn"
 					>
@@ -60,7 +60,7 @@
 						View Players
 					</b-button>
 				</div>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -93,34 +93,24 @@ export default {
 		},
 
 		getTeamLogoUrl(team) {
-			// Try original URL first
 			if (team.logo_url) {
 				return team.logo_url;
 			}
-
-			// Fallback: Use a placeholder service with team name
 			const teamName = encodeURIComponent(team.name || team.tag || 'team');
-			// Using UI Avatars as a fallback for text-based logos
-			return `https://ui-avatars.com/api/?name=${teamName}&size=120&background=667eea&color=fff&bold=true&font-size=0.4`;
+			return `https://ui-avatars.com/api/?name=${teamName}&size=120&background=7957d5&color=fff&bold=true&font-size=0.4`;
 		},
 
 		getTeamInitials(name) {
 			if (!name) return '??';
-
-			// Get first letters of each word (max 3)
 			const words = name.trim().split(/\s+/);
-
-			// For single word names (like "OG"), take first 2 characters
 			if (words.length === 1 && words[0].length >= 2) {
 				return words[0].substring(0, 2).toUpperCase();
 			}
-
 			const initials = words
 				.slice(0, 3)
 				.map(word => word[0])
 				.join('')
 				.toUpperCase();
-
 			return initials || '??';
 		},
 
@@ -140,6 +130,7 @@ export default {
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 2rem;
+	position: relative;
 }
 
 .teams-header {
@@ -150,7 +141,7 @@ export default {
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -166,28 +157,8 @@ export default {
 }
 
 .subtitle {
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 1.1rem;
-}
-
-.loading-state {
-	text-align: center;
-	padding: 4rem 2rem;
-}
-
-.spinner {
-	width: 60px;
-	height: 60px;
-	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	margin: 0 auto 1.5rem;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
 }
 
 .empty-state {
@@ -210,7 +181,7 @@ export default {
 
 .team-card {
 	border-radius: 16px;
-	border: none;
+	border: 1px solid #dbdbdb;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 	transition: all 0.3s ease;
 	overflow: hidden;
@@ -227,7 +198,7 @@ export default {
 	justify-content: center;
 	padding: 2rem;
 	background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-	border-bottom: 2px solid #e9ecef;
+	border-bottom: 2px solid #dbdbdb;
 }
 
 .team-logo {
@@ -243,14 +214,14 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	border-radius: 50%;
 	font-size: 2.5rem;
 	font-weight: 800;
 	color: white;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+	box-shadow: 0 4px 12px rgba(121, 87, 213, 0.3);
 }
 
 .team-info {
@@ -262,7 +233,7 @@ export default {
 .team-tag {
 	display: inline-block;
 	padding: 0.5rem 1.5rem;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	color: white;
 	border-radius: 20px;
 	font-weight: 700;
@@ -287,10 +258,9 @@ export default {
 }
 
 .action-btn {
-	padding: 0.875rem;
 	border-radius: 12px;
 	background: white;
-	border: 2px solid #e9ecef;
+	border: 2px solid #dbdbdb;
 	color: #2c3e50;
 	font-weight: 600;
 	font-size: 0.9rem;
@@ -307,7 +277,7 @@ export default {
 }
 
 .details-btn:hover {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	border-color: transparent;
 	color: white;
 }

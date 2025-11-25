@@ -14,13 +14,15 @@
     <transition name="fade-slide" v-else>
       <div class="profile-content">
         <!-- Player Header Card -->
-        <b-card class="profile-header-card">
+        <div class="box profile-header-card">
           <div class="profile-header">
-            <b-img
-              :src="player.profile.avatarfull"
-              alt="Avatar"
-              class="profile-avatar"
-            />
+            <figure class="image is-128x128 avatar-figure">
+              <img
+                :src="player.profile.avatarfull"
+                alt="Avatar"
+                class="profile-avatar"
+              />
+            </figure>
             <div class="profile-info">
               <h2 class="player-name">
                 {{ player.profile.personaname }}
@@ -31,61 +33,67 @@
               <p class="player-id">Account ID: {{ player.profile.account_id }}</p>
             </div>
           </div>
-        </b-card>
+        </div>
 
         <!-- Stats Grid -->
         <div class="stats-grid">
-          <b-card class="stat-card" v-if="player.rank_tier">
+          <div class="box stat-card" v-if="player.rank_tier">
             <div class="stat-icon">🏆</div>
             <div class="stat-content">
               <div class="stat-label">Rank Tier</div>
               <div class="stat-value">{{ player.rank_tier }}</div>
             </div>
-          </b-card>
+          </div>
 
-          <b-card class="stat-card" v-if="player.solo_competitive_rank">
+          <div class="box stat-card" v-if="player.solo_competitive_rank">
             <div class="stat-icon">⭐</div>
             <div class="stat-content">
               <div class="stat-label">Solo Rank</div>
               <div class="stat-value">{{ player.solo_competitive_rank }}</div>
             </div>
-          </b-card>
+          </div>
 
-          <b-card class="stat-card" v-if="player.mmr_estimate && player.mmr_estimate.estimate">
+          <div class="box stat-card" v-if="player.mmr_estimate && player.mmr_estimate.estimate">
             <div class="stat-icon">📊</div>
             <div class="stat-content">
               <div class="stat-label">MMR Estimate</div>
               <div class="stat-value">{{ player.mmr_estimate.estimate }}</div>
             </div>
-          </b-card>
+          </div>
 
-          <b-card class="stat-card" v-if="player.competitive_rank">
+          <div class="box stat-card" v-if="player.competitive_rank">
             <div class="stat-icon">🎯</div>
             <div class="stat-content">
               <div class="stat-label">Competitive Rank</div>
               <div class="stat-value">{{ player.competitive_rank }}</div>
             </div>
-          </b-card>
+          </div>
         </div>
 
         <!-- Action Buttons -->
         <div class="action-buttons">
           <b-button
+            tag="a"
             :href="'#/player/'+ player.profile.account_id + '/heroes/'"
+            type="is-light"
             class="action-btn"
           >
             <span class="btn-icon">🦸</span>
             Hero Statistics
           </b-button>
           <b-button
+            tag="a"
             :href="'#/player/'+ player.profile.account_id + '/rmatches/'"
+            type="is-light"
             class="action-btn"
           >
             <span class="btn-icon">📋</span>
             Recent Matches
           </b-button>
           <b-button
+            tag="a"
             :href="'#/player/'+ player.profile.account_id +'/peers'"
+            type="is-light"
             class="action-btn"
           >
             <span class="btn-icon">👥</span>
@@ -160,7 +168,7 @@
   width: 60px;
   height: 60px;
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #667eea;
+  border-top: 5px solid #7957d5;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1.5rem;
@@ -193,7 +201,7 @@
   border-radius: 16px;
   border: none;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
   color: white;
 }
 
@@ -204,9 +212,11 @@
   padding: 1rem;
 }
 
+.avatar-figure {
+  flex-shrink: 0;
+}
+
 .profile-avatar {
-  width: 120px;
-  height: 120px;
   border-radius: 16px;
   border: 4px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -262,7 +272,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.stat-card .card-body {
+.stat-card {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -290,7 +300,7 @@
 .stat-value {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -305,9 +315,6 @@
 .action-btn {
   padding: 1rem 1.5rem;
   border-radius: 12px;
-  background: white;
-  border: 2px solid #e9ecef;
-  color: #2c3e50;
   font-weight: 600;
   font-size: 1.1rem;
   display: flex;
@@ -318,11 +325,11 @@
 }
 
 .action-btn:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-color: transparent;
-  color: white;
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%) !important;
+  border-color: transparent !important;
+  color: white !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(121, 87, 213, 0.4);
 }
 
 .btn-icon {

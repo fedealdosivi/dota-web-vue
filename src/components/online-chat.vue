@@ -1,67 +1,67 @@
 <template>
 	<div class="chat-container">
-   <transition name="slide-fade">
-      <b-card class="chat-card" no-body>
-        <div class="chat-header">
-          <h4 class="mb-0">
-            <span class="chat-icon">💬</span>
-            Live Chat
-            <b-badge variant="success" pill class="ml-2">{{ onlineUsers }} online</b-badge>
-          </h4>
-        </div>
+		<transition name="slide-fade">
+			<div class="box chat-card">
+				<div class="chat-header">
+					<h4 class="title is-4 mb-0">
+						<span class="chat-icon">💬</span>
+						Live Chat
+						<b-tag type="is-success" rounded class="ml-2">{{ onlineUsers }} online</b-tag>
+					</h4>
+				</div>
 
-        <div class="messages-container" ref="messagesContainer">
-          <div v-if="messages.length === 0" class="no-messages">
-            <p class="text-muted">No messages yet. Be the first to say hello!</p>
-          </div>
-          <div
-            v-for="(message, index) in messages"
-            :key="index"
-            class="message-item"
-            :class="{ 'own-message': message.user === user }"
-          >
-            <div class="message-avatar">
-              {{ message.user.charAt(0).toUpperCase() }}
-            </div>
-            <div class="message-content">
-              <div class="message-header">
-                <span class="message-user">{{ message.user }}</span>
-                <span class="message-time">{{ formatTime(message.timestamp) }}</span>
-              </div>
-              <div class="message-text">{{ message.newMessage }}</div>
-            </div>
-          </div>
-        </div>
+				<div class="messages-container" ref="messagesContainer">
+					<div v-if="messages.length === 0" class="no-messages">
+						<p class="has-text-grey">No messages yet. Be the first to say hello!</p>
+					</div>
+					<div
+						v-for="(message, index) in messages"
+						:key="index"
+						class="message-item"
+						:class="{ 'own-message': message.user === user }"
+					>
+						<div class="message-avatar">
+							{{ message.user.charAt(0).toUpperCase() }}
+						</div>
+						<div class="message-content">
+							<div class="message-header">
+								<span class="message-user">{{ message.user }}</span>
+								<span class="message-time">{{ formatTime(message.timestamp) }}</span>
+							</div>
+							<div class="message-text">{{ message.newMessage }}</div>
+						</div>
+					</div>
+				</div>
 
-        <div class="chat-input-container">
-          <b-form @submit.prevent="sendMessage" class="d-flex">
-            <b-input
-              v-model="user"
-              placeholder="Your name"
-              class="username-input"
-              :disabled="usernameLocked"
-            />
-            <b-input
-              v-model="newMessage"
-              placeholder="Type your message..."
-              class="message-input"
-              @keyup.enter="sendMessage"
-              autofocus
-            />
-            <b-button
-              type="submit"
-              :disabled="!formOk"
-              variant="primary"
-              class="send-button"
-            >
-              <span v-if="!formOk">✉️</span>
-              <span v-else>Send</span>
-            </b-button>
-          </b-form>
-        </div>
-      </b-card>
-   </transition>
-  </div>
+				<div class="chat-input-container">
+					<b-field grouped>
+						<b-input
+							v-model="user"
+							placeholder="Your name"
+							:disabled="usernameLocked"
+							class="username-input"
+						/>
+						<b-input
+							v-model="newMessage"
+							placeholder="Type your message..."
+							expanded
+							@keyup.native.enter="sendMessage"
+						/>
+						<p class="control">
+							<b-button
+								type="is-primary"
+								:disabled="!formOk"
+								@click="sendMessage"
+								native-type="submit"
+							>
+								{{ !formOk ? '✉️' : 'Send' }}
+							</b-button>
+						</p>
+					</b-field>
+				</div>
+			</div>
+		</transition>
+	</div>
 </template>
 <script>
 import { SocketInstance } from '../main';
@@ -163,19 +163,25 @@ export default {
 }
 
 .chat-card {
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   height: 600px;
   display: flex;
   flex-direction: column;
+  padding: 0 !important;
 }
 
 .chat-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--dota-gradient-primary);
   color: white;
   padding: 20px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
 .chat-icon {
@@ -187,7 +193,7 @@ export default {
   flex: 1;
   overflow-y: auto;
   padding: 20px;
-  background: #f8f9fa;
+  background: var(--dota-bg-dark);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -198,16 +204,16 @@ export default {
 }
 
 .messages-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--dota-bg-darkest);
 }
 
 .messages-container::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--dota-bg-light);
   border-radius: 4px;
 }
 
 .messages-container::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--dota-primary);
 }
 
 .no-messages {
@@ -229,7 +235,7 @@ export default {
 }
 
 .message-item.own-message .message-content {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--dota-gradient-primary);
   color: white;
 }
 
@@ -242,14 +248,14 @@ export default {
 }
 
 .message-item.own-message .message-avatar {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--dota-gradient-hero);
 }
 
 .message-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, var(--dota-accent-cyan) 0%, var(--dota-accent-teal) 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -260,11 +266,11 @@ export default {
 }
 
 .message-content {
-  background: white;
+  background: var(--dota-bg-medium);
   padding: 12px 16px;
   border-radius: 12px;
   max-width: 70%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .message-header {
@@ -278,12 +284,12 @@ export default {
 .message-user {
   font-weight: 600;
   font-size: 0.9em;
-  color: #667eea;
+  color: var(--dota-accent-orange);
 }
 
 .message-time {
   font-size: 0.75em;
-  color: #999;
+  color: var(--dota-text-muted);
 }
 
 .message-text {
@@ -293,41 +299,12 @@ export default {
 
 .chat-input-container {
   padding: 16px;
-  background: white;
-  border-top: 1px solid #e9ecef;
-}
-
-.chat-input-container form {
-  gap: 8px;
+  background: var(--dota-bg-medium);
+  border-top: 1px solid var(--dota-border);
 }
 
 .username-input {
-  flex: 0 0 140px;
-  border-radius: 8px;
-}
-
-.message-input {
-  flex: 1;
-  border-radius: 8px;
-}
-
-.send-button {
-  border-radius: 8px;
-  padding: 0.375rem 1.5rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.send-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
-.send-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  max-width: 140px;
 }
 
 @keyframes slideIn {
@@ -366,19 +343,14 @@ export default {
 
   .chat-card {
     height: calc(100vh - 20px);
-    border-radius: 12px;
   }
 
   .username-input {
-    flex: 0 0 100px;
+    max-width: 100px;
   }
 
   .message-content {
     max-width: 85%;
-  }
-
-  .send-button {
-    padding: 0.375rem 1rem;
   }
 }
 </style>

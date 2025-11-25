@@ -8,27 +8,24 @@
 			<p class="subtitle">Recent matches with this hero</p>
 		</div>
 
-		<div v-if="loading" class="loading-state">
-			<div class="spinner"></div>
-			<p>Loading matches...</p>
-		</div>
+		<b-loading :active="loading" :is-full-page="false"></b-loading>
 
-		<div v-else-if="!matches || matches.length < 1" class="empty-state">
+		<div v-if="!loading && (!matches || matches.length < 1)" class="empty-state">
 			<div class="empty-icon">🎯</div>
 			<h3>No matches found</h3>
 			<p>Looks so empty</p>
 		</div>
 
-		<transition-group v-else name="fade-slide" tag="div" class="matches-grid">
-			<b-card
+		<transition-group v-else-if="!loading" name="fade-slide" tag="div" class="matches-grid">
+			<div
 				v-for="m in matches"
 				:key="m.match_id"
-				:class="['match-card', getMatchResultClass(m.radiant_win, m.radiant)]"
+				:class="['box', 'match-card', getMatchResultClass(m.radiant_win, m.radiant)]"
 			>
 				<div class="match-result-badge">
-					<span :class="['result-text', getMatchResultClass(m.radiant_win, m.radiant)]">
+					<b-tag :class="['result-text', getMatchResultClass(m.radiant_win, m.radiant)]">
 						{{ getMatchResult(m.radiant_win, m.radiant) }}
-					</span>
+					</b-tag>
 				</div>
 
 				<div class="match-header">
@@ -44,9 +41,9 @@
 
 				<div class="team-indicator">
 					<span class="team-label">Played for:</span>
-					<span :class="['team-value', m.radiant ? 'radiant' : 'dire']">
+					<b-tag :class="['team-value', m.radiant ? 'radiant' : 'dire']">
 						{{ m.radiant ? 'Radiant' : 'Dire' }}
-					</span>
+					</b-tag>
 				</div>
 
 				<div class="kda-section">
@@ -74,21 +71,27 @@
 
 				<div class="action-buttons">
 					<b-button
+						tag="a"
 						:href="'/#/matches/' + m.match_id"
 						class="action-btn details-btn"
+						type="is-primary"
+						outlined
 					>
 						<span class="btn-icon">🔍</span>
 						Match Details
 					</b-button>
 					<b-button
+						tag="a"
 						:href="'/#/player/' + m.account_id"
 						class="action-btn player-btn"
+						type="is-info"
+						outlined
 					>
 						<span class="btn-icon">👤</span>
 						Player Profile
 					</b-button>
 				</div>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -160,6 +163,7 @@
 	max-width: 1400px;
 	margin: 0 auto;
 	padding: 2rem;
+	position: relative;
 }
 
 .matches-header {
@@ -170,7 +174,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -186,28 +190,8 @@
 }
 
 .subtitle {
-	color: #6c757d;
+	color: #7a7a7a;
 	font-size: 1.1rem;
-}
-
-.loading-state {
-	text-align: center;
-	padding: 4rem 2rem;
-}
-
-.spinner {
-	width: 60px;
-	height: 60px;
-	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-	margin: 0 auto 1.5rem;
-}
-
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
 }
 
 .empty-state {
@@ -231,7 +215,7 @@
 .match-card {
 	position: relative;
 	border-radius: 16px;
-	border: none;
+	border: 1px solid #dbdbdb;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 	transition: all 0.3s ease;
 	overflow: hidden;
@@ -257,21 +241,16 @@
 	z-index: 10;
 }
 
-.result-text {
-	padding: 0.5rem 1rem;
-	border-radius: 20px;
-	font-weight: 700;
-	font-size: 0.9rem;
-}
-
 .result-text.win {
 	background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
 	color: white;
+	border: none;
 }
 
 .result-text.loss {
 	background: linear-gradient(135deg, #d63031 0%, #ff7675 100%);
 	color: white;
+	border: none;
 }
 
 .match-header {
@@ -290,7 +269,7 @@
 
 .id-label {
 	font-size: 0.75rem;
-	color: #6c757d;
+	color: #7a7a7a;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
@@ -329,7 +308,7 @@
 
 .team-label {
 	font-size: 0.85rem;
-	color: #6c757d;
+	color: #7a7a7a;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
@@ -337,18 +316,18 @@
 .team-value {
 	font-size: 1.1rem;
 	font-weight: 700;
-	padding: 0.25rem 0.75rem;
-	border-radius: 8px;
 }
 
 .team-value.radiant {
 	background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
 	color: white;
+	border: none;
 }
 
 .team-value.dire {
 	background: linear-gradient(135deg, #d63031 0%, #ff7675 100%);
 	color: white;
+	border: none;
 }
 
 .kda-section {
@@ -384,12 +363,12 @@
 }
 
 .stat-item.assists .stat-number {
-	color: #667eea;
+	color: #7957d5;
 }
 
 .stat-label {
 	font-size: 0.75rem;
-	color: #6c757d;
+	color: #7a7a7a;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	margin-top: 0.25rem;
@@ -397,26 +376,26 @@
 
 .stat-divider {
 	font-size: 1.5rem;
-	color: #dee2e6;
+	color: #dbdbdb;
 	font-weight: 300;
 }
 
 .kda-ratio {
 	text-align: center;
 	padding-top: 1rem;
-	border-top: 2px solid #e9ecef;
+	border-top: 2px solid #dbdbdb;
 }
 
 .kda-label {
 	font-size: 0.9rem;
-	color: #6c757d;
+	color: #7a7a7a;
 	margin-right: 0.5rem;
 }
 
 .kda-value {
 	font-size: 1.5rem;
 	font-weight: 800;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -426,38 +405,6 @@
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.75rem;
-}
-
-.action-btn {
-	padding: 0.75rem;
-	border-radius: 12px;
-	background: white;
-	border: 2px solid #e9ecef;
-	color: #2c3e50;
-	font-weight: 600;
-	font-size: 0.9rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	transition: all 0.3s ease;
-}
-
-.action-btn:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.details-btn:hover {
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border-color: transparent;
-	color: white;
-}
-
-.player-btn:hover {
-	background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-	border-color: transparent;
-	color: white;
 }
 
 .btn-icon {

@@ -5,11 +5,11 @@ import App from './components/App'
 import VueRouter from 'vue-router'
 import router from './utils/router'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+import './assets/dota-theme.css'
 
 import axios from 'axios'
-import BootstrapVue from 'bootstrap-vue'
 
 import socketio from 'socket.io-client'
 import VueSocketIO from 'vue-socket.io'
@@ -26,7 +26,7 @@ Vue.use(new VueSocketIO({
   debug: true,
   connection: SocketInstance
 }));
-Vue.use(BootstrapVue);
+Vue.use(Buefy);
 Vue.use(VueRouter);
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false

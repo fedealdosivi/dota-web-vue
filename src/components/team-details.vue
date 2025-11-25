@@ -21,46 +21,46 @@
 
 		<div v-else class="team-content">
 			<!-- Team Header Card -->
-			<b-card class="team-header-card">
+			<div class="box team-header-card">
 				<div class="team-header">
 					<h2 class="team-name">{{ team.name }}</h2>
 					<div class="team-tag">{{ team.tag }}</div>
 				</div>
-			</b-card>
+			</div>
 
 			<!-- Team Stats Grid -->
 			<div class="stats-grid">
-				<b-card class="stat-card rating">
+				<div class="box stat-card rating">
 					<div class="stat-icon">⭐</div>
 					<div class="stat-content">
 						<div class="stat-label">Rating</div>
 						<div class="stat-value">{{ team.rating || 'N/A' }}</div>
 					</div>
-				</b-card>
+				</div>
 
-				<b-card class="stat-card wins">
+				<div class="box stat-card wins">
 					<div class="stat-icon">✅</div>
 					<div class="stat-content">
 						<div class="stat-label">Wins</div>
 						<div class="stat-value">{{ team.wins }}</div>
 					</div>
-				</b-card>
+				</div>
 
-				<b-card class="stat-card losses">
+				<div class="box stat-card losses">
 					<div class="stat-icon">❌</div>
 					<div class="stat-content">
 						<div class="stat-label">Losses</div>
 						<div class="stat-value">{{ team.losses }}</div>
 					</div>
-				</b-card>
+				</div>
 
-				<b-card class="stat-card winrate">
+				<div class="box stat-card winrate">
 					<div class="stat-icon">📊</div>
 					<div class="stat-content">
 						<div class="stat-label">Win Rate</div>
 						<div class="stat-value">{{ calculateWinRate(team.wins, team.losses) }}%</div>
 					</div>
-				</b-card>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -134,7 +134,7 @@ export default {
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -163,7 +163,7 @@ export default {
 	width: 60px;
 	height: 60px;
 	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
+	border-top: 5px solid #7957d5;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1.5rem;
@@ -196,7 +196,7 @@ export default {
 	border-radius: 16px;
 	border: none;
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	color: white;
 }
 
@@ -243,7 +243,7 @@ export default {
 	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-.stat-card .card-body {
+.stat-card {
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
@@ -271,7 +271,7 @@ export default {
 .stat-value {
 	font-size: 2rem;
 	font-weight: 800;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;

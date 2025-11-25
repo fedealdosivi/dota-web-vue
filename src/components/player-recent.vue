@@ -52,10 +52,10 @@
     </div>
 
     <transition-group v-else name="fade-slide" tag="div" class="matches-grid">
-      <b-card
+      <div
         v-for="m in matches"
         :key="m.match_id"
-        :class="['match-card', m.radiant_win ? 'match-win' : 'match-loss']"
+        :class="['box', 'match-card', m.radiant_win ? 'match-win' : 'match-loss']"
       >
         <!-- Match Result Badge -->
         <div class="match-result-badge">
@@ -125,11 +125,11 @@
         </div>
 
         <!-- Match Details Button -->
-        <b-button :href="'/#/matches/' + m.match_id" class="details-btn">
+        <b-button tag="a" :href="'/#/matches/' + m.match_id" type="is-light" class="details-btn">
           <span class="btn-icon">🔍</span>
           View Match Details
         </b-button>
-      </b-card>
+      </div>
     </transition-group>
   </div>
 </template>
@@ -221,7 +221,7 @@ export default {
 .page-title {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -311,7 +311,7 @@ export default {
   width: 60px;
   height: 60px;
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #667eea;
+  border-top: 5px solid #7957d5;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1.5rem;
@@ -460,7 +460,7 @@ export default {
 }
 
 .stat-item.assists .stat-number {
-  color: #667eea;
+  color: #7957d5;
 }
 
 .stat-label {
@@ -492,7 +492,7 @@ export default {
 .kda-value {
   font-size: 1.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -537,9 +537,6 @@ export default {
   width: 100%;
   padding: 0.875rem;
   border-radius: 12px;
-  background: white;
-  border: 2px solid #e9ecef;
-  color: #2c3e50;
   font-weight: 600;
   font-size: 1rem;
   display: flex;
@@ -550,11 +547,11 @@ export default {
 }
 
 .details-btn:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-color: transparent;
-  color: white;
+  background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%) !important;
+  border-color: transparent !important;
+  color: white !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(121, 87, 213, 0.4);
 }
 
 .btn-icon {

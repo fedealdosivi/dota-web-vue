@@ -1,30 +1,30 @@
 <template>
-  <b-navbar toggleable="md" class="modern-navbar" sticky>
-    <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-    <b-navbar-brand href="/#/" class="brand-logo">
-      <span class="logo-icon">⚔️</span>
-      <span class="brand-text">Dota Stats</span>
-    </b-navbar-brand>
-    <b-collapse is-nav id="nav_collapse">
-      <b-navbar-nav class="ml-auto">
-        <b-nav-item href="/#/player" class="nav-link-custom">
-          <span class="nav-icon">👥</span>
-          Players
-        </b-nav-item>
-        <b-nav-item href="/#/heroes" class="nav-link-custom">
-          <span class="nav-icon">🦸</span>
-          Heroes
-        </b-nav-item>
-        <b-nav-item href="/#/teams" class="nav-link-custom">
-          <span class="nav-icon">🛡️</span>
-          Teams
-        </b-nav-item>
-        <b-nav-item href="/#/chat" class="nav-link-custom chat-link">
-          <span class="nav-icon">💬</span>
-          Chat
-        </b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>
+  <b-navbar class="modern-navbar" fixed-top>
+    <template #brand>
+      <b-navbar-item tag="router-link" to="/" class="brand-logo">
+        <span class="logo-icon">⚔️</span>
+        <span class="brand-text">Dota Stats</span>
+      </b-navbar-item>
+    </template>
+
+    <template #end>
+      <b-navbar-item href="/#/player" class="nav-link-custom">
+        <span class="nav-icon">👥</span>
+        Players
+      </b-navbar-item>
+      <b-navbar-item href="/#/heroes" class="nav-link-custom">
+        <span class="nav-icon">🦸</span>
+        Heroes
+      </b-navbar-item>
+      <b-navbar-item href="/#/teams" class="nav-link-custom">
+        <span class="nav-icon">🛡️</span>
+        Teams
+      </b-navbar-item>
+      <b-navbar-item href="/#/chat" class="nav-link-custom chat-link">
+        <span class="nav-icon">💬</span>
+        Chat
+      </b-navbar-item>
+    </template>
   </b-navbar>
 </template>
 
@@ -38,11 +38,11 @@
     	},
 
       mounted() {
-        
+
       },
 
       created() {
-        
+
       },
 
     	methods: {
@@ -54,10 +54,11 @@
 
 <style scoped>
 .modern-navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: var(--dota-gradient-dark) !important;
   padding: 1rem 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--dota-primary) !important;
 }
 
 .brand-logo {
@@ -90,9 +91,6 @@
   margin: 0 0.5rem;
   position: relative;
   transition: all 0.3s ease;
-}
-
-.nav-link-custom a {
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500;
   padding: 0.5rem 1rem !important;
@@ -100,17 +98,16 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all 0.3s ease;
 }
 
-.nav-link-custom a:hover {
-  background: rgba(255, 255, 255, 0.15);
+.nav-link-custom:hover {
+  background: rgba(224, 49, 49, 0.2);
   color: white !important;
   transform: translateY(-2px);
 }
 
-.nav-link-custom.active a {
-  background: rgba(255, 255, 255, 0.2);
+.nav-link-custom.is-active {
+  background: rgba(224, 49, 49, 0.3);
   color: white !important;
 }
 
@@ -118,14 +115,14 @@
   font-size: 1.2rem;
 }
 
-.chat-link a {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.chat-link {
+  background: rgba(224, 49, 49, 0.15);
+  border: 1px solid var(--dota-primary);
 }
 
-.chat-link a:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
+.chat-link:hover {
+  background: rgba(224, 49, 49, 0.3);
+  border-color: var(--dota-primary-light);
 }
 
 @media (max-width: 768px) {

@@ -20,10 +20,10 @@
 		</div>
 
 		<transition-group v-else name="fade-slide" tag="div" class="heroes-grid">
-			<b-card
+			<div
 				v-for="h in heroes"
 				:key="h.hero_id"
-				class="hero-card"
+				class="box hero-card"
 			>
 				<div class="hero-header">
 					<div class="hero-id-badge">
@@ -67,13 +67,15 @@
 				</div>
 
 				<b-button
+					tag="a"
 					:href="'#/heroes/'+ h.hero_id + '/matches/'"
+					type="is-primary"
 					class="matches-btn"
 				>
 					<span class="btn-icon">🔍</span>
 					Discover Matches
 				</b-button>
-			</b-card>
+			</div>
 		</transition-group>
 	</div>
 </template>
@@ -160,7 +162,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -189,7 +191,7 @@
 	width: 60px;
 	height: 60px;
 	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
+	border-top: 5px solid #7957d5;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1.5rem;
@@ -242,7 +244,7 @@
 	align-items: center;
 	gap: 0.5rem;
 	padding: 1rem 2rem;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	border-radius: 12px;
 	color: white;
 }
@@ -282,7 +284,7 @@
 }
 
 .stat-item.games {
-	border-left: 4px solid #667eea;
+	border-left: 4px solid #7957d5;
 }
 
 .stat-item.wins {
@@ -332,9 +334,6 @@
 	width: 100%;
 	padding: 0.875rem;
 	border-radius: 12px;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border: none;
-	color: white;
 	font-weight: 600;
 	font-size: 1rem;
 	display: flex;
@@ -346,7 +345,7 @@
 
 .matches-btn:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+	box-shadow: 0 4px 12px rgba(121, 87, 213, 0.4);
 }
 
 .btn-icon {

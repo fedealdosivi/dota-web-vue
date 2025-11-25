@@ -1,0 +1,209 @@
+/* Dota 2 Official Theme Colors */
+:root {
+  /* Dark backgrounds */
+  --dota-bg-darkest: #0e0e10;
+  --dota-bg-dark: #1a1a1d;
+  --dota-bg-medium: #25282b;
+  --dota-bg-light: #2f3337;
+
+  /* Primary red/orange */
+  --dota-primary: #e03131;
+  --dota-primary-dark: #c62828;
+  --dota-primary-light: #ff5252;
+
+  /* Accent colors */
+  --dota-accent-orange: #ff6b35;
+  --dota-accent-gold: #fcbf49;
+  --dota-accent-cyan: #00a8cc;
+  --dota-accent-teal: #4ecdc4;
+
+  /* Text colors */
+  --dota-text-primary: #ffffff;
+  --dota-text-secondary: #b3b3b3;
+  --dota-text-muted: #7a7a7a;
+
+  /* Borders */
+  --dota-border: #3a3a3d;
+  --dota-border-light: #4a4a4d;
+
+  /* Gradients */
+  --dota-gradient-primary: linear-gradient(135deg, #e03131 0%, #ff6b35 100%);
+  --dota-gradient-dark: linear-gradient(180deg, #1a1a1d 0%, #0e0e10 100%);
+  --dota-gradient-hero: linear-gradient(135deg, #c62828 0%, #ff6b35 50%, #fcbf49 100%);
+}
+
+/* Global overrides for Buefy/Bulma */
+body {
+  background: var(--dota-bg-dark) !important;
+  color: var(--dota-text-primary) !important;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Box components */
+.box {
+  background: var(--dota-bg-medium) !important;
+  color: var(--dota-text-primary) !important;
+  border: 1px solid var(--dota-border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+.box:hover {
+  border-color: var(--dota-border-light) !important;
+}
+
+/* Buttons */
+.button.is-primary {
+  background: var(--dota-gradient-primary) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.button.is-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(224, 49, 49, 0.4) !important;
+}
+
+.button.is-info {
+  background: var(--dota-accent-cyan) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.button.is-info.is-outlined {
+  background: transparent !important;
+  border: 2px solid var(--dota-accent-cyan) !important;
+  color: var(--dota-accent-cyan) !important;
+}
+
+.button.is-info.is-outlined:hover {
+  background: var(--dota-accent-cyan) !important;
+  color: white !important;
+}
+
+/* Inputs */
+.input,
+.textarea,
+.select select {
+  background: var(--dota-bg-dark) !important;
+  border-color: var(--dota-border) !important;
+  color: var(--dota-text-primary) !important;
+}
+
+.input:focus,
+.textarea:focus,
+.select select:focus {
+  border-color: var(--dota-primary) !important;
+  box-shadow: 0 0 0 0.125em rgba(224, 49, 49, 0.25) !important;
+}
+
+.input::placeholder {
+  color: var(--dota-text-muted) !important;
+}
+
+/* Tags */
+.tag {
+  background: var(--dota-bg-light) !important;
+  color: var(--dota-text-primary) !important;
+  border: 1px solid var(--dota-border) !important;
+}
+
+.tag.is-primary {
+  background: var(--dota-primary) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.tag.is-success {
+  background: var(--dota-accent-teal) !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Tables */
+.table {
+  background: var(--dota-bg-medium) !important;
+  color: var(--dota-text-primary) !important;
+}
+
+.table thead th {
+  background: var(--dota-bg-dark) !important;
+  color: var(--dota-text-primary) !important;
+  border-color: var(--dota-border) !important;
+}
+
+.table tbody tr {
+  background: var(--dota-bg-medium) !important;
+  border-color: var(--dota-border) !important;
+}
+
+.table tbody tr:hover {
+  background: var(--dota-bg-light) !important;
+}
+
+.table td {
+  border-color: var(--dota-border) !important;
+  color: var(--dota-text-secondary) !important;
+}
+
+/* Progress bars */
+.progress {
+  background: var(--dota-bg-dark) !important;
+}
+
+.progress::-webkit-progress-value {
+  background: var(--dota-gradient-primary) !important;
+}
+
+/* Navbar */
+.navbar {
+  background: var(--dota-gradient-dark) !important;
+  border-bottom: 2px solid var(--dota-primary) !important;
+}
+
+.navbar-item {
+  color: var(--dota-text-secondary) !important;
+}
+
+.navbar-item:hover {
+  background: rgba(224, 49, 49, 0.1) !important;
+  color: var(--dota-text-primary) !important;
+}
+
+/* Loading */
+.loading-overlay {
+  background: rgba(14, 14, 16, 0.95) !important;
+}
+
+/* Text utilities */
+.has-text-grey {
+  color: var(--dota-text-muted) !important;
+}
+
+.title {
+  color: var(--dota-text-primary) !important;
+}
+
+.subtitle {
+  color: var(--dota-text-secondary) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dota-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dota-bg-light);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dota-primary);
+}

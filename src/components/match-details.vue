@@ -21,7 +21,7 @@
 
 		<div v-else class="match-content">
 			<!-- Match Overview Card -->
-			<b-card class="overview-card">
+			<div class="box overview-card">
 				<h2 class="section-title">
 					<span class="section-icon">📊</span>
 					Match Overview
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 				</div>
-			</b-card>
+			</div>
 
 			<!-- Players Section -->
 			<div class="players-section">
@@ -62,10 +62,10 @@
 				</h2>
 
 				<transition-group name="fade-slide" tag="div" class="players-grid">
-					<b-card
+					<div
 						v-for="p in match.players"
 						:key="p.account_id"
-						class="player-card"
+						class="box player-card"
 					>
 						<div class="player-header">
 							<h3 class="player-name">{{ p.personaname || 'Anonymous' }}</h3>
@@ -112,13 +112,15 @@
 						</div>
 
 						<b-button
+							tag="a"
 							:href="'/#/player/' + p.account_id"
+							type="is-primary"
 							class="profile-btn"
 						>
 							<span class="btn-icon">👤</span>
 							View Profile
 						</b-button>
-					</b-card>
+					</div>
 				</transition-group>
 			</div>
 		</div>
@@ -199,7 +201,7 @@
 .page-title {
 	font-size: 2.5rem;
 	font-weight: 700;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -228,7 +230,7 @@
 	width: 60px;
 	height: 60px;
 	border: 5px solid #f3f3f3;
-	border-top: 5px solid #667eea;
+	border-top: 5px solid #7957d5;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1.5rem;
@@ -455,7 +457,7 @@
 }
 
 .kda-item.assists .kda-number {
-	color: #667eea;
+	color: #7957d5;
 }
 
 .kda-label {
@@ -482,7 +484,7 @@
 .ratio-value {
 	font-size: 1.5rem;
 	font-weight: 800;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -539,9 +541,6 @@
 	width: 100%;
 	padding: 0.875rem;
 	border-radius: 12px;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	border: none;
-	color: white;
 	font-weight: 600;
 	font-size: 1rem;
 	display: flex;
@@ -553,7 +552,7 @@
 
 .profile-btn:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+	box-shadow: 0 4px 12px rgba(121, 87, 213, 0.4);
 }
 
 .btn-icon {
