@@ -1,13 +1,13 @@
 // Jest setup file
 const Vue = require('vue');
-const BootstrapVue = require('bootstrap-vue');
+const Buefy = require('buefy');
 
 // Suppress Vue warnings during tests
 Vue.config.productionTip = false;
 Vue.config.devtools = false;
 
-// Install Bootstrap Vue globally for tests
-Vue.use(BootstrapVue);
+// Install Buefy globally for tests
+Vue.use(Buefy.default);
 
 // Mock Socket.IO
 global.io = jest.fn(() => ({

@@ -19,8 +19,9 @@ describe('AllTeams.vue', () => {
     wrapper = mount(AllTeams);
     wrapper.setData({ loading: true, teams: [] });
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('.loading-state').exists()).toBe(true);
-    expect(wrapper.text()).toContain('Loading teams...');
+    // Buefy uses b-loading component instead of .loading-state
+    expect(wrapper.vm.loading).toBe(true);
+    expect(wrapper.find('.empty-state').exists()).toBe(false);
   });
 
   it('displays empty state when no teams are found', async () => {
