@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "user": "TestUser",
+    "newMessage": "This is a test message that should persist for 24 hours!",
+    "timestamp": "2025-12-02T16:20:42.245Z",
+    "id": 1764692442246.8633
+  },
+  {
+    "user": "TestUser",
+    "newMessage": "This is a test message that should persist for 24 hours!",
+    "timestamp": "2025-12-02T16:21:02.041Z",
+    "id": 1764692462042.6973
+  },
+  {
+    "user": "fede",
+    "newMessage": "test",
+    "timestamp": "2025-12-02T16:22:56.706Z",
+    "id": 1764692576716.0376
+  },
+  {
+    "user": "fede",
+    "newMessage": "aaaa",
+    "timestamp": "2025-12-02T16:22:59.788Z",
+    "id": 1764692579789.5967
+  },
+  {
+    "user": "fede",
+    "newMessage": "atun",
+    "timestamp": "2025-12-02T16:23:08.738Z",
+    "id": 1764692588739.6487
+  }
+]

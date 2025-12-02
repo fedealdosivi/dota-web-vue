@@ -110,7 +110,7 @@ export default {
       const payload = {
         user: this.user,
         newMessage: this.newMessage,
-        timestamp: new Date()
+        timestamp: new Date().toISOString()
       }
 
       // Lock username after first message
