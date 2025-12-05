@@ -148,9 +148,19 @@ export default {
   mounted() {
     this.scrollToBottom();
 
-    // Ensure we request history if socket is already connected
-    if (this.socket && this.socket.connected) {
-      console.log('Socket already connected, messages should load automatically');
+    // Request history when component mounts
+    // This ensures users see messages even if they navigate to chat page
+    // after the socket connection was already established
+    if (this.socket) {
+      if (this.socket.connected) {
+        console.log('Socket already connected, requesting history...');
+        this.socket.emit('requestHistory');
+      } else {
+        // If not connected yet, wait for connection then request
+        this.socket.on('connect', () => {
+          console.log('Socket connected, history will be sent automatically');
+        });
+      }
     }
   }
 }

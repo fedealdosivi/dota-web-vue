@@ -25,6 +25,13 @@ io.on('connection', function(socket) {
 	socket.emit('loadHistory', existingMessages);
 	console.log(`Sent ${existingMessages.length} historical messages to client`);
 
+	// Allow clients to request history at any time (e.g., when navigating to chat page)
+	socket.on('requestHistory', function() {
+		const messages = messageStorage.getMessages();
+		socket.emit('loadHistory', messages);
+		console.log(`Sent ${messages.length} historical messages on request`);
+	});
+
 	socket.on('chat_message', function(payload) {
 		// Store the message
 		const savedMessage = messageStorage.addMessage(payload);
