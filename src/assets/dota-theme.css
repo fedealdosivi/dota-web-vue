@@ -33,11 +33,23 @@
 }
 
 /* Global overrides for Buefy/Bulma */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: var(--dota-bg-dark) !important;
   color: var(--dota-text-primary) !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding-top: 5rem !important; /* Add spacing below fixed navbar */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: calc(100vh - 5rem);
 }
 
 /* Box components */
