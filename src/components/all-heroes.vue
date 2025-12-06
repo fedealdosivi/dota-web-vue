@@ -212,15 +212,13 @@
 }
 
 .subtitle {
-	color: #7a7a7a;
+	color: var(--dota-text-muted);
 	font-size: 1.1rem;
 }
 
 .search-card {
 	margin-bottom: 2rem;
 	border-radius: 16px;
-	border: 1px solid #dbdbdb;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .search-wrapper {
@@ -232,7 +230,7 @@
 
 .search-icon {
 	font-size: 1.5rem;
-	color: #7a7a7a;
+	color: var(--dota-text-muted);
 }
 
 .modern-search-input {
@@ -243,20 +241,20 @@
 	position: absolute;
 	right: 1rem;
 	font-size: 1.2rem;
-	color: #7a7a7a;
+	color: var(--dota-text-muted);
 	cursor: pointer;
 	transition: color 0.3s ease;
 	padding: 0.25rem 0.5rem;
 }
 
 .clear-btn:hover {
-	color: #d63031;
+	color: var(--dota-primary);
 }
 
 .results-count {
 	margin-top: 1rem;
 	text-align: center;
-	color: #7957d5;
+	color: var(--dota-primary);
 	font-weight: 600;
 	font-size: 0.95rem;
 }
@@ -264,8 +262,21 @@
 .empty-state {
 	text-align: center;
 	padding: 4rem 2rem;
-	background: #f8f9fa;
+	background: var(--dota-bg-medium);
+	border: 1px solid var(--dota-border);
 	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.empty-state h3 {
+	color: var(--dota-text-primary);
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.empty-state p {
+	color: var(--dota-text-muted);
+	font-size: 1rem;
 }
 
 .empty-icon {
@@ -295,13 +306,13 @@
 .hero-header {
 	margin-bottom: 1.5rem;
 	padding-bottom: 1rem;
-	border-bottom: 2px solid #f0f0f0;
+	border-bottom: 2px solid var(--dota-border);
 }
 
 .hero-name {
 	font-size: 1.6rem;
 	font-weight: 800;
-	color: #2c3e50;
+	color: var(--dota-text-primary);
 	margin-bottom: 1rem;
 	text-align: center;
 }
@@ -371,7 +382,7 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	color: #7a7a7a;
+	color: var(--dota-text-muted);
 	font-size: 0.85rem;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
@@ -390,9 +401,9 @@
 }
 
 .role-tag {
-	background: #f8f9fa;
-	color: #2c3e50;
-	border: 1px solid #dbdbdb;
+	background: var(--dota-bg-dark);
+	color: var(--dota-text-primary);
+	border: 1px solid var(--dota-border);
 }
 
 .action-buttons {

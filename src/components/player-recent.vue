@@ -237,7 +237,7 @@ export default {
 }
 
 .subtitle {
-  color: #6c757d;
+  color: var(--dota-text-muted);
   font-size: 1.1rem;
 }
 
@@ -249,10 +249,12 @@ export default {
 }
 
 .summary-card {
-  background: white;
+  background: var(--dota-bg-medium);
+  border: 1px solid var(--dota-border);
+  color: var(--dota-text-primary);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -305,13 +307,14 @@ export default {
 .loading-state {
   text-align: center;
   padding: 4rem 2rem;
+  color: var(--dota-text-primary);
 }
 
 .spinner {
   width: 60px;
   height: 60px;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #7957d5;
+  border: 5px solid var(--dota-border);
+  border-top: 5px solid var(--dota-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin: 0 auto 1.5rem;
@@ -325,8 +328,21 @@ export default {
 .empty-state {
   text-align: center;
   padding: 4rem 2rem;
-  background: #f8f9fa;
+  background: var(--dota-bg-medium);
+  border: 1px solid var(--dota-border);
   border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.empty-state h3 {
+  color: var(--dota-text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.empty-state p {
+  color: var(--dota-text-muted);
+  font-size: 1rem;
 }
 
 .empty-icon {

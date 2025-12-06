@@ -160,20 +160,21 @@
 }
 
 .subtitle {
-	color: #6c757d;
+	color: var(--dota-text-muted);
 	font-size: 1.1rem;
 }
 
 .loading-state {
 	text-align: center;
 	padding: 3rem;
+	color: var(--dota-text-primary);
 }
 
 .spinner {
 	width: 50px;
 	height: 50px;
-	border: 4px solid #f3f3f3;
-	border-top: 4px solid #7957d5;
+	border: 4px solid var(--dota-border);
+	border-top: 4px solid var(--dota-primary);
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1rem;
@@ -187,8 +188,21 @@
 .empty-state {
 	text-align: center;
 	padding: 4rem 2rem;
-	background: #f8f9fa;
+	background: var(--dota-bg-medium);
+	border: 1px solid var(--dota-border);
 	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.empty-state h3 {
+	color: var(--dota-text-primary);
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.empty-state p {
+	color: var(--dota-text-muted);
+	font-size: 1rem;
 }
 
 .empty-icon {
@@ -247,8 +261,8 @@
 }
 
 .player-avatar-img {
-	border: 4px solid #f0f0f0;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	border: 4px solid var(--dota-border);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .player-details {
@@ -258,7 +272,7 @@
 .player-persona {
 	font-size: 1.4rem;
 	font-weight: 700;
-	color: #2c3e50;
+	color: var(--dota-text-primary);
 	margin-bottom: 1rem;
 }
 
@@ -268,7 +282,8 @@
 	gap: 1rem;
 	margin-bottom: 1rem;
 	padding: 1rem;
-	background: #f8f9fa;
+	background: var(--dota-bg-dark);
+	border: 1px solid var(--dota-border);
 	border-radius: 12px;
 }
 
@@ -280,7 +295,7 @@
 
 .stat-label {
 	font-size: 0.85rem;
-	color: #6c757d;
+	color: var(--dota-text-muted);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 }
@@ -306,7 +321,7 @@
 	align-items: center;
 	justify-content: center;
 	gap: 0.5rem;
-	color: #6c757d;
+	color: var(--dota-text-secondary);
 	font-size: 0.9rem;
 	margin-top: 0.5rem;
 }

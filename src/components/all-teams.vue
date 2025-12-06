@@ -157,15 +157,28 @@ export default {
 }
 
 .subtitle {
-	color: #7a7a7a;
+	color: var(--dota-text-muted);
 	font-size: 1.1rem;
 }
 
 .empty-state {
 	text-align: center;
 	padding: 4rem 2rem;
-	background: #f8f9fa;
+	background: var(--dota-bg-medium);
+	border: 1px solid var(--dota-border);
 	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.empty-state h3 {
+	color: var(--dota-text-primary);
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.empty-state p {
+	color: var(--dota-text-muted);
+	font-size: 1rem;
 }
 
 .empty-icon {
@@ -197,15 +210,15 @@ export default {
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
-	background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-	border-bottom: 2px solid #dbdbdb;
+	background: var(--dota-bg-dark);
+	border-bottom: 2px solid var(--dota-border);
 }
 
 .team-logo {
 	width: 120px;
 	height: 120px;
 	object-fit: contain;
-	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .team-logo-fallback {
@@ -214,26 +227,26 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
+	background: linear-gradient(135deg, var(--dota-primary) 0%, #8e44ad 100%);
 	border-radius: 50%;
 	font-size: 2.5rem;
 	font-weight: 800;
 	color: white;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	box-shadow: 0 4px 12px rgba(121, 87, 213, 0.3);
+	box-shadow: 0 4px 12px rgba(224, 49, 49, 0.4);
 }
 
 .team-info {
 	text-align: center;
 	padding: 1.5rem;
-	border-bottom: 2px solid #f0f0f0;
+	border-bottom: 2px solid var(--dota-border);
 }
 
 .team-tag {
 	display: inline-block;
 	padding: 0.5rem 1.5rem;
-	background: linear-gradient(135deg, #7957d5 0%, #8e44ad 100%);
+	background: linear-gradient(135deg, var(--dota-primary) 0%, var(--dota-primary-light) 100%);
 	color: white;
 	border-radius: 20px;
 	font-weight: 700;
@@ -246,7 +259,7 @@ export default {
 .team-name {
 	font-size: 1.5rem;
 	font-weight: 700;
-	color: #2c3e50;
+	color: var(--dota-text-primary);
 	margin-bottom: 0;
 }
 
