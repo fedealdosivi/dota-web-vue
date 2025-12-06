@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-	getPlayerByPersonaname(name){
-		const promise=axios.get('https://api.opendota.com/api/search?q='+name);
+	getPlayerByPersonaname(name, limit = 10){
+		const promise=axios.get(`https://api.opendota.com/api/search?q=${name}&limit=${limit}`);
 		return promise;
 	},
 
@@ -54,6 +54,11 @@ export default {
 
 	getProPlayers(){
 		const promise=axios.get('https://api.opendota.com/api/proPlayers');
+		return promise;
+	},
+
+	getTopPlayers(){
+		const promise=axios.get('https://api.opendota.com/api/topPlayers');
 		return promise;
 	}
 

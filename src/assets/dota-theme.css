@@ -171,6 +171,20 @@ body {
   color: var(--dota-text-primary) !important;
 }
 
+.navbar-item.is-active,
+.navbar-item.is-active:hover {
+  background: rgba(224, 49, 49, 0.25) !important;
+  color: white !important;
+}
+
+/* Override Buefy's default white background on active navbar links */
+.navbar-link.is-active,
+a.navbar-item.is-active,
+a.navbar-item:focus {
+  background: rgba(224, 49, 49, 0.25) !important;
+  color: white !important;
+}
+
 /* Loading */
 .loading-overlay {
   background: rgba(14, 14, 16, 0.95) !important;
