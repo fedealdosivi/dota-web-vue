@@ -37,6 +37,7 @@ body {
   background: var(--dota-bg-dark) !important;
   color: var(--dota-text-primary) !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 5rem !important; /* Add spacing below fixed navbar */
 }
 
 /* Box components */

@@ -348,6 +348,7 @@
 
 .results-grid {
 	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 1.5rem;
 	margin-bottom: 2rem;
 }
@@ -389,12 +390,14 @@
 }
 
 .player-name {
-	margin-bottom: 0.5rem !important;
+	margin-bottom: 1rem !important;
 	color: var(--dota-text-primary) !important;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 
 .player-id {
-	margin-bottom: 0.25rem !important;
+	margin-bottom: 0.5rem !important;
 	color: var(--dota-text-secondary) !important;
 }
 
@@ -558,6 +561,12 @@
 	transform: translateY(-20px);
 }
 
+@media (max-width: 1024px) {
+	.results-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
 @media (max-width: 768px) {
 	.search-container {
 		padding: 1rem;
@@ -565,6 +574,10 @@
 
 	.page-title {
 		font-size: 2rem;
+	}
+
+	.results-grid {
+		grid-template-columns: 1fr;
 	}
 
 	.player-header {
