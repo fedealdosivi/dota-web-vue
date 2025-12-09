@@ -1,9 +1,13 @@
 <template>
 	<div class="team-players-container">
 		<div class="team-players-header">
+			<div v-if="teamInfo" class="team-name-badge">
+				<span class="team-tag">{{ teamInfo.tag }}</span>
+			</div>
 			<h1 class="page-title">
 				<span class="title-icon">👥</span>
-				Team Players
+				<span v-if="teamInfo">{{ teamInfo.name }} - Players</span>
+				<span v-else>Team Players</span>
 			</h1>
 			<p class="subtitle">Current and former team members</p>
 		</div>
@@ -81,7 +85,8 @@ export default {
 	data() {
 		return {
 			players: [],
-			loading: false
+			loading: false,
+			teamInfo: null
 		}
 	},
 
@@ -97,15 +102,27 @@ export default {
 	watch: {
 		'$route.params.id': function() {
 			this.id = this.$route.params.id;
+			this.getTeamInfo();
 			this.getPlayers();
 		}
 	},
 
 	created() {
+		this.getTeamInfo();
 		this.getPlayers();
 	},
 
 	methods: {
+		getTeamInfo() {
+			teamService.getTeamById(this.id)
+				.then((response) => {
+					this.teamInfo = response.data;
+				})
+				.catch(() => {
+					this.teamInfo = null;
+				})
+		},
+
 		getPlayers() {
 			this.loading = true;
 			teamService.getTeamPlayersById(this.id)
@@ -137,6 +154,24 @@ export default {
 .team-players-header {
 	text-align: center;
 	margin-bottom: 2rem;
+	position: relative;
+}
+
+.team-name-badge {
+	margin-bottom: 1rem;
+}
+
+.team-tag {
+	display: inline-block;
+	padding: 0.5rem 1.5rem;
+	background: linear-gradient(135deg, var(--dota-primary) 0%, var(--dota-primary-light) 100%);
+	color: white;
+	border-radius: 20px;
+	font-weight: 700;
+	font-size: 1rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	box-shadow: 0 4px 12px rgba(224, 49, 49, 0.4);
 }
 
 .page-title {
@@ -151,6 +186,7 @@ export default {
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
+	flex-wrap: wrap;
 }
 
 .title-icon {
@@ -158,20 +194,21 @@ export default {
 }
 
 .subtitle {
-	color: #6c757d;
+	color: var(--dota-text-muted);
 	font-size: 1.1rem;
 }
 
 .loading-state {
 	text-align: center;
 	padding: 4rem 2rem;
+	color: var(--dota-text-primary);
 }
 
 .spinner {
 	width: 60px;
 	height: 60px;
-	border: 5px solid #f3f3f3;
-	border-top: 5px solid #7957d5;
+	border: 5px solid var(--dota-border);
+	border-top: 5px solid var(--dota-primary);
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin: 0 auto 1.5rem;
@@ -185,8 +222,21 @@ export default {
 .empty-state {
 	text-align: center;
 	padding: 4rem 2rem;
-	background: #f8f9fa;
+	background: var(--dota-bg-medium);
+	border: 1px solid var(--dota-border);
 	border-radius: 16px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.empty-state h3 {
+	color: var(--dota-text-primary);
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
+.empty-state p {
+	color: var(--dota-text-muted);
+	font-size: 1rem;
 }
 
 .empty-icon {
@@ -242,20 +292,20 @@ export default {
 	margin-bottom: 1.5rem;
 	padding-bottom: 1rem;
 	padding-right: 140px;
-	border-bottom: 2px solid #f0f0f0;
+	border-bottom: 2px solid var(--dota-border);
 	text-align: center;
 }
 
 .player-name {
 	font-size: 1.4rem;
 	font-weight: 700;
-	color: #2c3e50;
+	color: var(--dota-text-primary);
 	margin-bottom: 0.5rem;
 }
 
 .player-id {
 	font-size: 0.85rem;
-	color: #6c757d;
+	color: var(--dota-text-secondary);
 }
 
 .stats-section {
@@ -270,13 +320,14 @@ export default {
 	align-items: center;
 	gap: 1rem;
 	padding: 1rem;
-	background: #f8f9fa;
+	background: var(--dota-bg-dark);
+	border: 1px solid var(--dota-border);
 	border-radius: 12px;
 	transition: all 0.3s ease;
 }
 
 .stat-box:hover {
-	background: #e9ecef;
+	background: var(--dota-bg-light);
 	transform: translateY(-2px);
 }
 
@@ -304,7 +355,7 @@ export default {
 
 .stat-label {
 	font-size: 0.75rem;
-	color: #6c757d;
+	color: var(--dota-text-muted);
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
 	margin-bottom: 0.25rem;
@@ -313,7 +364,7 @@ export default {
 .stat-value {
 	font-size: 1.5rem;
 	font-weight: 800;
-	color: #2c3e50;
+	color: var(--dota-text-primary);
 }
 
 .profile-btn {
